@@ -9,7 +9,11 @@ export async function GET(request: Request) {
   }
 
   try {
-    const limit = Math.min(Math.max(Number(new URL(request.url).searchParams.get("limit") || 50), 1), 250);
+    const requestedLimit = new URL(request.url).searchParams.get("limit");
+    const limit = Math.min(
+      Math.max(Number(requestedLimit || 1000), 1),
+      1000,
+    );
     const assets = (await listAssets(sql)).slice(0, limit);
     return NextResponse.json({ data: assets });
   } catch (error) {

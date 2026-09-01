@@ -161,6 +161,52 @@ ALTER TABLE rentals ADD COLUMN IF NOT EXISTS return_condition VARCHAR(30);
 ALTER TABLE rentals ADD COLUMN IF NOT EXISTS return_notes TEXT;
 ALTER TABLE daily_usage ADD COLUMN IF NOT EXISTS fuel_level_pct DOUBLE PRECISION;
 
+-- Legacy CTRL-CAT imports stored boolean telemetry flags as 0/1 integers.
+-- Convert them before loading the canonical boolean seed values.
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'daily_usage'
+      AND column_name = 'dtc_warning_active'
+      AND data_type = 'integer'
+  ) THEN
+    ALTER TABLE daily_usage
+      ALTER COLUMN dtc_warning_active TYPE BOOLEAN
+      USING dtc_warning_active <> 0;
+  END IF;
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'daily_usage'
+      AND column_name = 'sos_fluid_alert'
+      AND data_type = 'integer'
+  ) THEN
+    ALTER TABLE daily_usage
+      ALTER COLUMN sos_fluid_alert TYPE BOOLEAN
+      USING sos_fluid_alert <> 0;
+  END IF;
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'daily_usage'
+      AND column_name = 'is_anomaly'
+      AND data_type = 'integer'
+  ) THEN
+    ALTER TABLE daily_usage
+      ALTER COLUMN is_anomaly TYPE BOOLEAN
+      USING is_anomaly <> 0;
+  END IF;
+  IF EXISTS (
+    SELECT 1 FROM information_schema.columns
+    WHERE table_name = 'daily_usage'
+      AND column_name = 'had_maintenance'
+      AND data_type = 'integer'
+  ) THEN
+    ALTER TABLE daily_usage
+      ALTER COLUMN had_maintenance TYPE BOOLEAN
+      USING had_maintenance <> 0;
+  END IF;
+END $$;
+
 -- Existing normalized rentals only had a start date. Close historical rows so
 -- the active-rental uniqueness rule can be applied safely.
 UPDATE rentals r

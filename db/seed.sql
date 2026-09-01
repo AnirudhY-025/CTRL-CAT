@@ -42,12 +42,12 @@ VALUES
   ('R_EQX1005_ACTIVE', 'EQX1005', 'S_004', 'OP301', now() - interval '8 days', 'Dock 3 · Aggregate')
 ON CONFLICT (rental_id) DO NOTHING;
 
-INSERT INTO daily_usage (date, equipment_id, rental_id, site_id, operator_id, utilization_pct, engine_hours, idle_hours, fuel_consumed, fuel_level_pct, total_hours, dtc_warning_active, sos_fluid_alert, is_anomaly, had_maintenance)
+INSERT INTO daily_usage (date, equipment_id, rental_id, site_id, operator_id, utilization_pct, engine_hours, idle_hours, fuel_consumed, fuel_level_pct, payload_tons, total_hours, dtc_warning_active, sos_fluid_alert, is_anomaly, had_maintenance)
 VALUES
-  (current_date, 'EQX1001', 'R_EQX1001_ACTIVE', 'S_002', 'OP101', 78, 8.4, 1.2, 68, 68, 1284, false, false, false, false),
-  (current_date, 'EQX1003', 'R_EQX1003_ACTIVE', 'S_003', 'OP203', 42, 5.1, 3.3, 59, 41, 882, false, false, false, false),
-  (current_date, 'EQX1004', NULL, 'S_004', NULL, 12, 2, 9, 18, 18, 3466, true, true, true, false),
-  (current_date, 'EQX1005', 'R_EQX1005_ACTIVE', 'S_004', 'OP301', 68, 7.4, 2.1, 77, 77, 614, false, false, false, false)
+  (current_date, 'EQX1001', 'R_EQX1001_ACTIVE', 'S_002', 'OP101', 78, 8.4, 1.2, 68, 68, 0, 1284, false, false, false, false),
+  (current_date, 'EQX1003', 'R_EQX1003_ACTIVE', 'S_003', 'OP203', 42, 5.1, 3.3, 59, 41, 0, 882, false, false, false, false),
+  (current_date, 'EQX1004', NULL, 'S_004', NULL, 12, 2, 9, 18, 18, 0, 3466, true, true, true, false),
+  (current_date, 'EQX1005', 'R_EQX1005_ACTIVE', 'S_004', 'OP301', 68, 7.4, 2.1, 77, 77, 0, 614, false, false, false, false)
 ON CONFLICT (date, equipment_id) DO NOTHING;
 
 INSERT INTO telemetry_events (equipment_id, event_type, description, payload)

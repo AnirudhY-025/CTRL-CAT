@@ -41,8 +41,8 @@ export async function fetchOperators() {
   return response.data;
 }
 
-export async function fetchActivity() {
-  const response = await request<ApiEnvelope<Activity[]>>("/api/activity");
+export async function fetchActivity(limit = 20) {
+  const response = await request<ApiEnvelope<Activity[]>>(`/api/activity?limit=${limit}`);
   return response.data;
 }
 

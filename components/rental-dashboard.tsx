@@ -58,6 +58,9 @@ import { cn } from "@/lib/utils";
 
 type FilterStatus = AssetStatus | "all" | "attention";
 
+const GLOBAL_ACTIVITY_LIMIT = 6;
+const ACTIVITY_STATE_LIMIT = 20;
+
 const workflowItems: {
   label: string;
   action: WorkflowAction;
@@ -81,6 +84,18 @@ const statusLabels: Record<AssetStatus, string> = {
   "checked-out": "Checked out",
   maintenance: "Maintenance",
 };
+
+function formatActivityTime(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
 
 function statusVariant(status: AssetStatus) {
   if (status === "available") return "available" as const;
@@ -134,6 +149,7 @@ export function RentalDashboard() {
     string | null
   >(null);
   const [toast, setToast] = React.useState<string | null>(null);
+  const globalActivity = activity.slice(0, GLOBAL_ACTIVITY_LIMIT);
 
   const loadDashboard = React.useCallback(async () => {
     setLoading(true);
@@ -142,7 +158,7 @@ export function RentalDashboard() {
       const [nextAssets, nextActivity, nextOperators, nextSites] =
         await Promise.all([
           fetchEquipment(),
-          fetchActivity(),
+          fetchActivity(ACTIVITY_STATE_LIMIT),
           fetchOperators(),
           fetchSites(),
         ]);
@@ -232,7 +248,7 @@ export function RentalDashboard() {
         asset.id === updatedAsset.id ? updatedAsset : asset,
       ),
     );
-    setActivity((current) => [activityItem, ...current].slice(0, 5));
+    setActivity((current) => [activityItem, ...current].slice(0, ACTIVITY_STATE_LIMIT));
     setAction(null);
     setSelectedAssetId(null);
     setWorkflowAssetId(null);
@@ -439,11 +455,11 @@ export function RentalDashboard() {
                 </button>
               </CardHeader>
               <CardContent className="space-y-1">
-                {activity.map((item, index) => (
+                {globalActivity.map((item, index) => (
                   <ActivityItem
                     key={item.id}
                     item={item}
-                    isLast={index === activity.length - 1}
+                    isLast={index === globalActivity.length - 1}
                     onOpen={() => openAsset(item.assetId, item.id)}
                   />
                 ))}
@@ -724,13 +740,15 @@ function ActivityItem({
         {!isLast && <span className="absolute top-3 h-11 w-px bg-border" />}
       </div>
       <div className="min-w-0 flex-1">
-        <div className="flex items-start justify-between gap-3">
-          <p className="text-xs font-bold text-foreground">{item.action}</p>
-          <span className="shrink-0 text-[10px] text-muted-foreground">
-            {item.time}
+        <div className="flex min-w-0 items-start gap-3">
+          <p className="min-w-0 flex-1 text-xs font-bold leading-snug text-foreground">
+            {item.action}
+          </p>
+          <span className="min-w-0 flex-1 break-words text-right text-[10px] leading-snug text-muted-foreground">
+            {formatActivityTime(item.time)}
           </span>
         </div>
-        <p className="mt-1 truncate text-xs text-muted-foreground">
+        <p className="mt-1 min-w-0 truncate text-xs text-muted-foreground">
           {item.assetId} · {item.detail}
         </p>
       </div>
