@@ -1127,7 +1127,7 @@ function ActivityItem({
 
 const CUSTOMER_CONTACT_MAP: Record<string, { email: string; name: string }> = {
   "Prestige Group": { email: "yekkalurianirudh@gmail.com", name: "Prestige Site Manager" },
-  "Sobha Constructions": { email: "pransai.verse@gmail.com", name: "Sobha Operations Lead" },
+  "Sobha Constructions": { email: "pranshudev757@gmail.com", name: "Sobha Operations Lead" },
   "L&T": { email: "machinery@larsentoubro.com", name: "L&T Fleet Supervisor" },
   "Godrej Properties": { email: "ops@godrejproperties.com", name: "Godrej Site Admin" },
 };

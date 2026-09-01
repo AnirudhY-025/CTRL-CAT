@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 import type { AlertResponse } from "@/lib/types";
 
 // Uses Resend (https://resend.com)
 const RESEND_API_KEY = process.env.RESEND_API_KEY ?? "";
-const FROM_EMAIL = process.env.ALERT_FROM_EMAIL ?? "onboarding@resend.dev";
+const FROM_EMAIL = process.env.ALERT_FROM_EMAIL ?? "CTRL+CAT Operations <onboarding@resend.dev>";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 export type DealerAlertType =
@@ -254,31 +255,32 @@ export async function POST(request: Request) {
 
   const { subject, html } = buildDealerEmailHtml(body);
 
-  const response = await fetch(RESEND_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
+  try {
+    const resend = new Resend(RESEND_API_KEY);
+    const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [body.toEmail],
       subject,
       html,
-    }),
-  });
+    });
 
-  if (!response.ok) {
-    const error = await response.text();
-    console.error("Resend error:", error);
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json<AlertResponse>(
+        { success: false, message: error.message || "Failed to send email via Resend" },
+        { status: 502 },
+      );
+    }
+
+    return NextResponse.json<AlertResponse>({
+      success: true,
+      message: `Dealer alert dispatched to ${body.toEmail}`,
+    });
+  } catch (err: any) {
+    console.error("Resend error:", err);
     return NextResponse.json<AlertResponse>(
-      { success: false, message: "Failed to send email via dealer gateway" },
+      { success: false, message: err?.message || "Failed to send email via dealer gateway" },
       { status: 502 },
     );
   }
-
-  return NextResponse.json<AlertResponse>({
-    success: true,
-    message: `Dealer alert dispatched to ${body.toEmail}`,
-  });
 }
