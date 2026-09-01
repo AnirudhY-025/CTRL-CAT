@@ -12,11 +12,14 @@ export type Asset = {
   location: string;
   operator: string | null;
   operatorInitials: string | null;
-  engineHours: number;
-  idleHours: number;
-  fuelLevel: number;
+  engineHours: number | null;
+  idleHours: number | null;
+  fuelLevel: number | null;
   condition: Condition;
   lastActivity: string;
+  siteId?: string | null;
+  operatorId?: string | null;
+  rentalId?: string | null;
 };
 
 export type Activity = {
@@ -30,12 +33,15 @@ export type Activity = {
 };
 
 export type Operator = {
+  id: string;
   name: string;
   initials: string;
   role: string;
 };
 
 export type Site = {
+  id: string;
   name: string;
   code: string;
+  customerName?: string | null;
 };

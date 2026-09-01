@@ -38,7 +38,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { initialActivity, initialAssets, operators, sites } from "@/lib/data";
+import {
+  checkinEquipment,
+  checkoutEquipment,
+  fetchActivity,
+  fetchEquipment,
+  fetchOperators,
+  fetchSites,
+} from "@/lib/api";
 import type {
   Activity,
   Asset,
@@ -46,6 +53,7 @@ import type {
   Condition,
   WorkflowAction,
 } from "@/lib/types";
+import type { Operator, Site } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 type FilterStatus = AssetStatus | "all" | "attention";
@@ -86,15 +94,6 @@ function conditionVariant(condition: Condition) {
   return "service" as const;
 }
 
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 function isAssetEligible(asset: Asset, action: WorkflowAction) {
   return action === "checkout"
     ? asset.status === "available"
@@ -116,8 +115,12 @@ function assetTone(category: string) {
 }
 
 export function RentalDashboard() {
-  const [assets, setAssets] = React.useState(initialAssets);
-  const [activity, setActivity] = React.useState(initialActivity);
+  const [assets, setAssets] = React.useState<Asset[]>([]);
+  const [activity, setActivity] = React.useState<Activity[]>([]);
+  const [operators, setOperators] = React.useState<Operator[]>([]);
+  const [sites, setSites] = React.useState<Site[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [loadError, setLoadError] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const [statusFilter, setStatusFilter] = React.useState<FilterStatus>("all");
   const [action, setAction] = React.useState<WorkflowAction | null>(null);
@@ -132,6 +135,34 @@ export function RentalDashboard() {
   >(null);
   const [toast, setToast] = React.useState<string | null>(null);
 
+  const loadDashboard = React.useCallback(async () => {
+    setLoading(true);
+    setLoadError(null);
+    try {
+      const [nextAssets, nextActivity, nextOperators, nextSites] =
+        await Promise.all([
+          fetchEquipment(),
+          fetchActivity(),
+          fetchOperators(),
+          fetchSites(),
+        ]);
+      setAssets(nextAssets);
+      setActivity(nextActivity);
+      setOperators(nextOperators);
+      setSites(nextSites);
+    } catch (error) {
+      setLoadError(
+        error instanceof Error ? error.message : "Unable to load dashboard",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    void loadDashboard();
+  }, [loadDashboard]);
+
   const counts = {
     all: assets.length,
     available: assets.filter((asset) => asset.status === "available").length,
@@ -140,7 +171,7 @@ export function RentalDashboard() {
     maintenance: assets.filter((asset) => asset.status === "maintenance")
       .length,
     attention: assets.filter(
-      (asset) => asset.condition !== "Good" || asset.fuelLevel < 50,
+      (asset) => asset.condition !== "Good" || (asset.fuelLevel ?? 100) < 50,
     ).length,
   };
 
@@ -149,7 +180,7 @@ export function RentalDashboard() {
       statusFilter === "all"
         ? true
         : statusFilter === "attention"
-          ? asset.condition !== "Good" || asset.fuelLevel < 50
+          ? asset.condition !== "Good" || (asset.fuelLevel ?? 100) < 50
           : asset.status === statusFilter;
     const normalizedQuery = query.toLowerCase();
     const matchesQuery =
@@ -207,6 +238,29 @@ export function RentalDashboard() {
     setWorkflowAssetId(null);
     setSelectedActivityId(null);
     showToast(message);
+  }
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-6 text-sm text-muted-foreground">
+        Loading equipment operations…
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-6">
+        <div className="max-w-md rounded-2xl border border-border bg-card p-6 text-center shadow-sm">
+          <CircleAlert className="mx-auto h-8 w-8 text-red-600" />
+          <h1 className="mt-3 text-lg font-black">Dashboard unavailable</h1>
+          <p className="mt-2 text-sm text-muted-foreground">{loadError}</p>
+          <Button className="mt-5" onClick={() => void loadDashboard()}>
+            Retry
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -443,6 +497,8 @@ export function RentalDashboard() {
       <WorkflowDrawer
         action={action}
         assets={assets}
+        operators={operators}
+        sites={sites}
         selectedAssetId={workflowAssetId ?? ""}
         onSelectedAssetChange={setWorkflowAssetId}
         onClose={() => {
@@ -794,29 +850,28 @@ function AssetDetailDrawer({
                   <SectionLabel>Machine telemetry</SectionLabel>
                   <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.08em] text-[#8a5a00]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#d5a900]" />
-                    Static snapshot
+                    Latest database record
                   </span>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-3">
                   <TelemetryCell
                     icon={<Gauge className="h-3.5 w-3.5" />}
                     label="Engine hours"
-                    value={`${asset.engineHours.toLocaleString()} h`}
+                    value={asset.engineHours === null ? "—" : `${asset.engineHours.toLocaleString()} h`}
                   />
                   <TelemetryCell
                     icon={<Clock3 className="h-3.5 w-3.5" />}
                     label="Idle hours"
-                    value={`${asset.idleHours.toLocaleString()} h`}
+                    value={asset.idleHours === null ? "—" : `${asset.idleHours.toLocaleString()} h`}
                   />
                   <TelemetryCell
                     icon={<ActivityIcon className="h-3.5 w-3.5" />}
                     label="Fuel level"
-                    value={`${asset.fuelLevel}%`}
+                    value={asset.fuelLevel === null ? "—" : `${asset.fuelLevel}%`}
                   />
                 </div>
                 <p className="text-[11px] leading-relaxed text-muted-foreground">
-                  Telemetry is read-only in this prototype. Real-time machinery
-                  ingestion is deferred.
+                  Read-only telemetry from the most recent daily usage record.
                 </p>
               </section>
               <section className="space-y-3">
@@ -930,6 +985,8 @@ function TelemetryCell({
 function WorkflowDrawer({
   action,
   assets,
+  operators,
+  sites,
   selectedAssetId,
   onSelectedAssetChange,
   onClose,
@@ -937,18 +994,20 @@ function WorkflowDrawer({
 }: {
   action: WorkflowAction | null;
   assets: Asset[];
+  operators: Operator[];
+  sites: Site[];
   selectedAssetId: string;
   onSelectedAssetChange: (value: string) => void;
   onClose: () => void;
   onComplete: (asset: Asset, message: string, activity: Activity) => void;
 }) {
   const [form, setForm] = React.useState({
-    operator: operators[0].name,
-    site: sites[0].name,
+    operator: operators[0]?.name ?? "",
+    site: sites[0]?.name ?? "",
     location: "Zone 2 · Main workface",
     condition: "Good" as Condition,
     notes: "",
-    returnTime: "2026-09-01T12:30",
+    returnTime: "",
   });
   const [lookup, setLookup] = React.useState("");
   const [error, setError] = React.useState("");
@@ -961,13 +1020,21 @@ function WorkflowDrawer({
       if (selected)
         setForm((current) => ({
           ...current,
-          operator: selected.operator ?? operators[0].name,
+          operator: selected.operator ?? operators[0]?.name ?? "",
           site: selected.site,
           location: selected.location,
           condition: selected.condition,
         }));
+    } else {
+      setForm((current) => ({
+        ...current,
+        operator: operators[0]?.name ?? "",
+        site: sites[0]?.name ?? "",
+        location: "Zone 2 · Main workface",
+        condition: "Good",
+      }));
     }
-  }, [action, selectedAssetId, assets]);
+  }, [action, selectedAssetId, assets, operators, sites]);
 
   const selectedAsset = assets.find((asset) => asset.id === selectedAssetId);
   const selected =
@@ -1021,7 +1088,7 @@ function WorkflowDrawer({
       );
   }
 
-  function submit(event: React.FormEvent) {
+  async function submit(event: React.FormEvent) {
     event.preventDefault();
     if (!action || !selected) {
       setError(
@@ -1038,54 +1105,27 @@ function WorkflowDrawer({
       setError("Operator, site, and location are required.");
       return;
     }
-    const now = "Just now";
-    const operator = operators.find((item) => item.name === form.operator);
-    let updated: Asset;
-    let activityItem: Activity;
-    let message: string;
-    if (action === "checkout") {
-      updated = {
-        ...selected,
-        status: "checked-out",
-        operator: form.operator,
-        operatorInitials: operator?.initials ?? getInitials(form.operator),
-        site: form.site,
-        location: form.location,
-        lastActivity: now,
-      };
-      message = `${selected.id} checked out successfully`;
-      activityItem = {
-        id: `activity-${Date.now()}`,
-        action: "Equipment checked out",
-        assetId: selected.id,
-        assetName: selected.name,
-        detail: `${form.site} · ${form.operator}`,
-        time: now,
-        tone: "amber",
-      };
-    } else {
-      updated = {
-        ...selected,
-        status: "available",
-        operator: null,
-        operatorInitials: null,
-        site: "Rental yard",
-        location: "Bay 01 · Return inspection",
-        condition: form.condition,
-        lastActivity: now,
-      };
-      message = `${selected.id} checked in successfully`;
-      activityItem = {
-        id: `activity-${Date.now()}`,
-        action: "Asset returned",
-        assetId: selected.id,
-        assetName: selected.name,
-        detail: `Final condition: ${form.condition}`,
-        time: now,
-        tone: "green",
-      };
+    try {
+      const result =
+        action === "checkout"
+          ? await checkoutEquipment({
+              equipmentId: selected.id,
+              operatorId: operators.find((item) => item.name === form.operator)?.id ?? null,
+              siteId: sites.find((item) => item.name === form.site)?.id ?? "",
+              location: form.location,
+            })
+          : await checkinEquipment({
+              equipmentId: selected.id,
+              returnTime: form.returnTime || new Date().toISOString(),
+              condition: form.condition,
+              notes: form.notes,
+            });
+      onComplete(result.asset, result.message, result.activity);
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error ? submitError.message : "Unable to save movement",
+      );
     }
-    onComplete(updated, message, activityItem);
   }
 
   return (
