@@ -1,0 +1,351 @@
+operator_id,experience_years,certification_level,primary_equipment_type,availability_status
+OP_0001,20,Basic,Bulldozer,Assigned
+OP_0002,25,Basic,Crane,Available
+OP_0003,14,Intermediate,Excavator,Assigned
+OP_0004,1,Intermediate,Dump Truck,Assigned
+OP_0005,22,Basic,Dump Truck,Assigned
+OP_0006,5,Advanced,Generator,Assigned
+OP_0007,4,Basic,Bulldozer,Assigned
+OP_0008,17,Advanced,Crane,Assigned
+OP_0009,16,Advanced,Forklift,Assigned
+OP_0010,2,Intermediate,Generator,Available
+OP_0011,5,Intermediate,Excavator,Available
+OP_0012,15,Intermediate,Dump Truck,On Leave
+OP_0013,7,Intermediate,Generator,Assigned
+OP_0014,18,Basic,Loader,Assigned
+OP_0015,11,Advanced,Dump Truck,Assigned
+OP_0016,15,Intermediate,Excavator,Available
+OP_0017,12,Intermediate,Excavator,Assigned
+OP_0018,10,Advanced,Excavator,Available
+OP_0019,9,Intermediate,Bulldozer,Assigned
+OP_0020,18,Intermediate,Forklift,Assigned
+OP_0021,13,Intermediate,Dump Truck,Available
+OP_0022,15,Basic,Generator,Available
+OP_0023,15,Intermediate,Crane,Assigned
+OP_0024,6,Intermediate,Forklift,Available
+OP_0025,23,Intermediate,Bulldozer,Available
+OP_0026,15,Basic,Forklift,Assigned
+OP_0027,18,Intermediate,Excavator,Assigned
+OP_0028,23,Intermediate,Excavator,Assigned
+OP_0029,24,Intermediate,Excavator,Available
+OP_0030,17,Basic,Generator,Assigned
+OP_0031,20,Basic,Bulldozer,Available
+OP_0032,12,Intermediate,Loader,Available
+OP_0033,19,Basic,Loader,Available
+OP_0034,9,Intermediate,Generator,Available
+OP_0035,18,Advanced,Crane,Available
+OP_0036,3,Intermediate,Excavator,Available
+OP_0037,23,Advanced,Crane,Available
+OP_0038,7,Basic,Crane,Assigned
+OP_0039,17,Basic,Generator,Assigned
+OP_0040,1,Advanced,Generator,Available
+OP_0041,4,Advanced,Excavator,Available
+OP_0042,25,Advanced,Generator,On Leave
+OP_0043,21,Basic,Excavator,Assigned
+OP_0044,6,Advanced,Dump Truck,Assigned
+OP_0045,4,Intermediate,Crane,Available
+OP_0046,21,Intermediate,Crane,Assigned
+OP_0047,25,Basic,Loader,Available
+OP_0048,5,Advanced,Crane,Available
+OP_0049,17,Basic,Generator,Assigned
+OP_0050,8,Advanced,Forklift,Assigned
+OP_0051,19,Intermediate,Generator,Assigned
+OP_0052,11,Advanced,Loader,Assigned
+OP_0053,4,Advanced,Loader,Available
+OP_0054,9,Advanced,Loader,Available
+OP_0055,14,Basic,Generator,Assigned
+OP_0056,20,Basic,Loader,Assigned
+OP_0057,1,Intermediate,Loader,Available
+OP_0058,24,Intermediate,Crane,Assigned
+OP_0059,17,Basic,Crane,Available
+OP_0060,22,Basic,Loader,Available
+OP_0061,24,Intermediate,Dump Truck,Assigned
+OP_0062,4,Basic,Loader,Available
+OP_0063,3,Basic,Generator,Assigned
+OP_0064,20,Advanced,Generator,Assigned
+OP_0065,5,Intermediate,Loader,Available
+OP_0066,4,Advanced,Forklift,Available
+OP_0067,12,Advanced,Bulldozer,Available
+OP_0068,23,Basic,Forklift,On Leave
+OP_0069,20,Advanced,Crane,Assigned
+OP_0070,13,Intermediate,Loader,Assigned
+OP_0071,5,Intermediate,Bulldozer,Available
+OP_0072,9,Basic,Loader,Assigned
+OP_0073,18,Basic,Crane,Available
+OP_0074,4,Basic,Dump Truck,Assigned
+OP_0075,14,Intermediate,Excavator,Assigned
+OP_0076,1,Advanced,Generator,Assigned
+OP_0077,9,Intermediate,Forklift,Available
+OP_0078,7,Advanced,Loader,Available
+OP_0079,18,Advanced,Loader,Available
+OP_0080,23,Intermediate,Dump Truck,Assigned
+OP_0081,4,Basic,Bulldozer,Assigned
+OP_0082,20,Advanced,Generator,Available
+OP_0083,17,Intermediate,Bulldozer,Assigned
+OP_0084,25,Basic,Dump Truck,Assigned
+OP_0085,23,Intermediate,Crane,Available
+OP_0086,3,Advanced,Generator,Available
+OP_0087,19,Intermediate,Generator,Available
+OP_0088,15,Intermediate,Bulldozer,Assigned
+OP_0089,3,Basic,Dump Truck,Assigned
+OP_0090,7,Basic,Loader,Assigned
+OP_0091,24,Basic,Crane,Assigned
+OP_0092,14,Advanced,Dump Truck,Assigned
+OP_0093,9,Advanced,Forklift,On Leave
+OP_0094,9,Basic,Excavator,Assigned
+OP_0095,21,Intermediate,Forklift,Assigned
+OP_0096,8,Basic,Generator,Assigned
+OP_0097,4,Basic,Loader,Assigned
+OP_0098,15,Intermediate,Dump Truck,Assigned
+OP_0099,25,Intermediate,Crane,On Leave
+OP_0100,5,Intermediate,Excavator,Assigned
+OP_0101,7,Intermediate,Dump Truck,Assigned
+OP_0102,12,Intermediate,Generator,Assigned
+OP_0103,5,Basic,Bulldozer,Assigned
+OP_0104,17,Basic,Generator,Assigned
+OP_0105,7,Advanced,Generator,Assigned
+OP_0106,4,Advanced,Generator,Assigned
+OP_0107,7,Advanced,Crane,On Leave
+OP_0108,24,Advanced,Crane,Available
+OP_0109,24,Intermediate,Crane,Assigned
+OP_0110,13,Advanced,Generator,Assigned
+OP_0111,11,Intermediate,Forklift,On Leave
+OP_0112,21,Basic,Crane,On Leave
+OP_0113,5,Basic,Forklift,Assigned
+OP_0114,17,Basic,Loader,Assigned
+OP_0115,18,Basic,Crane,Available
+OP_0116,18,Intermediate,Excavator,On Leave
+OP_0117,6,Advanced,Dump Truck,Available
+OP_0118,18,Advanced,Dump Truck,Assigned
+OP_0119,16,Intermediate,Forklift,Assigned
+OP_0120,22,Basic,Generator,Assigned
+OP_0121,5,Advanced,Excavator,Available
+OP_0122,16,Intermediate,Loader,Available
+OP_0123,21,Basic,Generator,Assigned
+OP_0124,7,Intermediate,Loader,Assigned
+OP_0125,19,Intermediate,Loader,Available
+OP_0126,3,Intermediate,Generator,Assigned
+OP_0127,18,Advanced,Dump Truck,Available
+OP_0128,16,Advanced,Dump Truck,Assigned
+OP_0129,5,Intermediate,Loader,Available
+OP_0130,2,Basic,Bulldozer,Available
+OP_0131,19,Advanced,Loader,Available
+OP_0132,7,Intermediate,Forklift,Assigned
+OP_0133,13,Basic,Dump Truck,Assigned
+OP_0134,2,Intermediate,Dump Truck,Assigned
+OP_0135,25,Intermediate,Excavator,Assigned
+OP_0136,14,Intermediate,Forklift,Available
+OP_0137,24,Basic,Bulldozer,Available
+OP_0138,5,Intermediate,Forklift,Available
+OP_0139,6,Basic,Loader,On Leave
+OP_0140,16,Basic,Forklift,Available
+OP_0141,16,Basic,Forklift,On Leave
+OP_0142,20,Advanced,Generator,Available
+OP_0143,24,Intermediate,Forklift,Available
+OP_0144,21,Intermediate,Dump Truck,Available
+OP_0145,4,Intermediate,Generator,Available
+OP_0146,8,Advanced,Bulldozer,Assigned
+OP_0147,23,Intermediate,Excavator,Assigned
+OP_0148,14,Advanced,Loader,Available
+OP_0149,22,Intermediate,Generator,Assigned
+OP_0150,15,Basic,Generator,Assigned
+OP_0151,2,Intermediate,Loader,On Leave
+OP_0152,12,Intermediate,Loader,On Leave
+OP_0153,21,Advanced,Dump Truck,Assigned
+OP_0154,17,Advanced,Forklift,Assigned
+OP_0155,4,Intermediate,Generator,Assigned
+OP_0156,6,Advanced,Excavator,Assigned
+OP_0157,22,Intermediate,Dump Truck,Assigned
+OP_0158,25,Intermediate,Crane,Available
+OP_0159,19,Intermediate,Generator,Assigned
+OP_0160,3,Basic,Loader,On Leave
+OP_0161,16,Advanced,Forklift,Available
+OP_0162,21,Basic,Loader,Assigned
+OP_0163,17,Intermediate,Dump Truck,On Leave
+OP_0164,15,Intermediate,Excavator,Available
+OP_0165,12,Basic,Forklift,Assigned
+OP_0166,7,Basic,Bulldozer,On Leave
+OP_0167,8,Intermediate,Crane,On Leave
+OP_0168,19,Basic,Generator,Available
+OP_0169,2,Intermediate,Forklift,Available
+OP_0170,3,Intermediate,Loader,Assigned
+OP_0171,10,Basic,Loader,Available
+OP_0172,20,Basic,Excavator,Available
+OP_0173,17,Advanced,Forklift,Available
+OP_0174,15,Advanced,Excavator,Available
+OP_0175,14,Basic,Excavator,Assigned
+OP_0176,3,Advanced,Loader,Assigned
+OP_0177,9,Intermediate,Excavator,Assigned
+OP_0178,2,Intermediate,Bulldozer,Assigned
+OP_0179,19,Advanced,Dump Truck,Assigned
+OP_0180,19,Advanced,Dump Truck,Available
+OP_0181,7,Advanced,Crane,Available
+OP_0182,8,Intermediate,Generator,Available
+OP_0183,8,Intermediate,Dump Truck,Available
+OP_0184,23,Intermediate,Bulldozer,Available
+OP_0185,13,Basic,Dump Truck,Available
+OP_0186,20,Intermediate,Dump Truck,Available
+OP_0187,12,Basic,Generator,Assigned
+OP_0188,18,Intermediate,Bulldozer,Assigned
+OP_0189,14,Basic,Bulldozer,On Leave
+OP_0190,7,Basic,Crane,Assigned
+OP_0191,22,Intermediate,Crane,Assigned
+OP_0192,18,Intermediate,Forklift,Available
+OP_0193,20,Intermediate,Generator,Assigned
+OP_0194,24,Basic,Loader,Available
+OP_0195,7,Intermediate,Loader,Assigned
+OP_0196,3,Intermediate,Forklift,Assigned
+OP_0197,15,Advanced,Loader,Assigned
+OP_0198,9,Intermediate,Bulldozer,Available
+OP_0199,11,Intermediate,Excavator,Assigned
+OP_0200,6,Intermediate,Crane,Assigned
+OP_0201,10,Advanced,Dump Truck,Assigned
+OP_0202,10,Advanced,Loader,Assigned
+OP_0203,9,Intermediate,Crane,Assigned
+OP_0204,19,Intermediate,Loader,Available
+OP_0205,15,Basic,Forklift,Assigned
+OP_0206,12,Advanced,Forklift,Assigned
+OP_0207,3,Intermediate,Bulldozer,Available
+OP_0208,15,Intermediate,Excavator,Available
+OP_0209,5,Advanced,Bulldozer,On Leave
+OP_0210,8,Advanced,Generator,Assigned
+OP_0211,11,Basic,Loader,Assigned
+OP_0212,4,Basic,Forklift,Assigned
+OP_0213,10,Basic,Dump Truck,Assigned
+OP_0214,7,Intermediate,Loader,Assigned
+OP_0215,22,Basic,Bulldozer,Available
+OP_0216,22,Advanced,Crane,Assigned
+OP_0217,1,Advanced,Bulldozer,Assigned
+OP_0218,16,Intermediate,Loader,Available
+OP_0219,17,Intermediate,Bulldozer,Assigned
+OP_0220,10,Intermediate,Crane,Available
+OP_0221,12,Basic,Excavator,Assigned
+OP_0222,20,Advanced,Generator,Assigned
+OP_0223,10,Basic,Forklift,Assigned
+OP_0224,2,Basic,Loader,Assigned
+OP_0225,10,Intermediate,Loader,On Leave
+OP_0226,7,Basic,Forklift,Assigned
+OP_0227,10,Intermediate,Loader,Assigned
+OP_0228,6,Advanced,Dump Truck,Assigned
+OP_0229,4,Advanced,Crane,Available
+OP_0230,25,Intermediate,Loader,Available
+OP_0231,4,Advanced,Loader,Assigned
+OP_0232,18,Intermediate,Dump Truck,Available
+OP_0233,18,Advanced,Dump Truck,Assigned
+OP_0234,16,Intermediate,Loader,Assigned
+OP_0235,23,Basic,Excavator,Assigned
+OP_0236,1,Advanced,Forklift,Available
+OP_0237,8,Intermediate,Forklift,Assigned
+OP_0238,5,Basic,Bulldozer,Assigned
+OP_0239,15,Basic,Crane,Assigned
+OP_0240,16,Intermediate,Forklift,Available
+OP_0241,23,Intermediate,Crane,Assigned
+OP_0242,10,Intermediate,Generator,Available
+OP_0243,6,Advanced,Generator,Assigned
+OP_0244,24,Intermediate,Forklift,Available
+OP_0245,17,Intermediate,Excavator,On Leave
+OP_0246,20,Intermediate,Loader,Available
+OP_0247,12,Advanced,Loader,Assigned
+OP_0248,12,Basic,Generator,Available
+OP_0249,10,Basic,Bulldozer,Assigned
+OP_0250,19,Intermediate,Crane,Assigned
+OP_0251,6,Intermediate,Bulldozer,Assigned
+OP_0252,25,Advanced,Generator,Available
+OP_0253,5,Intermediate,Forklift,Available
+OP_0254,12,Advanced,Excavator,Available
+OP_0255,8,Intermediate,Bulldozer,On Leave
+OP_0256,17,Basic,Crane,Assigned
+OP_0257,18,Basic,Forklift,Available
+OP_0258,23,Basic,Loader,On Leave
+OP_0259,20,Intermediate,Bulldozer,Available
+OP_0260,7,Intermediate,Crane,Assigned
+OP_0261,6,Intermediate,Dump Truck,Assigned
+OP_0262,23,Intermediate,Crane,On Leave
+OP_0263,13,Intermediate,Excavator,Assigned
+OP_0264,3,Intermediate,Generator,Assigned
+OP_0265,21,Intermediate,Crane,On Leave
+OP_0266,17,Intermediate,Bulldozer,Available
+OP_0267,1,Intermediate,Generator,On Leave
+OP_0268,20,Intermediate,Generator,Assigned
+OP_0269,16,Intermediate,Bulldozer,On Leave
+OP_0270,16,Intermediate,Excavator,Available
+OP_0271,22,Intermediate,Excavator,Available
+OP_0272,13,Intermediate,Generator,Assigned
+OP_0273,12,Intermediate,Dump Truck,Assigned
+OP_0274,16,Basic,Generator,Assigned
+OP_0275,5,Intermediate,Dump Truck,On Leave
+OP_0276,4,Advanced,Crane,Assigned
+OP_0277,22,Basic,Dump Truck,Available
+OP_0278,6,Advanced,Generator,Assigned
+OP_0279,13,Basic,Crane,Available
+OP_0280,7,Intermediate,Forklift,Available
+OP_0281,6,Intermediate,Forklift,Available
+OP_0282,15,Basic,Generator,Assigned
+OP_0283,21,Advanced,Forklift,Assigned
+OP_0284,12,Intermediate,Crane,Assigned
+OP_0285,4,Advanced,Excavator,Assigned
+OP_0286,7,Intermediate,Loader,Assigned
+OP_0287,5,Advanced,Generator,Assigned
+OP_0288,23,Advanced,Generator,Assigned
+OP_0289,8,Intermediate,Crane,Assigned
+OP_0290,10,Basic,Crane,Assigned
+OP_0291,2,Intermediate,Loader,Assigned
+OP_0292,12,Intermediate,Generator,Assigned
+OP_0293,23,Advanced,Excavator,Assigned
+OP_0294,11,Intermediate,Crane,Assigned
+OP_0295,17,Intermediate,Bulldozer,Assigned
+OP_0296,5,Basic,Generator,Available
+OP_0297,4,Intermediate,Loader,Assigned
+OP_0298,19,Advanced,Excavator,Assigned
+OP_0299,2,Basic,Bulldozer,Assigned
+OP_0300,12,Advanced,Excavator,Assigned
+OP_0301,8,Advanced,Loader,Available
+OP_0302,1,Basic,Forklift,Assigned
+OP_0303,14,Basic,Loader,Available
+OP_0304,25,Intermediate,Forklift,On Leave
+OP_0305,2,Intermediate,Generator,Available
+OP_0306,21,Basic,Forklift,Assigned
+OP_0307,14,Advanced,Crane,Assigned
+OP_0308,19,Intermediate,Forklift,Assigned
+OP_0309,3,Advanced,Bulldozer,Available
+OP_0310,22,Advanced,Loader,On Leave
+OP_0311,1,Advanced,Dump Truck,Assigned
+OP_0312,23,Intermediate,Crane,Assigned
+OP_0313,17,Intermediate,Bulldozer,Assigned
+OP_0314,9,Intermediate,Excavator,Available
+OP_0315,1,Basic,Excavator,Assigned
+OP_0316,16,Intermediate,Loader,Available
+OP_0317,3,Basic,Forklift,Available
+OP_0318,16,Intermediate,Bulldozer,Assigned
+OP_0319,20,Basic,Loader,Assigned
+OP_0320,7,Intermediate,Forklift,Available
+OP_0321,6,Basic,Generator,Available
+OP_0322,6,Intermediate,Excavator,Available
+OP_0323,6,Advanced,Loader,Available
+OP_0324,3,Basic,Bulldozer,Assigned
+OP_0325,7,Advanced,Bulldozer,Available
+OP_0326,17,Advanced,Bulldozer,Assigned
+OP_0327,8,Intermediate,Dump Truck,Available
+OP_0328,20,Intermediate,Bulldozer,Available
+OP_0329,21,Intermediate,Bulldozer,Assigned
+OP_0330,20,Basic,Bulldozer,Available
+OP_0331,14,Intermediate,Crane,Assigned
+OP_0332,8,Basic,Dump Truck,On Leave
+OP_0333,24,Advanced,Crane,On Leave
+OP_0334,6,Advanced,Crane,Assigned
+OP_0335,12,Advanced,Loader,Available
+OP_0336,12,Intermediate,Dump Truck,Assigned
+OP_0337,19,Intermediate,Excavator,On Leave
+OP_0338,14,Advanced,Forklift,On Leave
+OP_0339,20,Basic,Forklift,Available
+OP_0340,23,Basic,Dump Truck,Assigned
+OP_0341,10,Intermediate,Dump Truck,Available
+OP_0342,22,Intermediate,Dump Truck,Available
+OP_0343,5,Intermediate,Loader,Assigned
+OP_0344,23,Basic,Crane,Available
+OP_0345,5,Intermediate,Crane,Available
+OP_0346,22,Intermediate,Bulldozer,Available
+OP_0347,10,Basic,Generator,Assigned
+OP_0348,25,Basic,Crane,Available
+OP_0349,4,Intermediate,Bulldozer,Assigned
+OP_0350,12,Advanced,Forklift,Available

@@ -1,0 +1,7 @@
+dataset,rows,purpose
+sites.csv,30,Project/site context for demand forecasting
+equipment.csv,800,Equipment master and asset attributes
+operators.csv,350,Operator metadata and assignment context
+rentals.csv,7000,Rental transactions and return behavior
+daily_usage.csv,86935,Daily operational data with injected anomalies
+maintenance.csv,2311,Maintenance history and downtime

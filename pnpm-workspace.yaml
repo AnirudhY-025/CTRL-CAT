@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - unrs-resolver
+  - "@neondatabase/serverless"
+  - "@next/swc-win32-x64-msvc"
+
+allowBuilds:
+  unrs-resolver: true

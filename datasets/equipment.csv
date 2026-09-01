@@ -1,0 +1,801 @@
+equipment_id,equipment_type,manufacturer,equipment_model,purchase_year,equipment_age_years,fuel_type,home_site_id,total_engine_hours,daily_rental_cost_inr,current_status
+EQ_00001,Dump Truck,Liebherr,Volvo A40,2020,6,Diesel,SITE_029,5648,22000,Rented
+EQ_00002,Dump Truck,Tata,CAT 777,2016,10,Diesel,SITE_001,11172,22000,Available
+EQ_00003,Excavator,Komatsu,JCB JS220,2024,2,Diesel,SITE_014,4866,18000,Rented
+EQ_00004,Loader,Liebherr,CAT 950,2024,2,Diesel,SITE_007,10513,14000,Available
+EQ_00005,Excavator,Tata,CAT 320,2023,3,Diesel,SITE_028,10221,18000,Rented
+EQ_00006,Loader,Komatsu,CAT 950,2022,4,Diesel,SITE_022,617,14000,Rented
+EQ_00007,Crane,Komatsu,Zoomlion QY25,2020,6,Diesel,SITE_010,12707,30000,Rented
+EQ_00008,Excavator,Volvo,Komatsu PC210,2021,5,Diesel,SITE_017,17412,18000,Rented
+EQ_00009,Excavator,Volvo,Komatsu PC210,2021,5,Diesel,SITE_019,20629,18000,Available
+EQ_00010,Dump Truck,JCB,Volvo A40,2017,9,Diesel,SITE_015,7610,22000,Available
+EQ_00011,Excavator,Tata,CAT 320,2016,10,Diesel,SITE_015,19432,18000,Available
+EQ_00012,Forklift,Tata,JCB Telehandler,2018,8,Diesel,SITE_002,19393,7000,Maintenance
+EQ_00013,Dump Truck,Liebherr,Komatsu HD605,2020,6,Diesel,SITE_014,21750,22000,Idle
+EQ_00014,Crane,Komatsu,Zoomlion QY25,2017,9,Diesel,SITE_011,8520,30000,Idle
+EQ_00015,Dump Truck,Tata,Volvo A40,2017,9,Diesel,SITE_025,18794,22000,Rented
+EQ_00016,Excavator,JCB,Komatsu PC210,2024,2,Diesel,SITE_026,12649,18000,Rented
+EQ_00017,Forklift,Caterpillar,KION EFG,2019,7,Electric,SITE_023,1752,7000,Rented
+EQ_00018,Loader,Komatsu,CAT 950,2021,5,Diesel,SITE_001,6312,14000,Maintenance
+EQ_00019,Generator,Caterpillar,Cummins C500,2021,5,Diesel,SITE_026,14949,9000,Maintenance
+EQ_00020,Excavator,JCB,Komatsu PC210,2023,3,Diesel,SITE_012,3952,18000,Idle
+EQ_00021,Loader,Volvo,CAT 950,2023,3,Diesel,SITE_013,9846,14000,Idle
+EQ_00022,Loader,JCB,Komatsu WA380,2018,8,Diesel,SITE_029,17160,14000,Rented
+EQ_00023,Forklift,Caterpillar,JCB Telehandler,2024,2,Electric,SITE_027,3719,7000,Maintenance
+EQ_00024,Dump Truck,Komatsu,CAT 777,2019,7,Diesel,SITE_002,11176,22000,Maintenance
+EQ_00025,Loader,Liebherr,Komatsu WA380,2024,2,Diesel,SITE_011,5119,14000,Rented
+EQ_00026,Bulldozer,Tata,Liebherr PR 726,2020,6,Diesel,SITE_023,12034,16000,Idle
+EQ_00027,Crane,JCB,Zoomlion QY25,2017,9,Diesel,SITE_017,5675,30000,Available
+EQ_00028,Loader,Komatsu,Komatsu WA380,2023,3,Diesel,SITE_008,21256,14000,Idle
+EQ_00029,Loader,Tata,Komatsu WA380,2016,10,Diesel,SITE_016,2149,14000,Maintenance
+EQ_00030,Excavator,Volvo,JCB JS220,2023,3,Diesel,SITE_026,21216,18000,Available
+EQ_00031,Generator,Volvo,Kirloskar KG500,2016,10,Diesel,SITE_007,17525,9000,Rented
+EQ_00032,Forklift,Tata,KION EFG,2018,8,Electric,SITE_023,18896,7000,Available
+EQ_00033,Excavator,Volvo,Komatsu PC210,2022,4,Diesel,SITE_023,18807,18000,Maintenance
+EQ_00034,Dump Truck,Komatsu,Volvo A40,2025,1,Diesel,SITE_027,4533,22000,Maintenance
+EQ_00035,Excavator,JCB,JCB JS220,2020,6,Diesel,SITE_009,20518,18000,Rented
+EQ_00036,Dump Truck,Komatsu,Komatsu HD605,2017,9,Diesel,SITE_007,13276,22000,Idle
+EQ_00037,Bulldozer,Komatsu,Komatsu D65,2018,8,Diesel,SITE_017,21186,16000,Available
+EQ_00038,Dump Truck,Tata,Volvo A40,2024,2,Diesel,SITE_016,19380,22000,Rented
+EQ_00039,Generator,Liebherr,CAT XQ500,2023,3,Diesel,SITE_013,12961,9000,Rented
+EQ_00040,Generator,Liebherr,CAT XQ500,2017,9,Diesel,SITE_024,8550,9000,Available
+EQ_00041,Excavator,JCB,Komatsu PC210,2019,7,Diesel,SITE_024,3021,18000,Rented
+EQ_00042,Forklift,Tata,KION EFG,2018,8,Electric,SITE_008,2673,7000,Rented
+EQ_00043,Bulldozer,Liebherr,CAT D6,2017,9,Diesel,SITE_024,8878,16000,Rented
+EQ_00044,Excavator,Volvo,CAT 320,2024,2,Diesel,SITE_007,17935,18000,Rented
+EQ_00045,Dump Truck,Liebherr,Volvo A40,2022,4,Diesel,SITE_013,11364,22000,Idle
+EQ_00046,Crane,Volvo,Liebherr LTM 1050,2017,9,Diesel,SITE_001,10857,30000,Rented
+EQ_00047,Generator,JCB,CAT XQ500,2022,4,Diesel,SITE_011,5755,9000,Idle
+EQ_00048,Generator,Komatsu,Cummins C500,2020,6,Diesel,SITE_029,12634,9000,Rented
+EQ_00049,Crane,Komatsu,Zoomlion QY25,2016,10,Diesel,SITE_014,14218,30000,Rented
+EQ_00050,Forklift,Liebherr,JCB Telehandler,2020,6,Diesel,SITE_022,21616,7000,Rented
+EQ_00051,Bulldozer,Volvo,Liebherr PR 726,2017,9,Diesel,SITE_004,16182,16000,Rented
+EQ_00052,Loader,Caterpillar,CAT 950,2018,8,Diesel,SITE_020,13555,14000,Rented
+EQ_00053,Bulldozer,Caterpillar,CAT D6,2024,2,Diesel,SITE_012,20066,16000,Rented
+EQ_00054,Forklift,Caterpillar,Toyota 8FD,2023,3,Diesel,SITE_023,9637,7000,Available
+EQ_00055,Excavator,Komatsu,JCB JS220,2017,9,Diesel,SITE_028,20601,18000,Rented
+EQ_00056,Excavator,Tata,Komatsu PC210,2024,2,Diesel,SITE_016,8454,18000,Rented
+EQ_00057,Loader,Komatsu,Komatsu WA380,2021,5,Diesel,SITE_004,3247,14000,Rented
+EQ_00058,Forklift,Tata,JCB Telehandler,2024,2,Diesel,SITE_015,9478,7000,Maintenance
+EQ_00059,Forklift,Volvo,JCB Telehandler,2023,3,Electric,SITE_004,3268,7000,Rented
+EQ_00060,Generator,Liebherr,Kirloskar KG500,2019,7,Diesel,SITE_014,3045,9000,Idle
+EQ_00061,Forklift,Caterpillar,JCB Telehandler,2021,5,Diesel,SITE_002,19445,7000,Maintenance
+EQ_00062,Forklift,Volvo,KION EFG,2021,5,Diesel,SITE_020,17587,7000,Idle
+EQ_00063,Loader,Volvo,CAT 950,2023,3,Diesel,SITE_010,5256,14000,Idle
+EQ_00064,Crane,Liebherr,Liebherr LTM 1050,2018,8,Diesel,SITE_007,18510,30000,Available
+EQ_00065,Generator,Volvo,CAT XQ500,2019,7,Diesel,SITE_001,1981,9000,Rented
+EQ_00066,Dump Truck,Liebherr,CAT 777,2018,8,Diesel,SITE_027,6614,22000,Available
+EQ_00067,Crane,JCB,Tadano GR-1000,2018,8,Diesel,SITE_026,15681,30000,Maintenance
+EQ_00068,Excavator,Liebherr,CAT 320,2017,9,Diesel,SITE_025,7031,18000,Rented
+EQ_00069,Generator,Caterpillar,CAT XQ500,2016,10,Diesel,SITE_002,16205,9000,Rented
+EQ_00070,Bulldozer,Tata,CAT D6,2025,1,Diesel,SITE_011,19298,16000,Idle
+EQ_00071,Forklift,Tata,JCB Telehandler,2016,10,Diesel,SITE_030,1920,7000,Available
+EQ_00072,Bulldozer,Caterpillar,Liebherr PR 726,2024,2,Diesel,SITE_018,1015,16000,Rented
+EQ_00073,Excavator,Tata,CAT 320,2016,10,Diesel,SITE_004,20710,18000,Rented
+EQ_00074,Generator,Liebherr,CAT XQ500,2023,3,Diesel,SITE_005,11689,9000,Available
+EQ_00075,Excavator,JCB,CAT 320,2019,7,Diesel,SITE_008,11389,18000,Rented
+EQ_00076,Excavator,Tata,CAT 320,2021,5,Diesel,SITE_030,10469,18000,Maintenance
+EQ_00077,Dump Truck,JCB,Volvo A40,2018,8,Diesel,SITE_006,9822,22000,Available
+EQ_00078,Forklift,Caterpillar,KION EFG,2020,6,Diesel,SITE_028,15337,7000,Rented
+EQ_00079,Excavator,JCB,JCB JS220,2020,6,Diesel,SITE_021,12964,18000,Rented
+EQ_00080,Crane,Volvo,Liebherr LTM 1050,2021,5,Diesel,SITE_028,4012,30000,Rented
+EQ_00081,Generator,Komatsu,Kirloskar KG500,2019,7,Diesel,SITE_025,13972,9000,Available
+EQ_00082,Forklift,Volvo,KION EFG,2021,5,Diesel,SITE_010,14869,7000,Idle
+EQ_00083,Loader,Caterpillar,CAT 950,2024,2,Diesel,SITE_025,2942,14000,Idle
+EQ_00084,Excavator,Tata,CAT 320,2020,6,Diesel,SITE_006,8599,18000,Available
+EQ_00085,Excavator,Tata,JCB JS220,2019,7,Diesel,SITE_009,17495,18000,Rented
+EQ_00086,Bulldozer,JCB,Komatsu D65,2017,9,Diesel,SITE_007,13802,16000,Rented
+EQ_00087,Excavator,Liebherr,Komatsu PC210,2019,7,Diesel,SITE_004,3431,18000,Rented
+EQ_00088,Dump Truck,Komatsu,Komatsu HD605,2017,9,Diesel,SITE_003,1362,22000,Rented
+EQ_00089,Excavator,Liebherr,Komatsu PC210,2017,9,Diesel,SITE_006,12996,18000,Available
+EQ_00090,Loader,Caterpillar,Komatsu WA380,2025,1,Diesel,SITE_004,10427,14000,Available
+EQ_00091,Dump Truck,Tata,CAT 777,2016,10,Diesel,SITE_012,21162,22000,Idle
+EQ_00092,Dump Truck,JCB,CAT 777,2020,6,Diesel,SITE_003,11728,22000,Rented
+EQ_00093,Excavator,Tata,Komatsu PC210,2024,2,Diesel,SITE_002,20527,18000,Idle
+EQ_00094,Generator,Liebherr,CAT XQ500,2025,1,Diesel,SITE_030,5108,9000,Rented
+EQ_00095,Generator,Liebherr,Cummins C500,2017,9,Diesel,SITE_003,10117,9000,Idle
+EQ_00096,Generator,Komatsu,Cummins C500,2017,9,Diesel,SITE_003,3501,9000,Available
+EQ_00097,Excavator,Komatsu,Komatsu PC210,2019,7,Diesel,SITE_001,12845,18000,Available
+EQ_00098,Excavator,JCB,Komatsu PC210,2021,5,Diesel,SITE_004,4552,18000,Idle
+EQ_00099,Forklift,Komatsu,Toyota 8FD,2025,1,Electric,SITE_016,11083,7000,Idle
+EQ_00100,Crane,Liebherr,Zoomlion QY25,2018,8,Diesel,SITE_025,7899,30000,Rented
+EQ_00101,Crane,Liebherr,Zoomlion QY25,2017,9,Diesel,SITE_023,4493,30000,Rented
+EQ_00102,Loader,Caterpillar,Volvo L120,2018,8,Diesel,SITE_018,2581,14000,Rented
+EQ_00103,Dump Truck,Liebherr,CAT 777,2024,2,Diesel,SITE_003,11509,22000,Rented
+EQ_00104,Forklift,JCB,Toyota 8FD,2016,10,Electric,SITE_024,20867,7000,Available
+EQ_00105,Bulldozer,Volvo,CAT D6,2019,7,Diesel,SITE_002,4773,16000,Idle
+EQ_00106,Forklift,Caterpillar,JCB Telehandler,2017,9,Electric,SITE_019,9207,7000,Rented
+EQ_00107,Excavator,Caterpillar,Komatsu PC210,2017,9,Diesel,SITE_013,5329,18000,Rented
+EQ_00108,Dump Truck,JCB,CAT 777,2025,1,Diesel,SITE_027,17892,22000,Available
+EQ_00109,Dump Truck,JCB,CAT 777,2016,10,Diesel,SITE_010,9420,22000,Available
+EQ_00110,Excavator,Komatsu,CAT 320,2019,7,Diesel,SITE_020,21449,18000,Rented
+EQ_00111,Excavator,Caterpillar,JCB JS220,2025,1,Diesel,SITE_014,5771,18000,Rented
+EQ_00112,Loader,Komatsu,Komatsu WA380,2022,4,Diesel,SITE_016,2235,14000,Rented
+EQ_00113,Forklift,Liebherr,JCB Telehandler,2016,10,Electric,SITE_029,13024,7000,Available
+EQ_00114,Dump Truck,Caterpillar,Volvo A40,2020,6,Diesel,SITE_022,14510,22000,Idle
+EQ_00115,Forklift,Caterpillar,JCB Telehandler,2025,1,Diesel,SITE_013,21800,7000,Rented
+EQ_00116,Generator,Tata,Cummins C500,2020,6,Diesel,SITE_014,19235,9000,Idle
+EQ_00117,Loader,Volvo,Volvo L120,2021,5,Diesel,SITE_022,19509,14000,Available
+EQ_00118,Generator,Caterpillar,CAT XQ500,2021,5,Diesel,SITE_011,14136,9000,Rented
+EQ_00119,Excavator,Liebherr,Komatsu PC210,2022,4,Diesel,SITE_006,8236,18000,Rented
+EQ_00120,Excavator,Komatsu,Komatsu PC210,2017,9,Diesel,SITE_015,9724,18000,Rented
+EQ_00121,Generator,Komatsu,CAT XQ500,2024,2,Diesel,SITE_003,3375,9000,Rented
+EQ_00122,Generator,Tata,Kirloskar KG500,2025,1,Diesel,SITE_006,9768,9000,Available
+EQ_00123,Bulldozer,Volvo,Komatsu D65,2017,9,Diesel,SITE_013,8335,16000,Rented
+EQ_00124,Loader,Liebherr,Komatsu WA380,2024,2,Diesel,SITE_024,1271,14000,Rented
+EQ_00125,Dump Truck,Komatsu,Volvo A40,2024,2,Diesel,SITE_024,4896,22000,Rented
+EQ_00126,Forklift,JCB,JCB Telehandler,2023,3,Electric,SITE_008,11993,7000,Available
+EQ_00127,Dump Truck,Liebherr,CAT 777,2019,7,Diesel,SITE_013,8440,22000,Rented
+EQ_00128,Loader,Liebherr,Volvo L120,2020,6,Diesel,SITE_005,21861,14000,Rented
+EQ_00129,Crane,Volvo,Zoomlion QY25,2024,2,Diesel,SITE_023,10788,30000,Rented
+EQ_00130,Loader,Komatsu,CAT 950,2017,9,Diesel,SITE_008,21112,14000,Rented
+EQ_00131,Dump Truck,Liebherr,CAT 777,2024,2,Diesel,SITE_024,14705,22000,Rented
+EQ_00132,Forklift,Tata,JCB Telehandler,2025,1,Electric,SITE_026,1368,7000,Maintenance
+EQ_00133,Loader,Tata,CAT 950,2022,4,Diesel,SITE_021,4874,14000,Rented
+EQ_00134,Bulldozer,Komatsu,Komatsu D65,2019,7,Diesel,SITE_010,15674,16000,Rented
+EQ_00135,Bulldozer,Tata,Liebherr PR 726,2021,5,Diesel,SITE_029,12220,16000,Idle
+EQ_00136,Generator,JCB,Cummins C500,2016,10,Diesel,SITE_021,6987,9000,Rented
+EQ_00137,Generator,Volvo,Cummins C500,2025,1,Diesel,SITE_020,11724,9000,Idle
+EQ_00138,Excavator,Tata,CAT 320,2019,7,Diesel,SITE_026,19914,18000,Maintenance
+EQ_00139,Excavator,Tata,CAT 320,2016,10,Diesel,SITE_027,8857,18000,Available
+EQ_00140,Dump Truck,JCB,Volvo A40,2023,3,Diesel,SITE_003,1469,22000,Rented
+EQ_00141,Excavator,Volvo,CAT 320,2022,4,Diesel,SITE_027,7185,18000,Rented
+EQ_00142,Generator,Liebherr,Cummins C500,2022,4,Diesel,SITE_023,20621,9000,Idle
+EQ_00143,Crane,Volvo,Liebherr LTM 1050,2016,10,Diesel,SITE_007,16878,30000,Rented
+EQ_00144,Excavator,Caterpillar,Komatsu PC210,2023,3,Diesel,SITE_010,18505,18000,Available
+EQ_00145,Forklift,Komatsu,KION EFG,2022,4,Electric,SITE_023,20099,7000,Rented
+EQ_00146,Excavator,Komatsu,JCB JS220,2023,3,Diesel,SITE_007,3026,18000,Available
+EQ_00147,Bulldozer,Caterpillar,Liebherr PR 726,2024,2,Diesel,SITE_014,6577,16000,Maintenance
+EQ_00148,Excavator,JCB,Komatsu PC210,2018,8,Diesel,SITE_021,1786,18000,Rented
+EQ_00149,Excavator,Caterpillar,Komatsu PC210,2018,8,Diesel,SITE_020,601,18000,Rented
+EQ_00150,Excavator,Liebherr,CAT 320,2025,1,Diesel,SITE_028,18446,18000,Idle
+EQ_00151,Excavator,Liebherr,CAT 320,2021,5,Diesel,SITE_004,20644,18000,Rented
+EQ_00152,Excavator,Komatsu,Komatsu PC210,2020,6,Diesel,SITE_009,3848,18000,Rented
+EQ_00153,Excavator,Liebherr,JCB JS220,2018,8,Diesel,SITE_030,16026,18000,Maintenance
+EQ_00154,Dump Truck,Komatsu,Komatsu HD605,2022,4,Diesel,SITE_018,12000,22000,Idle
+EQ_00155,Dump Truck,Caterpillar,Volvo A40,2023,3,Diesel,SITE_008,1988,22000,Idle
+EQ_00156,Crane,Caterpillar,Tadano GR-1000,2016,10,Diesel,SITE_009,20188,30000,Available
+EQ_00157,Crane,Tata,Liebherr LTM 1050,2021,5,Diesel,SITE_011,19231,30000,Rented
+EQ_00158,Loader,Tata,Volvo L120,2025,1,Diesel,SITE_017,12700,14000,Available
+EQ_00159,Forklift,Caterpillar,Toyota 8FD,2018,8,Diesel,SITE_009,15719,7000,Idle
+EQ_00160,Forklift,Komatsu,KION EFG,2018,8,Diesel,SITE_019,9040,7000,Rented
+EQ_00161,Excavator,Caterpillar,JCB JS220,2024,2,Diesel,SITE_014,17546,18000,Rented
+EQ_00162,Excavator,Caterpillar,JCB JS220,2016,10,Diesel,SITE_019,10067,18000,Available
+EQ_00163,Bulldozer,JCB,Liebherr PR 726,2019,7,Diesel,SITE_005,21767,16000,Rented
+EQ_00164,Bulldozer,Caterpillar,CAT D6,2020,6,Diesel,SITE_019,1857,16000,Rented
+EQ_00165,Dump Truck,Liebherr,Komatsu HD605,2023,3,Diesel,SITE_028,4201,22000,Available
+EQ_00166,Loader,Komatsu,CAT 950,2017,9,Diesel,SITE_005,21328,14000,Available
+EQ_00167,Excavator,JCB,JCB JS220,2020,6,Diesel,SITE_010,6708,18000,Idle
+EQ_00168,Crane,Tata,Liebherr LTM 1050,2017,9,Diesel,SITE_021,7179,30000,Maintenance
+EQ_00169,Loader,Volvo,Volvo L120,2023,3,Diesel,SITE_019,17512,14000,Available
+EQ_00170,Excavator,Komatsu,CAT 320,2022,4,Diesel,SITE_021,4571,18000,Rented
+EQ_00171,Generator,Liebherr,CAT XQ500,2020,6,Diesel,SITE_017,11541,9000,Idle
+EQ_00172,Excavator,Komatsu,CAT 320,2019,7,Diesel,SITE_021,6650,18000,Rented
+EQ_00173,Forklift,Tata,Toyota 8FD,2017,9,Diesel,SITE_019,4755,7000,Rented
+EQ_00174,Excavator,Liebherr,CAT 320,2025,1,Diesel,SITE_003,21234,18000,Rented
+EQ_00175,Generator,Liebherr,Cummins C500,2022,4,Diesel,SITE_023,4797,9000,Rented
+EQ_00176,Forklift,Volvo,KION EFG,2019,7,Diesel,SITE_014,2527,7000,Available
+EQ_00177,Forklift,Komatsu,JCB Telehandler,2020,6,Diesel,SITE_002,14989,7000,Rented
+EQ_00178,Generator,Volvo,Kirloskar KG500,2023,3,Diesel,SITE_013,19147,9000,Available
+EQ_00179,Generator,Volvo,Kirloskar KG500,2023,3,Diesel,SITE_014,3241,9000,Available
+EQ_00180,Dump Truck,Komatsu,Komatsu HD605,2020,6,Diesel,SITE_003,15718,22000,Rented
+EQ_00181,Generator,Caterpillar,CAT XQ500,2019,7,Diesel,SITE_030,12127,9000,Idle
+EQ_00182,Excavator,Caterpillar,CAT 320,2022,4,Diesel,SITE_007,18345,18000,Maintenance
+EQ_00183,Loader,Tata,Komatsu WA380,2022,4,Diesel,SITE_010,3229,14000,Rented
+EQ_00184,Loader,Volvo,Volvo L120,2021,5,Diesel,SITE_014,21481,14000,Rented
+EQ_00185,Forklift,JCB,KION EFG,2016,10,Diesel,SITE_025,13810,7000,Rented
+EQ_00186,Loader,Volvo,Volvo L120,2020,6,Diesel,SITE_023,18606,14000,Rented
+EQ_00187,Crane,Volvo,Tadano GR-1000,2022,4,Diesel,SITE_024,8282,30000,Rented
+EQ_00188,Dump Truck,Volvo,Komatsu HD605,2025,1,Diesel,SITE_008,20782,22000,Rented
+EQ_00189,Bulldozer,Tata,Liebherr PR 726,2021,5,Diesel,SITE_026,13966,16000,Rented
+EQ_00190,Excavator,Caterpillar,JCB JS220,2019,7,Diesel,SITE_025,3229,18000,Idle
+EQ_00191,Loader,Tata,Komatsu WA380,2021,5,Diesel,SITE_014,20342,14000,Idle
+EQ_00192,Loader,Tata,Komatsu WA380,2017,9,Diesel,SITE_017,17609,14000,Available
+EQ_00193,Bulldozer,Tata,CAT D6,2016,10,Diesel,SITE_002,6954,16000,Rented
+EQ_00194,Crane,Caterpillar,Zoomlion QY25,2022,4,Diesel,SITE_023,12232,30000,Available
+EQ_00195,Crane,Caterpillar,Liebherr LTM 1050,2025,1,Diesel,SITE_029,8843,30000,Rented
+EQ_00196,Crane,Volvo,Tadano GR-1000,2024,2,Diesel,SITE_015,12185,30000,Rented
+EQ_00197,Crane,Tata,Zoomlion QY25,2021,5,Diesel,SITE_017,21255,30000,Available
+EQ_00198,Dump Truck,JCB,Komatsu HD605,2016,10,Diesel,SITE_015,19826,22000,Maintenance
+EQ_00199,Bulldozer,Caterpillar,Liebherr PR 726,2025,1,Diesel,SITE_003,5134,16000,Rented
+EQ_00200,Forklift,Komatsu,KION EFG,2020,6,Electric,SITE_019,21393,7000,Idle
+EQ_00201,Forklift,Komatsu,Toyota 8FD,2018,8,Electric,SITE_022,9915,7000,Available
+EQ_00202,Loader,Komatsu,CAT 950,2024,2,Diesel,SITE_028,15654,14000,Available
+EQ_00203,Crane,Liebherr,Liebherr LTM 1050,2023,3,Diesel,SITE_028,16930,30000,Rented
+EQ_00204,Loader,Volvo,Volvo L120,2023,3,Diesel,SITE_015,10883,14000,Available
+EQ_00205,Generator,Komatsu,Kirloskar KG500,2018,8,Diesel,SITE_029,10318,9000,Rented
+EQ_00206,Dump Truck,Volvo,Volvo A40,2025,1,Diesel,SITE_016,10312,22000,Idle
+EQ_00207,Generator,Komatsu,Cummins C500,2020,6,Diesel,SITE_020,19044,9000,Available
+EQ_00208,Loader,JCB,Volvo L120,2021,5,Diesel,SITE_019,8806,14000,Available
+EQ_00209,Dump Truck,Volvo,Komatsu HD605,2023,3,Diesel,SITE_030,6518,22000,Rented
+EQ_00210,Bulldozer,Komatsu,Liebherr PR 726,2022,4,Diesel,SITE_023,8274,16000,Rented
+EQ_00211,Generator,Caterpillar,Cummins C500,2017,9,Diesel,SITE_004,4689,9000,Rented
+EQ_00212,Bulldozer,Volvo,CAT D6,2019,7,Diesel,SITE_003,8917,16000,Rented
+EQ_00213,Dump Truck,Liebherr,Komatsu HD605,2019,7,Diesel,SITE_013,2952,22000,Maintenance
+EQ_00214,Forklift,Caterpillar,JCB Telehandler,2025,1,Electric,SITE_016,2429,7000,Available
+EQ_00215,Excavator,Caterpillar,JCB JS220,2023,3,Diesel,SITE_021,16062,18000,Rented
+EQ_00216,Dump Truck,Tata,Komatsu HD605,2019,7,Diesel,SITE_015,2164,22000,Rented
+EQ_00217,Excavator,Liebherr,Komatsu PC210,2023,3,Diesel,SITE_016,12716,18000,Idle
+EQ_00218,Generator,Caterpillar,Cummins C500,2023,3,Diesel,SITE_028,17267,9000,Rented
+EQ_00219,Excavator,Caterpillar,JCB JS220,2019,7,Diesel,SITE_011,16076,18000,Rented
+EQ_00220,Forklift,Komatsu,KION EFG,2020,6,Electric,SITE_015,10090,7000,Available
+EQ_00221,Excavator,Komatsu,JCB JS220,2024,2,Diesel,SITE_017,4663,18000,Available
+EQ_00222,Forklift,Volvo,KION EFG,2021,5,Electric,SITE_015,20509,7000,Available
+EQ_00223,Generator,Volvo,Cummins C500,2017,9,Diesel,SITE_030,18455,9000,Rented
+EQ_00224,Dump Truck,Volvo,Komatsu HD605,2023,3,Diesel,SITE_029,13662,22000,Rented
+EQ_00225,Generator,Komatsu,CAT XQ500,2021,5,Diesel,SITE_016,2365,9000,Rented
+EQ_00226,Generator,Volvo,CAT XQ500,2021,5,Diesel,SITE_014,1256,9000,Available
+EQ_00227,Forklift,Caterpillar,KION EFG,2023,3,Electric,SITE_018,7277,7000,Idle
+EQ_00228,Bulldozer,Komatsu,Komatsu D65,2025,1,Diesel,SITE_006,3886,16000,Idle
+EQ_00229,Dump Truck,Volvo,Volvo A40,2019,7,Diesel,SITE_013,18997,22000,Available
+EQ_00230,Excavator,Caterpillar,CAT 320,2020,6,Diesel,SITE_007,4925,18000,Available
+EQ_00231,Dump Truck,Volvo,CAT 777,2017,9,Diesel,SITE_005,6576,22000,Available
+EQ_00232,Excavator,JCB,Komatsu PC210,2022,4,Diesel,SITE_003,21478,18000,Idle
+EQ_00233,Dump Truck,Volvo,Komatsu HD605,2020,6,Diesel,SITE_018,18092,22000,Available
+EQ_00234,Dump Truck,JCB,Volvo A40,2019,7,Diesel,SITE_001,5202,22000,Rented
+EQ_00235,Loader,Volvo,Komatsu WA380,2022,4,Diesel,SITE_020,8746,14000,Rented
+EQ_00236,Loader,Tata,Komatsu WA380,2020,6,Diesel,SITE_013,11588,14000,Maintenance
+EQ_00237,Generator,Tata,Kirloskar KG500,2020,6,Diesel,SITE_011,14781,9000,Rented
+EQ_00238,Generator,Liebherr,CAT XQ500,2020,6,Diesel,SITE_024,20627,9000,Rented
+EQ_00239,Loader,Tata,Volvo L120,2018,8,Diesel,SITE_017,19229,14000,Idle
+EQ_00240,Dump Truck,Tata,CAT 777,2017,9,Diesel,SITE_023,21509,22000,Available
+EQ_00241,Forklift,Volvo,KION EFG,2024,2,Electric,SITE_022,1373,7000,Idle
+EQ_00242,Excavator,Komatsu,CAT 320,2016,10,Diesel,SITE_001,5581,18000,Available
+EQ_00243,Excavator,Komatsu,Komatsu PC210,2019,7,Diesel,SITE_007,12604,18000,Rented
+EQ_00244,Excavator,JCB,Komatsu PC210,2022,4,Diesel,SITE_018,1556,18000,Idle
+EQ_00245,Dump Truck,Komatsu,Komatsu HD605,2017,9,Diesel,SITE_030,8139,22000,Rented
+EQ_00246,Loader,Caterpillar,CAT 950,2022,4,Diesel,SITE_005,3802,14000,Rented
+EQ_00247,Generator,Liebherr,CAT XQ500,2023,3,Diesel,SITE_004,20557,9000,Rented
+EQ_00248,Dump Truck,Tata,Volvo A40,2022,4,Diesel,SITE_029,1861,22000,Rented
+EQ_00249,Crane,Liebherr,Liebherr LTM 1050,2019,7,Diesel,SITE_030,3690,30000,Rented
+EQ_00250,Forklift,Caterpillar,JCB Telehandler,2016,10,Diesel,SITE_006,4695,7000,Rented
+EQ_00251,Generator,Tata,Kirloskar KG500,2024,2,Diesel,SITE_013,3694,9000,Rented
+EQ_00252,Bulldozer,JCB,Komatsu D65,2019,7,Diesel,SITE_019,12724,16000,Rented
+EQ_00253,Crane,Caterpillar,Tadano GR-1000,2024,2,Diesel,SITE_006,8333,30000,Rented
+EQ_00254,Crane,Caterpillar,Liebherr LTM 1050,2017,9,Diesel,SITE_010,20117,30000,Rented
+EQ_00255,Excavator,Liebherr,CAT 320,2017,9,Diesel,SITE_012,6107,18000,Rented
+EQ_00256,Excavator,Volvo,JCB JS220,2023,3,Diesel,SITE_020,12050,18000,Available
+EQ_00257,Forklift,Liebherr,KION EFG,2025,1,Diesel,SITE_010,14691,7000,Idle
+EQ_00258,Loader,Liebherr,Volvo L120,2024,2,Diesel,SITE_013,13958,14000,Rented
+EQ_00259,Crane,Komatsu,Tadano GR-1000,2023,3,Diesel,SITE_009,17622,30000,Available
+EQ_00260,Generator,Caterpillar,Kirloskar KG500,2018,8,Diesel,SITE_023,4840,9000,Rented
+EQ_00261,Dump Truck,Liebherr,Komatsu HD605,2025,1,Diesel,SITE_005,11410,22000,Idle
+EQ_00262,Forklift,Caterpillar,Toyota 8FD,2022,4,Electric,SITE_007,17712,7000,Available
+EQ_00263,Generator,Komatsu,Cummins C500,2017,9,Diesel,SITE_008,19054,9000,Available
+EQ_00264,Loader,Caterpillar,Komatsu WA380,2017,9,Diesel,SITE_028,13782,14000,Available
+EQ_00265,Crane,Liebherr,Zoomlion QY25,2024,2,Diesel,SITE_029,14515,30000,Available
+EQ_00266,Forklift,Caterpillar,Toyota 8FD,2018,8,Electric,SITE_016,19078,7000,Maintenance
+EQ_00267,Generator,Tata,CAT XQ500,2023,3,Diesel,SITE_005,13934,9000,Idle
+EQ_00268,Forklift,Komatsu,KION EFG,2017,9,Diesel,SITE_023,20900,7000,Available
+EQ_00269,Excavator,Volvo,JCB JS220,2018,8,Diesel,SITE_015,3243,18000,Rented
+EQ_00270,Forklift,Caterpillar,KION EFG,2018,8,Electric,SITE_026,7979,7000,Available
+EQ_00271,Dump Truck,Liebherr,CAT 777,2018,8,Diesel,SITE_011,2911,22000,Rented
+EQ_00272,Excavator,Komatsu,CAT 320,2022,4,Diesel,SITE_030,2447,18000,Maintenance
+EQ_00273,Dump Truck,Liebherr,Volvo A40,2025,1,Diesel,SITE_025,10646,22000,Rented
+EQ_00274,Dump Truck,Liebherr,Volvo A40,2025,1,Diesel,SITE_007,5357,22000,Available
+EQ_00275,Excavator,Caterpillar,CAT 320,2023,3,Diesel,SITE_022,9253,18000,Rented
+EQ_00276,Loader,Liebherr,Volvo L120,2018,8,Diesel,SITE_009,9913,14000,Idle
+EQ_00277,Generator,Caterpillar,Cummins C500,2025,1,Diesel,SITE_011,13849,9000,Rented
+EQ_00278,Bulldozer,Volvo,Komatsu D65,2021,5,Diesel,SITE_008,20832,16000,Available
+EQ_00279,Loader,Tata,Volvo L120,2021,5,Diesel,SITE_021,18761,14000,Available
+EQ_00280,Loader,Liebherr,CAT 950,2023,3,Diesel,SITE_008,8633,14000,Rented
+EQ_00281,Crane,Liebherr,Zoomlion QY25,2023,3,Diesel,SITE_020,7500,30000,Rented
+EQ_00282,Forklift,Liebherr,KION EFG,2025,1,Electric,SITE_018,17071,7000,Maintenance
+EQ_00283,Generator,JCB,Cummins C500,2021,5,Diesel,SITE_023,3158,9000,Maintenance
+EQ_00284,Excavator,JCB,CAT 320,2022,4,Diesel,SITE_030,12120,18000,Idle
+EQ_00285,Forklift,Komatsu,Toyota 8FD,2023,3,Electric,SITE_001,9594,7000,Maintenance
+EQ_00286,Forklift,Tata,KION EFG,2018,8,Diesel,SITE_030,4430,7000,Available
+EQ_00287,Bulldozer,Tata,CAT D6,2019,7,Diesel,SITE_004,13753,16000,Rented
+EQ_00288,Generator,JCB,Kirloskar KG500,2022,4,Diesel,SITE_016,7395,9000,Rented
+EQ_00289,Excavator,Komatsu,CAT 320,2016,10,Diesel,SITE_011,4490,18000,Rented
+EQ_00290,Forklift,JCB,KION EFG,2019,7,Diesel,SITE_020,14543,7000,Idle
+EQ_00291,Dump Truck,Volvo,Volvo A40,2023,3,Diesel,SITE_022,4245,22000,Rented
+EQ_00292,Dump Truck,Komatsu,Komatsu HD605,2025,1,Diesel,SITE_026,14966,22000,Idle
+EQ_00293,Excavator,Tata,JCB JS220,2021,5,Diesel,SITE_013,3985,18000,Rented
+EQ_00294,Forklift,Tata,JCB Telehandler,2019,7,Electric,SITE_028,9847,7000,Rented
+EQ_00295,Excavator,JCB,Komatsu PC210,2020,6,Diesel,SITE_010,17871,18000,Rented
+EQ_00296,Bulldozer,Volvo,Komatsu D65,2022,4,Diesel,SITE_007,5415,16000,Available
+EQ_00297,Excavator,JCB,Komatsu PC210,2021,5,Diesel,SITE_012,17003,18000,Available
+EQ_00298,Generator,Caterpillar,CAT XQ500,2016,10,Diesel,SITE_016,16020,9000,Rented
+EQ_00299,Excavator,Caterpillar,CAT 320,2021,5,Diesel,SITE_021,19907,18000,Available
+EQ_00300,Forklift,Volvo,KION EFG,2020,6,Diesel,SITE_025,4130,7000,Idle
+EQ_00301,Dump Truck,Liebherr,Volvo A40,2023,3,Diesel,SITE_007,15875,22000,Available
+EQ_00302,Excavator,Liebherr,CAT 320,2024,2,Diesel,SITE_010,20638,18000,Available
+EQ_00303,Excavator,Caterpillar,Komatsu PC210,2025,1,Diesel,SITE_029,16904,18000,Maintenance
+EQ_00304,Excavator,Caterpillar,CAT 320,2022,4,Diesel,SITE_014,4539,18000,Available
+EQ_00305,Dump Truck,Liebherr,Volvo A40,2019,7,Diesel,SITE_008,18176,22000,Idle
+EQ_00306,Generator,Komatsu,Kirloskar KG500,2020,6,Diesel,SITE_030,2807,9000,Rented
+EQ_00307,Bulldozer,Liebherr,Liebherr PR 726,2017,9,Diesel,SITE_014,13160,16000,Available
+EQ_00308,Generator,JCB,Cummins C500,2025,1,Diesel,SITE_030,11199,9000,Rented
+EQ_00309,Excavator,Komatsu,CAT 320,2024,2,Diesel,SITE_028,11918,18000,Rented
+EQ_00310,Generator,JCB,CAT XQ500,2024,2,Diesel,SITE_028,11670,9000,Maintenance
+EQ_00311,Forklift,Caterpillar,KION EFG,2019,7,Diesel,SITE_018,1176,7000,Maintenance
+EQ_00312,Generator,Komatsu,CAT XQ500,2019,7,Diesel,SITE_024,11426,9000,Rented
+EQ_00313,Dump Truck,JCB,Volvo A40,2024,2,Diesel,SITE_029,20640,22000,Rented
+EQ_00314,Generator,JCB,CAT XQ500,2021,5,Diesel,SITE_009,9888,9000,Rented
+EQ_00315,Excavator,Komatsu,CAT 320,2023,3,Diesel,SITE_002,6453,18000,Rented
+EQ_00316,Bulldozer,Volvo,Komatsu D65,2020,6,Diesel,SITE_010,21888,16000,Idle
+EQ_00317,Excavator,Liebherr,JCB JS220,2020,6,Diesel,SITE_020,2628,18000,Rented
+EQ_00318,Loader,Tata,Komatsu WA380,2022,4,Diesel,SITE_017,10955,14000,Rented
+EQ_00319,Generator,JCB,Kirloskar KG500,2024,2,Diesel,SITE_003,11520,9000,Rented
+EQ_00320,Dump Truck,Liebherr,Volvo A40,2019,7,Diesel,SITE_017,10775,22000,Maintenance
+EQ_00321,Forklift,Tata,JCB Telehandler,2024,2,Diesel,SITE_006,20317,7000,Idle
+EQ_00322,Excavator,Liebherr,Komatsu PC210,2018,8,Diesel,SITE_016,9567,18000,Available
+EQ_00323,Generator,Caterpillar,Cummins C500,2020,6,Diesel,SITE_018,21425,9000,Available
+EQ_00324,Excavator,Tata,Komatsu PC210,2025,1,Diesel,SITE_020,1936,18000,Rented
+EQ_00325,Bulldozer,Liebherr,Liebherr PR 726,2025,1,Diesel,SITE_013,16279,16000,Rented
+EQ_00326,Generator,JCB,CAT XQ500,2025,1,Diesel,SITE_013,13248,9000,Rented
+EQ_00327,Forklift,Tata,KION EFG,2019,7,Electric,SITE_021,5671,7000,Available
+EQ_00328,Dump Truck,Caterpillar,Komatsu HD605,2024,2,Diesel,SITE_023,5401,22000,Rented
+EQ_00329,Excavator,Komatsu,JCB JS220,2025,1,Diesel,SITE_025,15973,18000,Rented
+EQ_00330,Dump Truck,JCB,Volvo A40,2025,1,Diesel,SITE_011,14208,22000,Rented
+EQ_00331,Excavator,Caterpillar,Komatsu PC210,2016,10,Diesel,SITE_013,13640,18000,Rented
+EQ_00332,Forklift,Caterpillar,KION EFG,2023,3,Diesel,SITE_010,1592,7000,Rented
+EQ_00333,Generator,Tata,CAT XQ500,2025,1,Diesel,SITE_016,13354,9000,Rented
+EQ_00334,Excavator,Liebherr,CAT 320,2023,3,Diesel,SITE_004,21599,18000,Maintenance
+EQ_00335,Excavator,Komatsu,JCB JS220,2018,8,Diesel,SITE_013,872,18000,Rented
+EQ_00336,Excavator,JCB,CAT 320,2023,3,Diesel,SITE_006,10583,18000,Rented
+EQ_00337,Forklift,JCB,JCB Telehandler,2017,9,Diesel,SITE_016,11129,7000,Rented
+EQ_00338,Loader,Liebherr,Komatsu WA380,2020,6,Diesel,SITE_026,19780,14000,Available
+EQ_00339,Generator,Komatsu,Cummins C500,2022,4,Diesel,SITE_030,6581,9000,Rented
+EQ_00340,Dump Truck,Tata,Komatsu HD605,2020,6,Diesel,SITE_014,10724,22000,Rented
+EQ_00341,Dump Truck,JCB,CAT 777,2022,4,Diesel,SITE_002,15919,22000,Idle
+EQ_00342,Excavator,Komatsu,Komatsu PC210,2018,8,Diesel,SITE_007,1797,18000,Rented
+EQ_00343,Forklift,Tata,JCB Telehandler,2022,4,Electric,SITE_004,17723,7000,Available
+EQ_00344,Crane,Tata,Tadano GR-1000,2022,4,Diesel,SITE_023,18177,30000,Rented
+EQ_00345,Dump Truck,JCB,Volvo A40,2022,4,Diesel,SITE_030,15972,22000,Available
+EQ_00346,Dump Truck,Liebherr,Komatsu HD605,2018,8,Diesel,SITE_017,14435,22000,Rented
+EQ_00347,Dump Truck,Volvo,Komatsu HD605,2019,7,Diesel,SITE_006,16573,22000,Maintenance
+EQ_00348,Forklift,JCB,JCB Telehandler,2018,8,Electric,SITE_001,17307,7000,Rented
+EQ_00349,Excavator,Caterpillar,JCB JS220,2020,6,Diesel,SITE_030,19922,18000,Rented
+EQ_00350,Loader,Caterpillar,CAT 950,2021,5,Diesel,SITE_010,9705,14000,Rented
+EQ_00351,Loader,Tata,Komatsu WA380,2019,7,Diesel,SITE_004,10305,14000,Rented
+EQ_00352,Loader,Volvo,CAT 950,2020,6,Diesel,SITE_006,14215,14000,Idle
+EQ_00353,Excavator,JCB,CAT 320,2018,8,Diesel,SITE_008,4651,18000,Rented
+EQ_00354,Excavator,Caterpillar,JCB JS220,2018,8,Diesel,SITE_020,18908,18000,Rented
+EQ_00355,Bulldozer,Caterpillar,Liebherr PR 726,2022,4,Diesel,SITE_027,17066,16000,Rented
+EQ_00356,Crane,JCB,Tadano GR-1000,2024,2,Diesel,SITE_009,14067,30000,Available
+EQ_00357,Loader,Komatsu,CAT 950,2018,8,Diesel,SITE_021,6985,14000,Available
+EQ_00358,Dump Truck,Tata,Komatsu HD605,2024,2,Diesel,SITE_002,7974,22000,Available
+EQ_00359,Dump Truck,JCB,CAT 777,2021,5,Diesel,SITE_001,9851,22000,Rented
+EQ_00360,Loader,Komatsu,Volvo L120,2017,9,Diesel,SITE_002,14744,14000,Idle
+EQ_00361,Loader,Tata,Komatsu WA380,2019,7,Diesel,SITE_028,17227,14000,Rented
+EQ_00362,Bulldozer,Volvo,CAT D6,2016,10,Diesel,SITE_018,14944,16000,Available
+EQ_00363,Dump Truck,Liebherr,Volvo A40,2016,10,Diesel,SITE_025,20493,22000,Available
+EQ_00364,Crane,Tata,Liebherr LTM 1050,2019,7,Diesel,SITE_001,21152,30000,Rented
+EQ_00365,Excavator,Volvo,Komatsu PC210,2020,6,Diesel,SITE_001,15655,18000,Maintenance
+EQ_00366,Loader,Liebherr,Volvo L120,2023,3,Diesel,SITE_026,8474,14000,Rented
+EQ_00367,Loader,Caterpillar,CAT 950,2017,9,Diesel,SITE_004,13379,14000,Maintenance
+EQ_00368,Bulldozer,Caterpillar,CAT D6,2024,2,Diesel,SITE_005,9639,16000,Maintenance
+EQ_00369,Dump Truck,Caterpillar,Komatsu HD605,2018,8,Diesel,SITE_016,14025,22000,Available
+EQ_00370,Dump Truck,Tata,Komatsu HD605,2017,9,Diesel,SITE_019,17960,22000,Rented
+EQ_00371,Generator,Komatsu,CAT XQ500,2022,4,Diesel,SITE_007,8440,9000,Idle
+EQ_00372,Dump Truck,Liebherr,Volvo A40,2023,3,Diesel,SITE_014,11373,22000,Rented
+EQ_00373,Dump Truck,Caterpillar,Volvo A40,2022,4,Diesel,SITE_021,1481,22000,Available
+EQ_00374,Crane,JCB,Tadano GR-1000,2017,9,Diesel,SITE_014,16336,30000,Idle
+EQ_00375,Generator,Liebherr,Kirloskar KG500,2017,9,Diesel,SITE_012,11031,9000,Idle
+EQ_00376,Dump Truck,Liebherr,CAT 777,2019,7,Diesel,SITE_003,10383,22000,Rented
+EQ_00377,Loader,Komatsu,Komatsu WA380,2020,6,Diesel,SITE_014,11947,14000,Rented
+EQ_00378,Dump Truck,Volvo,Volvo A40,2025,1,Diesel,SITE_025,5133,22000,Available
+EQ_00379,Crane,Komatsu,Zoomlion QY25,2018,8,Diesel,SITE_019,13356,30000,Maintenance
+EQ_00380,Loader,Caterpillar,Komatsu WA380,2017,9,Diesel,SITE_027,16521,14000,Rented
+EQ_00381,Generator,JCB,CAT XQ500,2025,1,Diesel,SITE_004,8018,9000,Available
+EQ_00382,Forklift,JCB,JCB Telehandler,2017,9,Electric,SITE_001,3319,7000,Rented
+EQ_00383,Forklift,Caterpillar,JCB Telehandler,2016,10,Diesel,SITE_017,8816,7000,Idle
+EQ_00384,Loader,JCB,Komatsu WA380,2020,6,Diesel,SITE_006,4769,14000,Maintenance
+EQ_00385,Loader,Komatsu,Volvo L120,2020,6,Diesel,SITE_018,8539,14000,Rented
+EQ_00386,Generator,Tata,Cummins C500,2022,4,Diesel,SITE_028,13976,9000,Available
+EQ_00387,Crane,Komatsu,Zoomlion QY25,2024,2,Diesel,SITE_011,2937,30000,Idle
+EQ_00388,Generator,Tata,Cummins C500,2025,1,Diesel,SITE_017,16566,9000,Idle
+EQ_00389,Loader,Caterpillar,CAT 950,2018,8,Diesel,SITE_021,5329,14000,Rented
+EQ_00390,Excavator,JCB,JCB JS220,2025,1,Diesel,SITE_005,19735,18000,Rented
+EQ_00391,Excavator,Liebherr,JCB JS220,2022,4,Diesel,SITE_027,16247,18000,Rented
+EQ_00392,Generator,Volvo,CAT XQ500,2016,10,Diesel,SITE_007,6360,9000,Rented
+EQ_00393,Excavator,Liebherr,CAT 320,2025,1,Diesel,SITE_025,12609,18000,Available
+EQ_00394,Bulldozer,Tata,Liebherr PR 726,2017,9,Diesel,SITE_020,2880,16000,Available
+EQ_00395,Crane,Komatsu,Liebherr LTM 1050,2021,5,Diesel,SITE_005,2644,30000,Available
+EQ_00396,Excavator,Komatsu,Komatsu PC210,2023,3,Diesel,SITE_022,21055,18000,Idle
+EQ_00397,Crane,Komatsu,Liebherr LTM 1050,2018,8,Diesel,SITE_006,17752,30000,Available
+EQ_00398,Generator,Komatsu,Kirloskar KG500,2018,8,Diesel,SITE_018,3820,9000,Available
+EQ_00399,Excavator,Volvo,JCB JS220,2020,6,Diesel,SITE_029,6577,18000,Rented
+EQ_00400,Generator,Caterpillar,Cummins C500,2024,2,Diesel,SITE_029,4749,9000,Available
+EQ_00401,Forklift,Komatsu,KION EFG,2018,8,Diesel,SITE_027,8995,7000,Available
+EQ_00402,Crane,Tata,Liebherr LTM 1050,2022,4,Diesel,SITE_015,6763,30000,Rented
+EQ_00403,Excavator,JCB,JCB JS220,2020,6,Diesel,SITE_017,7553,18000,Rented
+EQ_00404,Dump Truck,Volvo,Komatsu HD605,2017,9,Diesel,SITE_010,11881,22000,Rented
+EQ_00405,Excavator,Tata,CAT 320,2023,3,Diesel,SITE_028,4564,18000,Idle
+EQ_00406,Crane,Tata,Liebherr LTM 1050,2024,2,Diesel,SITE_015,19480,30000,Available
+EQ_00407,Forklift,Komatsu,KION EFG,2021,5,Electric,SITE_024,16144,7000,Idle
+EQ_00408,Forklift,JCB,Toyota 8FD,2017,9,Electric,SITE_011,16851,7000,Idle
+EQ_00409,Generator,Komatsu,CAT XQ500,2017,9,Diesel,SITE_023,4143,9000,Maintenance
+EQ_00410,Crane,Tata,Tadano GR-1000,2020,6,Diesel,SITE_007,15725,30000,Rented
+EQ_00411,Dump Truck,Caterpillar,Komatsu HD605,2021,5,Diesel,SITE_023,18479,22000,Rented
+EQ_00412,Generator,Volvo,CAT XQ500,2021,5,Diesel,SITE_002,4266,9000,Rented
+EQ_00413,Crane,Caterpillar,Liebherr LTM 1050,2018,8,Diesel,SITE_004,16652,30000,Rented
+EQ_00414,Dump Truck,Volvo,CAT 777,2021,5,Diesel,SITE_011,8190,22000,Available
+EQ_00415,Excavator,Komatsu,JCB JS220,2018,8,Diesel,SITE_015,17432,18000,Idle
+EQ_00416,Bulldozer,Komatsu,Komatsu D65,2022,4,Diesel,SITE_022,10785,16000,Rented
+EQ_00417,Loader,Volvo,Volvo L120,2023,3,Diesel,SITE_011,17747,14000,Maintenance
+EQ_00418,Excavator,JCB,JCB JS220,2022,4,Diesel,SITE_001,3669,18000,Rented
+EQ_00419,Excavator,JCB,CAT 320,2016,10,Diesel,SITE_010,8865,18000,Available
+EQ_00420,Generator,Komatsu,Cummins C500,2025,1,Diesel,SITE_014,6378,9000,Rented
+EQ_00421,Forklift,Komatsu,Toyota 8FD,2016,10,Diesel,SITE_017,5839,7000,Rented
+EQ_00422,Dump Truck,Caterpillar,CAT 777,2025,1,Diesel,SITE_020,7129,22000,Rented
+EQ_00423,Generator,Tata,Kirloskar KG500,2016,10,Diesel,SITE_008,8722,9000,Rented
+EQ_00424,Forklift,Komatsu,KION EFG,2021,5,Diesel,SITE_019,3236,7000,Available
+EQ_00425,Excavator,Volvo,JCB JS220,2017,9,Diesel,SITE_019,15702,18000,Rented
+EQ_00426,Loader,JCB,Volvo L120,2016,10,Diesel,SITE_024,12330,14000,Rented
+EQ_00427,Crane,JCB,Liebherr LTM 1050,2022,4,Diesel,SITE_016,18329,30000,Idle
+EQ_00428,Excavator,Caterpillar,Komatsu PC210,2023,3,Diesel,SITE_025,15658,18000,Available
+EQ_00429,Generator,JCB,Kirloskar KG500,2017,9,Diesel,SITE_007,3704,9000,Rented
+EQ_00430,Loader,JCB,CAT 950,2025,1,Diesel,SITE_022,2003,14000,Rented
+EQ_00431,Loader,Tata,CAT 950,2019,7,Diesel,SITE_002,9590,14000,Rented
+EQ_00432,Excavator,Liebherr,Komatsu PC210,2019,7,Diesel,SITE_004,10844,18000,Rented
+EQ_00433,Excavator,Volvo,JCB JS220,2018,8,Diesel,SITE_026,5665,18000,Rented
+EQ_00434,Forklift,Tata,KION EFG,2020,6,Electric,SITE_015,17317,7000,Idle
+EQ_00435,Excavator,Liebherr,Komatsu PC210,2017,9,Diesel,SITE_019,13004,18000,Rented
+EQ_00436,Bulldozer,JCB,Komatsu D65,2020,6,Diesel,SITE_019,16581,16000,Rented
+EQ_00437,Bulldozer,Caterpillar,Liebherr PR 726,2018,8,Diesel,SITE_021,2843,16000,Available
+EQ_00438,Loader,Caterpillar,CAT 950,2016,10,Diesel,SITE_008,18024,14000,Rented
+EQ_00439,Dump Truck,JCB,Komatsu HD605,2019,7,Diesel,SITE_006,4930,22000,Rented
+EQ_00440,Loader,Komatsu,Komatsu WA380,2022,4,Diesel,SITE_002,10137,14000,Available
+EQ_00441,Excavator,Liebherr,JCB JS220,2023,3,Diesel,SITE_026,9946,18000,Rented
+EQ_00442,Bulldozer,JCB,Liebherr PR 726,2019,7,Diesel,SITE_007,18141,16000,Rented
+EQ_00443,Generator,Caterpillar,Cummins C500,2019,7,Diesel,SITE_018,6452,9000,Rented
+EQ_00444,Dump Truck,Caterpillar,CAT 777,2023,3,Diesel,SITE_014,5676,22000,Rented
+EQ_00445,Dump Truck,Liebherr,Komatsu HD605,2022,4,Diesel,SITE_005,7802,22000,Rented
+EQ_00446,Dump Truck,Volvo,Komatsu HD605,2024,2,Diesel,SITE_013,8257,22000,Rented
+EQ_00447,Generator,JCB,Kirloskar KG500,2025,1,Diesel,SITE_003,4406,9000,Available
+EQ_00448,Excavator,Tata,Komatsu PC210,2024,2,Diesel,SITE_006,4291,18000,Available
+EQ_00449,Crane,JCB,Zoomlion QY25,2025,1,Diesel,SITE_005,5473,30000,Rented
+EQ_00450,Loader,Volvo,Komatsu WA380,2020,6,Diesel,SITE_025,10550,14000,Idle
+EQ_00451,Crane,Liebherr,Zoomlion QY25,2019,7,Diesel,SITE_018,7882,30000,Available
+EQ_00452,Generator,Liebherr,CAT XQ500,2019,7,Diesel,SITE_028,8929,9000,Rented
+EQ_00453,Loader,Caterpillar,Komatsu WA380,2018,8,Diesel,SITE_014,15959,14000,Maintenance
+EQ_00454,Generator,Volvo,CAT XQ500,2023,3,Diesel,SITE_007,5679,9000,Maintenance
+EQ_00455,Forklift,Liebherr,Toyota 8FD,2023,3,Diesel,SITE_019,20062,7000,Rented
+EQ_00456,Loader,Komatsu,Komatsu WA380,2024,2,Diesel,SITE_028,16663,14000,Rented
+EQ_00457,Forklift,JCB,KION EFG,2017,9,Electric,SITE_016,4255,7000,Rented
+EQ_00458,Dump Truck,Caterpillar,CAT 777,2020,6,Diesel,SITE_001,7247,22000,Idle
+EQ_00459,Forklift,Tata,Toyota 8FD,2018,8,Diesel,SITE_010,4446,7000,Available
+EQ_00460,Crane,Volvo,Tadano GR-1000,2024,2,Diesel,SITE_028,6365,30000,Idle
+EQ_00461,Loader,Caterpillar,Volvo L120,2018,8,Diesel,SITE_016,8358,14000,Available
+EQ_00462,Loader,Liebherr,Komatsu WA380,2017,9,Diesel,SITE_029,3314,14000,Idle
+EQ_00463,Excavator,Liebherr,JCB JS220,2021,5,Diesel,SITE_016,810,18000,Available
+EQ_00464,Crane,Tata,Tadano GR-1000,2024,2,Diesel,SITE_001,9934,30000,Available
+EQ_00465,Forklift,Tata,JCB Telehandler,2025,1,Electric,SITE_027,15571,7000,Available
+EQ_00466,Dump Truck,Tata,Komatsu HD605,2016,10,Diesel,SITE_023,7013,22000,Rented
+EQ_00467,Excavator,Tata,CAT 320,2019,7,Diesel,SITE_022,18999,18000,Rented
+EQ_00468,Crane,Tata,Zoomlion QY25,2017,9,Diesel,SITE_030,8439,30000,Available
+EQ_00469,Excavator,Komatsu,Komatsu PC210,2019,7,Diesel,SITE_006,19867,18000,Rented
+EQ_00470,Excavator,JCB,Komatsu PC210,2021,5,Diesel,SITE_028,5573,18000,Rented
+EQ_00471,Forklift,Volvo,Toyota 8FD,2018,8,Diesel,SITE_007,12095,7000,Maintenance
+EQ_00472,Loader,Caterpillar,Volvo L120,2016,10,Diesel,SITE_030,16907,14000,Idle
+EQ_00473,Crane,Tata,Zoomlion QY25,2021,5,Diesel,SITE_006,1769,30000,Rented
+EQ_00474,Dump Truck,JCB,Volvo A40,2016,10,Diesel,SITE_017,20495,22000,Available
+EQ_00475,Excavator,Liebherr,CAT 320,2018,8,Diesel,SITE_024,8346,18000,Rented
+EQ_00476,Bulldozer,JCB,Liebherr PR 726,2016,10,Diesel,SITE_003,11205,16000,Idle
+EQ_00477,Generator,Tata,Kirloskar KG500,2016,10,Diesel,SITE_003,14011,9000,Available
+EQ_00478,Dump Truck,Caterpillar,Komatsu HD605,2020,6,Diesel,SITE_026,14324,22000,Rented
+EQ_00479,Forklift,Tata,KION EFG,2024,2,Electric,SITE_002,1008,7000,Idle
+EQ_00480,Dump Truck,JCB,CAT 777,2023,3,Diesel,SITE_019,19144,22000,Idle
+EQ_00481,Loader,Liebherr,Volvo L120,2016,10,Diesel,SITE_029,13907,14000,Rented
+EQ_00482,Generator,JCB,CAT XQ500,2016,10,Diesel,SITE_019,21974,9000,Rented
+EQ_00483,Forklift,Tata,Toyota 8FD,2019,7,Diesel,SITE_015,10637,7000,Rented
+EQ_00484,Generator,Volvo,Kirloskar KG500,2022,4,Diesel,SITE_013,13690,9000,Maintenance
+EQ_00485,Forklift,JCB,Toyota 8FD,2023,3,Electric,SITE_020,9982,7000,Available
+EQ_00486,Generator,Volvo,Kirloskar KG500,2024,2,Diesel,SITE_018,19630,9000,Available
+EQ_00487,Forklift,Tata,KION EFG,2019,7,Diesel,SITE_016,18396,7000,Rented
+EQ_00488,Excavator,JCB,JCB JS220,2017,9,Diesel,SITE_005,20035,18000,Available
+EQ_00489,Generator,Liebherr,Kirloskar KG500,2016,10,Diesel,SITE_020,11342,9000,Rented
+EQ_00490,Loader,Komatsu,Volvo L120,2017,9,Diesel,SITE_023,17516,14000,Rented
+EQ_00491,Dump Truck,Komatsu,Volvo A40,2016,10,Diesel,SITE_022,8214,22000,Idle
+EQ_00492,Dump Truck,Volvo,CAT 777,2024,2,Diesel,SITE_003,10410,22000,Maintenance
+EQ_00493,Forklift,Tata,JCB Telehandler,2018,8,Electric,SITE_022,16844,7000,Rented
+EQ_00494,Forklift,Volvo,Toyota 8FD,2024,2,Electric,SITE_022,2244,7000,Maintenance
+EQ_00495,Bulldozer,Tata,Liebherr PR 726,2021,5,Diesel,SITE_006,15775,16000,Rented
+EQ_00496,Generator,Tata,Kirloskar KG500,2021,5,Diesel,SITE_026,839,9000,Rented
+EQ_00497,Generator,Komatsu,Cummins C500,2020,6,Diesel,SITE_016,12983,9000,Available
+EQ_00498,Crane,Liebherr,Tadano GR-1000,2024,2,Diesel,SITE_015,10759,30000,Idle
+EQ_00499,Excavator,Liebherr,Komatsu PC210,2016,10,Diesel,SITE_022,10576,18000,Maintenance
+EQ_00500,Excavator,JCB,CAT 320,2016,10,Diesel,SITE_016,11127,18000,Idle
+EQ_00501,Generator,Volvo,Kirloskar KG500,2020,6,Diesel,SITE_017,11076,9000,Idle
+EQ_00502,Loader,Liebherr,Komatsu WA380,2019,7,Diesel,SITE_010,9258,14000,Idle
+EQ_00503,Forklift,Caterpillar,JCB Telehandler,2021,5,Electric,SITE_028,10204,7000,Available
+EQ_00504,Loader,JCB,CAT 950,2023,3,Diesel,SITE_030,12715,14000,Idle
+EQ_00505,Forklift,JCB,Toyota 8FD,2021,5,Electric,SITE_004,16914,7000,Rented
+EQ_00506,Loader,Komatsu,Komatsu WA380,2018,8,Diesel,SITE_022,12371,14000,Rented
+EQ_00507,Generator,Volvo,CAT XQ500,2019,7,Diesel,SITE_001,14314,9000,Rented
+EQ_00508,Excavator,Liebherr,JCB JS220,2023,3,Diesel,SITE_012,18487,18000,Rented
+EQ_00509,Dump Truck,Liebherr,Komatsu HD605,2018,8,Diesel,SITE_030,21774,22000,Rented
+EQ_00510,Generator,Tata,Cummins C500,2021,5,Diesel,SITE_006,2836,9000,Available
+EQ_00511,Forklift,JCB,Toyota 8FD,2021,5,Electric,SITE_012,15827,7000,Available
+EQ_00512,Generator,Volvo,Cummins C500,2023,3,Diesel,SITE_007,5341,9000,Rented
+EQ_00513,Excavator,Volvo,JCB JS220,2023,3,Diesel,SITE_022,4730,18000,Idle
+EQ_00514,Crane,Volvo,Tadano GR-1000,2020,6,Diesel,SITE_014,17549,30000,Rented
+EQ_00515,Excavator,Tata,JCB JS220,2019,7,Diesel,SITE_018,1976,18000,Rented
+EQ_00516,Excavator,Komatsu,JCB JS220,2019,7,Diesel,SITE_029,18728,18000,Rented
+EQ_00517,Dump Truck,Liebherr,Komatsu HD605,2020,6,Diesel,SITE_016,17066,22000,Rented
+EQ_00518,Generator,Volvo,Cummins C500,2018,8,Diesel,SITE_023,21888,9000,Available
+EQ_00519,Generator,Tata,CAT XQ500,2022,4,Diesel,SITE_003,14860,9000,Maintenance
+EQ_00520,Forklift,Komatsu,KION EFG,2018,8,Diesel,SITE_007,19267,7000,Available
+EQ_00521,Generator,Tata,CAT XQ500,2022,4,Diesel,SITE_029,3048,9000,Rented
+EQ_00522,Generator,Caterpillar,Kirloskar KG500,2023,3,Diesel,SITE_026,19632,9000,Maintenance
+EQ_00523,Excavator,JCB,Komatsu PC210,2025,1,Diesel,SITE_020,3947,18000,Rented
+EQ_00524,Bulldozer,Liebherr,CAT D6,2017,9,Diesel,SITE_012,7258,16000,Idle
+EQ_00525,Dump Truck,Tata,Komatsu HD605,2023,3,Diesel,SITE_006,3256,22000,Rented
+EQ_00526,Forklift,Tata,Toyota 8FD,2016,10,Electric,SITE_026,9135,7000,Idle
+EQ_00527,Excavator,Liebherr,CAT 320,2019,7,Diesel,SITE_024,16603,18000,Rented
+EQ_00528,Loader,JCB,CAT 950,2017,9,Diesel,SITE_008,6263,14000,Maintenance
+EQ_00529,Dump Truck,Caterpillar,Volvo A40,2017,9,Diesel,SITE_018,18177,22000,Rented
+EQ_00530,Excavator,Komatsu,JCB JS220,2017,9,Diesel,SITE_019,13535,18000,Idle
+EQ_00531,Loader,Tata,Volvo L120,2016,10,Diesel,SITE_015,14021,14000,Idle
+EQ_00532,Forklift,JCB,KION EFG,2024,2,Diesel,SITE_028,20684,7000,Rented
+EQ_00533,Dump Truck,Komatsu,Volvo A40,2016,10,Diesel,SITE_004,9784,22000,Maintenance
+EQ_00534,Bulldozer,Komatsu,Komatsu D65,2019,7,Diesel,SITE_008,7909,16000,Rented
+EQ_00535,Forklift,Komatsu,Toyota 8FD,2022,4,Electric,SITE_003,21882,7000,Rented
+EQ_00536,Crane,Caterpillar,Tadano GR-1000,2025,1,Diesel,SITE_021,12475,30000,Idle
+EQ_00537,Forklift,Caterpillar,Toyota 8FD,2024,2,Diesel,SITE_020,13713,7000,Rented
+EQ_00538,Bulldozer,Komatsu,Komatsu D65,2017,9,Diesel,SITE_030,6870,16000,Rented
+EQ_00539,Dump Truck,Volvo,Volvo A40,2025,1,Diesel,SITE_017,5131,22000,Available
+EQ_00540,Crane,Liebherr,Liebherr LTM 1050,2022,4,Diesel,SITE_005,4150,30000,Available
+EQ_00541,Bulldozer,Caterpillar,Komatsu D65,2017,9,Diesel,SITE_014,5306,16000,Idle
+EQ_00542,Forklift,Volvo,KION EFG,2020,6,Electric,SITE_003,4696,7000,Rented
+EQ_00543,Excavator,Volvo,JCB JS220,2025,1,Diesel,SITE_021,16554,18000,Rented
+EQ_00544,Excavator,Tata,JCB JS220,2019,7,Diesel,SITE_021,1745,18000,Available
+EQ_00545,Crane,Liebherr,Zoomlion QY25,2017,9,Diesel,SITE_026,14031,30000,Rented
+EQ_00546,Generator,Komatsu,CAT XQ500,2024,2,Diesel,SITE_011,20909,9000,Maintenance
+EQ_00547,Generator,Tata,Kirloskar KG500,2025,1,Diesel,SITE_010,16959,9000,Idle
+EQ_00548,Forklift,Tata,KION EFG,2025,1,Electric,SITE_003,9161,7000,Available
+EQ_00549,Bulldozer,Volvo,Liebherr PR 726,2025,1,Diesel,SITE_013,1777,16000,Rented
+EQ_00550,Loader,Volvo,Komatsu WA380,2024,2,Diesel,SITE_015,18433,14000,Rented
+EQ_00551,Excavator,Volvo,CAT 320,2020,6,Diesel,SITE_023,567,18000,Rented
+EQ_00552,Dump Truck,Komatsu,Volvo A40,2017,9,Diesel,SITE_023,15148,22000,Rented
+EQ_00553,Forklift,Komatsu,Toyota 8FD,2022,4,Diesel,SITE_005,14925,7000,Rented
+EQ_00554,Generator,Tata,CAT XQ500,2018,8,Diesel,SITE_009,4626,9000,Rented
+EQ_00555,Dump Truck,Tata,CAT 777,2020,6,Diesel,SITE_016,16407,22000,Rented
+EQ_00556,Crane,Caterpillar,Zoomlion QY25,2022,4,Diesel,SITE_011,4272,30000,Rented
+EQ_00557,Forklift,Caterpillar,JCB Telehandler,2025,1,Electric,SITE_001,5351,7000,Rented
+EQ_00558,Loader,Volvo,Komatsu WA380,2018,8,Diesel,SITE_026,17957,14000,Maintenance
+EQ_00559,Excavator,Komatsu,JCB JS220,2018,8,Diesel,SITE_022,21551,18000,Rented
+EQ_00560,Crane,Komatsu,Liebherr LTM 1050,2023,3,Diesel,SITE_016,6191,30000,Rented
+EQ_00561,Excavator,Tata,JCB JS220,2016,10,Diesel,SITE_010,20308,18000,Maintenance
+EQ_00562,Bulldozer,Liebherr,CAT D6,2021,5,Diesel,SITE_026,20135,16000,Idle
+EQ_00563,Excavator,Volvo,JCB JS220,2023,3,Diesel,SITE_002,17042,18000,Available
+EQ_00564,Loader,Caterpillar,Komatsu WA380,2021,5,Diesel,SITE_014,3511,14000,Rented
+EQ_00565,Dump Truck,Liebherr,Volvo A40,2019,7,Diesel,SITE_025,6937,22000,Rented
+EQ_00566,Crane,Komatsu,Tadano GR-1000,2024,2,Diesel,SITE_029,15070,30000,Rented
+EQ_00567,Loader,Caterpillar,Volvo L120,2019,7,Diesel,SITE_008,21983,14000,Available
+EQ_00568,Forklift,Volvo,KION EFG,2023,3,Diesel,SITE_020,18011,7000,Rented
+EQ_00569,Generator,Komatsu,Cummins C500,2020,6,Diesel,SITE_006,9535,9000,Rented
+EQ_00570,Dump Truck,Volvo,CAT 777,2016,10,Diesel,SITE_004,5558,22000,Rented
+EQ_00571,Bulldozer,Tata,CAT D6,2021,5,Diesel,SITE_011,21147,16000,Idle
+EQ_00572,Forklift,Liebherr,Toyota 8FD,2016,10,Diesel,SITE_027,6438,7000,Rented
+EQ_00573,Bulldozer,Liebherr,Komatsu D65,2025,1,Diesel,SITE_021,7857,16000,Idle
+EQ_00574,Crane,Liebherr,Tadano GR-1000,2022,4,Diesel,SITE_015,21237,30000,Idle
+EQ_00575,Forklift,JCB,Toyota 8FD,2019,7,Electric,SITE_009,12575,7000,Idle
+EQ_00576,Loader,Volvo,CAT 950,2020,6,Diesel,SITE_005,6188,14000,Available
+EQ_00577,Generator,Liebherr,Cummins C500,2022,4,Diesel,SITE_009,614,9000,Maintenance
+EQ_00578,Dump Truck,Tata,Volvo A40,2018,8,Diesel,SITE_005,9744,22000,Available
+EQ_00579,Dump Truck,Liebherr,CAT 777,2018,8,Diesel,SITE_006,21699,22000,Rented
+EQ_00580,Bulldozer,Volvo,Komatsu D65,2020,6,Diesel,SITE_021,9799,16000,Idle
+EQ_00581,Bulldozer,Liebherr,Komatsu D65,2018,8,Diesel,SITE_004,15539,16000,Rented
+EQ_00582,Crane,Volvo,Tadano GR-1000,2023,3,Diesel,SITE_002,5940,30000,Rented
+EQ_00583,Excavator,Komatsu,JCB JS220,2017,9,Diesel,SITE_017,17175,18000,Rented
+EQ_00584,Forklift,Tata,JCB Telehandler,2024,2,Electric,SITE_009,17179,7000,Maintenance
+EQ_00585,Bulldozer,Volvo,Liebherr PR 726,2019,7,Diesel,SITE_014,13578,16000,Rented
+EQ_00586,Dump Truck,Volvo,Volvo A40,2021,5,Diesel,SITE_005,17094,22000,Rented
+EQ_00587,Generator,JCB,CAT XQ500,2017,9,Diesel,SITE_007,12944,9000,Idle
+EQ_00588,Generator,Komatsu,Kirloskar KG500,2019,7,Diesel,SITE_014,8633,9000,Available
+EQ_00589,Loader,Tata,Volvo L120,2023,3,Diesel,SITE_021,16364,14000,Available
+EQ_00590,Loader,JCB,Volvo L120,2018,8,Diesel,SITE_013,18455,14000,Rented
+EQ_00591,Forklift,Liebherr,Toyota 8FD,2017,9,Diesel,SITE_017,18582,7000,Idle
+EQ_00592,Dump Truck,Volvo,Komatsu HD605,2021,5,Diesel,SITE_016,5081,22000,Available
+EQ_00593,Generator,Tata,Kirloskar KG500,2017,9,Diesel,SITE_009,15046,9000,Available
+EQ_00594,Forklift,Komatsu,Toyota 8FD,2019,7,Electric,SITE_009,592,7000,Available
+EQ_00595,Generator,JCB,CAT XQ500,2020,6,Diesel,SITE_013,12797,9000,Idle
+EQ_00596,Excavator,Volvo,JCB JS220,2021,5,Diesel,SITE_001,12780,18000,Available
+EQ_00597,Dump Truck,Caterpillar,Komatsu HD605,2022,4,Diesel,SITE_021,8315,22000,Rented
+EQ_00598,Excavator,Tata,Komatsu PC210,2022,4,Diesel,SITE_019,21872,18000,Idle
+EQ_00599,Dump Truck,JCB,CAT 777,2024,2,Diesel,SITE_010,19483,22000,Available
+EQ_00600,Forklift,Komatsu,JCB Telehandler,2016,10,Electric,SITE_012,1330,7000,Rented
+EQ_00601,Loader,JCB,Komatsu WA380,2019,7,Diesel,SITE_010,4989,14000,Rented
+EQ_00602,Loader,JCB,CAT 950,2016,10,Diesel,SITE_020,4971,14000,Maintenance
+EQ_00603,Excavator,JCB,Komatsu PC210,2016,10,Diesel,SITE_023,19797,18000,Rented
+EQ_00604,Forklift,Liebherr,KION EFG,2018,8,Electric,SITE_004,11656,7000,Rented
+EQ_00605,Excavator,Caterpillar,CAT 320,2021,5,Diesel,SITE_013,16170,18000,Available
+EQ_00606,Excavator,Komatsu,Komatsu PC210,2024,2,Diesel,SITE_001,17913,18000,Rented
+EQ_00607,Bulldozer,Komatsu,CAT D6,2023,3,Diesel,SITE_014,17003,16000,Maintenance
+EQ_00608,Excavator,Komatsu,JCB JS220,2022,4,Diesel,SITE_008,2414,18000,Available
+EQ_00609,Loader,Volvo,Komatsu WA380,2023,3,Diesel,SITE_011,3517,14000,Rented
+EQ_00610,Loader,Tata,Volvo L120,2017,9,Diesel,SITE_014,8997,14000,Idle
+EQ_00611,Crane,Komatsu,Zoomlion QY25,2024,2,Diesel,SITE_010,7775,30000,Available
+EQ_00612,Excavator,Tata,Komatsu PC210,2024,2,Diesel,SITE_012,16562,18000,Rented
+EQ_00613,Excavator,Komatsu,CAT 320,2016,10,Diesel,SITE_023,3859,18000,Rented
+EQ_00614,Crane,Caterpillar,Tadano GR-1000,2020,6,Diesel,SITE_025,8488,30000,Rented
+EQ_00615,Excavator,Volvo,Komatsu PC210,2024,2,Diesel,SITE_001,5586,18000,Rented
+EQ_00616,Dump Truck,Volvo,CAT 777,2020,6,Diesel,SITE_012,4559,22000,Rented
+EQ_00617,Bulldozer,JCB,CAT D6,2024,2,Diesel,SITE_026,4215,16000,Available
+EQ_00618,Crane,Liebherr,Tadano GR-1000,2025,1,Diesel,SITE_016,4703,30000,Rented
+EQ_00619,Crane,Volvo,Liebherr LTM 1050,2020,6,Diesel,SITE_007,12634,30000,Rented
+EQ_00620,Loader,Volvo,Volvo L120,2016,10,Diesel,SITE_018,9316,14000,Rented
+EQ_00621,Excavator,Caterpillar,CAT 320,2019,7,Diesel,SITE_005,9858,18000,Available
+EQ_00622,Excavator,Komatsu,JCB JS220,2018,8,Diesel,SITE_001,10807,18000,Idle
+EQ_00623,Forklift,Volvo,JCB Telehandler,2020,6,Diesel,SITE_019,16432,7000,Available
+EQ_00624,Excavator,Volvo,JCB JS220,2021,5,Diesel,SITE_016,19029,18000,Maintenance
+EQ_00625,Loader,Liebherr,CAT 950,2020,6,Diesel,SITE_023,11818,14000,Rented
+EQ_00626,Loader,Tata,CAT 950,2017,9,Diesel,SITE_011,14308,14000,Maintenance
+EQ_00627,Crane,Caterpillar,Tadano GR-1000,2019,7,Diesel,SITE_026,16379,30000,Available
+EQ_00628,Loader,Liebherr,CAT 950,2022,4,Diesel,SITE_013,15343,14000,Available
+EQ_00629,Generator,Volvo,Cummins C500,2016,10,Diesel,SITE_023,3386,9000,Rented
+EQ_00630,Generator,Volvo,Kirloskar KG500,2018,8,Diesel,SITE_004,21634,9000,Available
+EQ_00631,Bulldozer,Caterpillar,CAT D6,2024,2,Diesel,SITE_003,4043,16000,Available
+EQ_00632,Crane,JCB,Liebherr LTM 1050,2016,10,Diesel,SITE_024,9354,30000,Rented
+EQ_00633,Bulldozer,JCB,Liebherr PR 726,2020,6,Diesel,SITE_026,14530,16000,Idle
+EQ_00634,Loader,Volvo,CAT 950,2018,8,Diesel,SITE_029,9172,14000,Available
+EQ_00635,Dump Truck,Volvo,Volvo A40,2017,9,Diesel,SITE_010,5727,22000,Idle
+EQ_00636,Bulldozer,Liebherr,CAT D6,2020,6,Diesel,SITE_001,20351,16000,Maintenance
+EQ_00637,Crane,Tata,Liebherr LTM 1050,2021,5,Diesel,SITE_030,2037,30000,Idle
+EQ_00638,Forklift,Tata,KION EFG,2017,9,Electric,SITE_019,5786,7000,Rented
+EQ_00639,Excavator,Liebherr,CAT 320,2016,10,Diesel,SITE_008,21849,18000,Rented
+EQ_00640,Loader,Liebherr,Volvo L120,2017,9,Diesel,SITE_023,16191,14000,Rented
+EQ_00641,Generator,Komatsu,Cummins C500,2022,4,Diesel,SITE_028,2369,9000,Rented
+EQ_00642,Excavator,Volvo,Komatsu PC210,2024,2,Diesel,SITE_009,16723,18000,Idle
+EQ_00643,Excavator,Komatsu,CAT 320,2017,9,Diesel,SITE_024,21344,18000,Available
+EQ_00644,Excavator,JCB,CAT 320,2019,7,Diesel,SITE_024,2602,18000,Rented
+EQ_00645,Forklift,Volvo,JCB Telehandler,2019,7,Diesel,SITE_016,9402,7000,Available
+EQ_00646,Excavator,Volvo,Komatsu PC210,2019,7,Diesel,SITE_019,10566,18000,Idle
+EQ_00647,Excavator,Caterpillar,CAT 320,2018,8,Diesel,SITE_009,3316,18000,Rented
+EQ_00648,Excavator,Volvo,CAT 320,2016,10,Diesel,SITE_028,4812,18000,Rented
+EQ_00649,Excavator,JCB,JCB JS220,2021,5,Diesel,SITE_030,4235,18000,Idle
+EQ_00650,Dump Truck,Tata,CAT 777,2019,7,Diesel,SITE_030,4485,22000,Idle
+EQ_00651,Bulldozer,Tata,CAT D6,2019,7,Diesel,SITE_023,9175,16000,Available
+EQ_00652,Dump Truck,Volvo,CAT 777,2018,8,Diesel,SITE_002,10472,22000,Maintenance
+EQ_00653,Dump Truck,Tata,Komatsu HD605,2025,1,Diesel,SITE_011,5616,22000,Idle
+EQ_00654,Generator,Komatsu,Cummins C500,2022,4,Diesel,SITE_014,6722,9000,Available
+EQ_00655,Excavator,Volvo,JCB JS220,2020,6,Diesel,SITE_029,4633,18000,Maintenance
+EQ_00656,Forklift,Komatsu,KION EFG,2018,8,Diesel,SITE_017,17615,7000,Rented
+EQ_00657,Dump Truck,Liebherr,CAT 777,2024,2,Diesel,SITE_017,5052,22000,Rented
+EQ_00658,Excavator,Liebherr,CAT 320,2024,2,Diesel,SITE_005,20013,18000,Rented
+EQ_00659,Generator,Caterpillar,CAT XQ500,2016,10,Diesel,SITE_024,12085,9000,Rented
+EQ_00660,Forklift,Volvo,Toyota 8FD,2025,1,Diesel,SITE_011,17758,7000,Available
+EQ_00661,Bulldozer,Liebherr,CAT D6,2022,4,Diesel,SITE_003,14182,16000,Available
+EQ_00662,Forklift,Liebherr,JCB Telehandler,2016,10,Diesel,SITE_030,6219,7000,Available
+EQ_00663,Loader,Tata,Komatsu WA380,2023,3,Diesel,SITE_006,13429,14000,Rented
+EQ_00664,Dump Truck,Caterpillar,Volvo A40,2017,9,Diesel,SITE_001,6393,22000,Rented
+EQ_00665,Forklift,Caterpillar,Toyota 8FD,2016,10,Electric,SITE_003,3049,7000,Available
+EQ_00666,Crane,Tata,Zoomlion QY25,2017,9,Diesel,SITE_014,5976,30000,Rented
+EQ_00667,Generator,Volvo,Cummins C500,2020,6,Diesel,SITE_004,6426,9000,Rented
+EQ_00668,Crane,Komatsu,Tadano GR-1000,2022,4,Diesel,SITE_026,3403,30000,Rented
+EQ_00669,Generator,Volvo,CAT XQ500,2020,6,Diesel,SITE_016,1007,9000,Idle
+EQ_00670,Dump Truck,Komatsu,Komatsu HD605,2017,9,Diesel,SITE_010,20791,22000,Rented
+EQ_00671,Bulldozer,Caterpillar,Liebherr PR 726,2017,9,Diesel,SITE_001,11538,16000,Idle
+EQ_00672,Loader,JCB,Volvo L120,2024,2,Diesel,SITE_015,9144,14000,Available
+EQ_00673,Crane,Volvo,Liebherr LTM 1050,2025,1,Diesel,SITE_005,20493,30000,Rented
+EQ_00674,Excavator,JCB,Komatsu PC210,2023,3,Diesel,SITE_030,5330,18000,Idle
+EQ_00675,Excavator,Komatsu,JCB JS220,2017,9,Diesel,SITE_009,9161,18000,Idle
+EQ_00676,Crane,Volvo,Liebherr LTM 1050,2024,2,Diesel,SITE_015,18703,30000,Rented
+EQ_00677,Excavator,JCB,JCB JS220,2022,4,Diesel,SITE_001,14088,18000,Rented
+EQ_00678,Excavator,JCB,CAT 320,2021,5,Diesel,SITE_004,9082,18000,Rented
+EQ_00679,Generator,Volvo,Kirloskar KG500,2017,9,Diesel,SITE_007,6000,9000,Rented
+EQ_00680,Generator,JCB,Kirloskar KG500,2025,1,Diesel,SITE_002,1255,9000,Maintenance
+EQ_00681,Generator,Volvo,Kirloskar KG500,2020,6,Diesel,SITE_022,2328,9000,Idle
+EQ_00682,Crane,JCB,Tadano GR-1000,2016,10,Diesel,SITE_029,3981,30000,Rented
+EQ_00683,Forklift,Caterpillar,KION EFG,2018,8,Electric,SITE_030,17412,7000,Available
+EQ_00684,Dump Truck,Volvo,Volvo A40,2020,6,Diesel,SITE_008,14243,22000,Rented
+EQ_00685,Excavator,Caterpillar,CAT 320,2016,10,Diesel,SITE_024,9819,18000,Available
+EQ_00686,Excavator,Tata,CAT 320,2019,7,Diesel,SITE_016,17332,18000,Available
+EQ_00687,Dump Truck,Liebherr,Komatsu HD605,2020,6,Diesel,SITE_002,3956,22000,Rented
+EQ_00688,Excavator,Caterpillar,Komatsu PC210,2025,1,Diesel,SITE_003,5035,18000,Rented
+EQ_00689,Loader,JCB,Komatsu WA380,2016,10,Diesel,SITE_017,8943,14000,Available
+EQ_00690,Forklift,Komatsu,JCB Telehandler,2021,5,Diesel,SITE_013,20224,7000,Available
+EQ_00691,Excavator,Tata,CAT 320,2025,1,Diesel,SITE_001,13705,18000,Available
+EQ_00692,Excavator,Caterpillar,Komatsu PC210,2024,2,Diesel,SITE_028,18796,18000,Idle
+EQ_00693,Forklift,Tata,JCB Telehandler,2025,1,Diesel,SITE_022,5835,7000,Rented
+EQ_00694,Dump Truck,Caterpillar,Komatsu HD605,2017,9,Diesel,SITE_016,18740,22000,Available
+EQ_00695,Excavator,Caterpillar,CAT 320,2024,2,Diesel,SITE_030,2058,18000,Available
+EQ_00696,Forklift,Komatsu,Toyota 8FD,2025,1,Diesel,SITE_030,5394,7000,Rented
+EQ_00697,Forklift,Komatsu,KION EFG,2019,7,Diesel,SITE_030,11745,7000,Rented
+EQ_00698,Loader,Caterpillar,Volvo L120,2020,6,Diesel,SITE_008,1586,14000,Rented
+EQ_00699,Dump Truck,Liebherr,CAT 777,2021,5,Diesel,SITE_027,18952,22000,Rented
+EQ_00700,Bulldozer,Komatsu,CAT D6,2020,6,Diesel,SITE_016,19149,16000,Idle
+EQ_00701,Excavator,Komatsu,CAT 320,2018,8,Diesel,SITE_022,12141,18000,Rented
+EQ_00702,Dump Truck,Komatsu,Komatsu HD605,2025,1,Diesel,SITE_026,7074,22000,Rented
+EQ_00703,Bulldozer,Volvo,Liebherr PR 726,2025,1,Diesel,SITE_005,2627,16000,Available
+EQ_00704,Dump Truck,Tata,Volvo A40,2019,7,Diesel,SITE_014,13806,22000,Idle
+EQ_00705,Generator,Caterpillar,Kirloskar KG500,2024,2,Diesel,SITE_004,12059,9000,Idle
+EQ_00706,Excavator,Liebherr,JCB JS220,2019,7,Diesel,SITE_009,16839,18000,Rented
+EQ_00707,Dump Truck,Komatsu,Volvo A40,2023,3,Diesel,SITE_013,13454,22000,Rented
+EQ_00708,Bulldozer,Volvo,Komatsu D65,2021,5,Diesel,SITE_026,3258,16000,Available
+EQ_00709,Forklift,Tata,KION EFG,2020,6,Electric,SITE_026,3117,7000,Maintenance
+EQ_00710,Bulldozer,JCB,Liebherr PR 726,2017,9,Diesel,SITE_012,17288,16000,Rented
+EQ_00711,Dump Truck,JCB,Volvo A40,2022,4,Diesel,SITE_010,3919,22000,Available
+EQ_00712,Dump Truck,Komatsu,Komatsu HD605,2019,7,Diesel,SITE_016,20677,22000,Rented
+EQ_00713,Crane,Liebherr,Tadano GR-1000,2018,8,Diesel,SITE_028,2777,30000,Rented
+EQ_00714,Dump Truck,Liebherr,Volvo A40,2017,9,Diesel,SITE_030,16160,22000,Maintenance
+EQ_00715,Generator,Tata,Kirloskar KG500,2025,1,Diesel,SITE_007,21467,9000,Rented
+EQ_00716,Dump Truck,Tata,Komatsu HD605,2017,9,Diesel,SITE_006,9986,22000,Rented
+EQ_00717,Generator,Caterpillar,Cummins C500,2023,3,Diesel,SITE_022,1719,9000,Rented
+EQ_00718,Forklift,Komatsu,JCB Telehandler,2024,2,Diesel,SITE_010,19348,7000,Rented
+EQ_00719,Loader,JCB,CAT 950,2016,10,Diesel,SITE_006,4527,14000,Rented
+EQ_00720,Loader,Caterpillar,Volvo L120,2021,5,Diesel,SITE_001,11840,14000,Available
+EQ_00721,Excavator,Liebherr,JCB JS220,2021,5,Diesel,SITE_013,21667,18000,Maintenance
+EQ_00722,Generator,Caterpillar,Kirloskar KG500,2019,7,Diesel,SITE_012,16512,9000,Rented
+EQ_00723,Loader,JCB,Volvo L120,2022,4,Diesel,SITE_017,1495,14000,Rented
+EQ_00724,Loader,Liebherr,CAT 950,2020,6,Diesel,SITE_007,18140,14000,Available
+EQ_00725,Excavator,Tata,Komatsu PC210,2020,6,Diesel,SITE_022,3966,18000,Available
+EQ_00726,Forklift,Volvo,KION EFG,2020,6,Diesel,SITE_021,16611,7000,Rented
+EQ_00727,Crane,Volvo,Liebherr LTM 1050,2024,2,Diesel,SITE_014,13850,30000,Available
+EQ_00728,Dump Truck,Tata,Komatsu HD605,2022,4,Diesel,SITE_006,6688,22000,Available
+EQ_00729,Excavator,Komatsu,Komatsu PC210,2019,7,Diesel,SITE_016,9607,18000,Maintenance
+EQ_00730,Forklift,Caterpillar,KION EFG,2025,1,Diesel,SITE_021,3033,7000,Rented
+EQ_00731,Excavator,Liebherr,Komatsu PC210,2024,2,Diesel,SITE_012,21715,18000,Rented
+EQ_00732,Excavator,Tata,Komatsu PC210,2025,1,Diesel,SITE_008,5624,18000,Rented
+EQ_00733,Forklift,Tata,JCB Telehandler,2023,3,Diesel,SITE_016,7136,7000,Maintenance
+EQ_00734,Forklift,Komatsu,Toyota 8FD,2019,7,Diesel,SITE_011,11311,7000,Rented
+EQ_00735,Bulldozer,Caterpillar,Komatsu D65,2023,3,Diesel,SITE_013,14956,16000,Maintenance
+EQ_00736,Loader,Tata,Komatsu WA380,2019,7,Diesel,SITE_011,11363,14000,Idle
+EQ_00737,Generator,JCB,CAT XQ500,2018,8,Diesel,SITE_010,11360,9000,Rented
+EQ_00738,Forklift,Tata,JCB Telehandler,2020,6,Electric,SITE_022,13026,7000,Rented
+EQ_00739,Crane,Liebherr,Tadano GR-1000,2025,1,Diesel,SITE_014,18940,30000,Rented
+EQ_00740,Loader,Caterpillar,Komatsu WA380,2021,5,Diesel,SITE_014,8994,14000,Rented
+EQ_00741,Generator,Liebherr,Cummins C500,2019,7,Diesel,SITE_020,18390,9000,Rented
+EQ_00742,Generator,Caterpillar,Kirloskar KG500,2020,6,Diesel,SITE_011,17418,9000,Rented
+EQ_00743,Generator,JCB,CAT XQ500,2018,8,Diesel,SITE_004,21161,9000,Rented
+EQ_00744,Dump Truck,Liebherr,CAT 777,2022,4,Diesel,SITE_026,20132,22000,Available
+EQ_00745,Excavator,Volvo,CAT 320,2019,7,Diesel,SITE_002,17660,18000,Rented
+EQ_00746,Forklift,Tata,Toyota 8FD,2021,5,Electric,SITE_018,5804,7000,Available
+EQ_00747,Forklift,JCB,Toyota 8FD,2019,7,Electric,SITE_008,17147,7000,Rented
+EQ_00748,Generator,Caterpillar,CAT XQ500,2019,7,Diesel,SITE_007,16335,9000,Rented
+EQ_00749,Excavator,Liebherr,CAT 320,2025,1,Diesel,SITE_002,6724,18000,Idle
+EQ_00750,Bulldozer,Tata,Liebherr PR 726,2019,7,Diesel,SITE_028,15076,16000,Available
+EQ_00751,Generator,JCB,Kirloskar KG500,2016,10,Diesel,SITE_013,5938,9000,Rented
+EQ_00752,Excavator,Caterpillar,Komatsu PC210,2019,7,Diesel,SITE_011,11746,18000,Rented
+EQ_00753,Forklift,Volvo,Toyota 8FD,2021,5,Electric,SITE_023,17630,7000,Available
+EQ_00754,Crane,Volvo,Zoomlion QY25,2016,10,Diesel,SITE_002,4553,30000,Available
+EQ_00755,Generator,Caterpillar,Cummins C500,2019,7,Diesel,SITE_017,7744,9000,Available
+EQ_00756,Forklift,Volvo,JCB Telehandler,2017,9,Electric,SITE_015,17597,7000,Available
+EQ_00757,Crane,JCB,Zoomlion QY25,2021,5,Diesel,SITE_017,10256,30000,Rented
+EQ_00758,Crane,Tata,Zoomlion QY25,2023,3,Diesel,SITE_004,21153,30000,Rented
+EQ_00759,Dump Truck,Volvo,Komatsu HD605,2025,1,Diesel,SITE_029,671,22000,Rented
+EQ_00760,Dump Truck,Tata,Volvo A40,2019,7,Diesel,SITE_008,16019,22000,Available
+EQ_00761,Loader,Komatsu,CAT 950,2024,2,Diesel,SITE_021,18005,14000,Available
+EQ_00762,Dump Truck,Volvo,Komatsu HD605,2018,8,Diesel,SITE_023,20233,22000,Available
+EQ_00763,Forklift,Komatsu,KION EFG,2023,3,Diesel,SITE_011,3870,7000,Rented
+EQ_00764,Loader,Tata,Volvo L120,2021,5,Diesel,SITE_004,21659,14000,Rented
+EQ_00765,Excavator,Liebherr,Komatsu PC210,2023,3,Diesel,SITE_009,8933,18000,Rented
+EQ_00766,Crane,Tata,Zoomlion QY25,2023,3,Diesel,SITE_025,8069,30000,Available
+EQ_00767,Crane,JCB,Liebherr LTM 1050,2021,5,Diesel,SITE_028,8144,30000,Available
+EQ_00768,Excavator,Liebherr,Komatsu PC210,2018,8,Diesel,SITE_029,14221,18000,Idle
+EQ_00769,Excavator,Liebherr,JCB JS220,2021,5,Diesel,SITE_007,14674,18000,Available
+EQ_00770,Dump Truck,Volvo,Komatsu HD605,2024,2,Diesel,SITE_019,10689,22000,Available
+EQ_00771,Crane,Volvo,Tadano GR-1000,2025,1,Diesel,SITE_005,2027,30000,Available
+EQ_00772,Forklift,Volvo,Toyota 8FD,2025,1,Electric,SITE_022,21712,7000,Idle
+EQ_00773,Bulldozer,Tata,Liebherr PR 726,2017,9,Diesel,SITE_013,5275,16000,Rented
+EQ_00774,Excavator,Liebherr,JCB JS220,2021,5,Diesel,SITE_022,2516,18000,Rented
+EQ_00775,Generator,JCB,Cummins C500,2017,9,Diesel,SITE_021,13343,9000,Idle
+EQ_00776,Forklift,JCB,Toyota 8FD,2022,4,Diesel,SITE_030,9366,7000,Available
+EQ_00777,Bulldozer,Komatsu,Liebherr PR 726,2025,1,Diesel,SITE_015,13734,16000,Idle
+EQ_00778,Bulldozer,Caterpillar,Komatsu D65,2016,10,Diesel,SITE_011,19324,16000,Available
+EQ_00779,Excavator,JCB,CAT 320,2022,4,Diesel,SITE_016,2592,18000,Rented
+EQ_00780,Loader,Volvo,CAT 950,2025,1,Diesel,SITE_005,6607,14000,Rented
+EQ_00781,Loader,Komatsu,Komatsu WA380,2024,2,Diesel,SITE_004,11606,14000,Rented
+EQ_00782,Bulldozer,Volvo,Liebherr PR 726,2019,7,Diesel,SITE_016,17437,16000,Idle
+EQ_00783,Excavator,Liebherr,Komatsu PC210,2017,9,Diesel,SITE_025,13413,18000,Available
+EQ_00784,Loader,Liebherr,CAT 950,2025,1,Diesel,SITE_016,8729,14000,Idle
+EQ_00785,Forklift,Tata,KION EFG,2025,1,Electric,SITE_024,13616,7000,Rented
+EQ_00786,Dump Truck,Volvo,Volvo A40,2021,5,Diesel,SITE_006,21569,22000,Rented
+EQ_00787,Loader,JCB,CAT 950,2025,1,Diesel,SITE_014,10821,14000,Idle
+EQ_00788,Excavator,Caterpillar,Komatsu PC210,2016,10,Diesel,SITE_019,19495,18000,Available
+EQ_00789,Bulldozer,Volvo,Liebherr PR 726,2022,4,Diesel,SITE_011,17269,16000,Idle
+EQ_00790,Bulldozer,JCB,Liebherr PR 726,2016,10,Diesel,SITE_001,6978,16000,Rented
+EQ_00791,Generator,Komatsu,Kirloskar KG500,2025,1,Diesel,SITE_003,5864,9000,Rented
+EQ_00792,Forklift,Volvo,JCB Telehandler,2022,4,Electric,SITE_028,17059,7000,Available
+EQ_00793,Forklift,Komatsu,JCB Telehandler,2025,1,Electric,SITE_019,4960,7000,Rented
+EQ_00794,Forklift,JCB,JCB Telehandler,2021,5,Electric,SITE_008,7742,7000,Rented
+EQ_00795,Forklift,JCB,Toyota 8FD,2016,10,Diesel,SITE_008,5561,7000,Rented
+EQ_00796,Forklift,JCB,JCB Telehandler,2016,10,Electric,SITE_002,13536,7000,Available
+EQ_00797,Excavator,JCB,JCB JS220,2019,7,Diesel,SITE_029,6824,18000,Available
+EQ_00798,Excavator,Liebherr,JCB JS220,2023,3,Diesel,SITE_004,14657,18000,Idle
+EQ_00799,Crane,Tata,Tadano GR-1000,2017,9,Diesel,SITE_023,20599,30000,Available
+EQ_00800,Dump Truck,JCB,CAT 777,2024,2,Diesel,SITE_008,18336,22000,Rented
