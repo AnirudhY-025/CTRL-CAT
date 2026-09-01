@@ -1,69 +1,82 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, HardHat, Building2 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-[#FDFDFD] flex flex-col items-center justify-center p-4 font-sans text-slate-900">
+      <div className="max-w-3xl w-full space-y-12 text-center">
+        
+        <div>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-4 h-4 bg-[#FFCC00] rounded-sm"></div>
+            <h1 className="text-xl font-bold tracking-[0.2em] text-slate-500 uppercase">
+              Cat FleetFlow
+            </h1>
+          </div>
+          <h2 className="text-5xl font-bold tracking-tight mb-4">
+            Industrial Operating System.
+          </h2>
+          <p className="text-xl text-slate-500 font-medium max-w-xl mx-auto">
+            AI-powered dealer control tower for construction equipment rental, fleet utilization, and jobsite safety.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        <div className="grid md:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto text-left">
+          {/* Dealer Persona */}
+          <Link
+            href="/dealer"
+            className="group block bg-white p-8 rounded-2xl border border-slate-200 hover:border-[#FFCC00] hover:shadow-lg transition-all duration-300"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="w-12 h-12 bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center mb-6">
+              <Building2 className="w-5 h-5 text-slate-900" />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Dealer Control Tower</h3>
+            <p className="text-slate-500 text-sm mb-8">
+              Manage assets, execute fleet exchanges, and view AI demand forecasts.
+            </p>
+            <div className="flex items-center text-sm font-bold text-slate-900 group-hover:text-[#B38F00] transition-colors">
+              ENTER WORKSPACE <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Customer Persona */}
+          <Link
+            href="/customer"
+            className="group block bg-white p-8 rounded-2xl border border-slate-200 hover:border-[#FFCC00] hover:shadow-lg transition-all duration-300"
           >
-            Documentation
-          </a>
+            <div className="w-12 h-12 bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center mb-6">
+              <HardHat className="w-5 h-5 text-slate-900" />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Customer Workspace</h3>
+            <p className="text-slate-500 text-sm mb-8">
+              Approve recommendations, monitor safety events, and manage rentals.
+            </p>
+            <div className="flex items-center text-sm font-bold text-slate-900 group-hover:text-[#B38F00] transition-colors">
+              ENTER WORKSPACE <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* Operator Persona */}
+          <Link
+            href="/operator"
+            className="group block bg-white p-8 rounded-2xl border border-slate-200 hover:border-[#FFCC00] hover:shadow-lg transition-all duration-300"
+          >
+            <div className="w-12 h-12 bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center mb-6">
+              <div className="w-5 h-5 border-2 border-slate-900 border-dashed rounded-sm flex items-center justify-center">
+                 <div className="w-2 h-2 bg-[#FFCC00]"></div>
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-2">Operator Check-In</h3>
+            <p className="text-slate-500 text-sm mb-8">
+              Mobile-first QR scanner and AI safety PPE verification for machine operators.
+            </p>
+            <div className="flex items-center text-sm font-bold text-slate-900 group-hover:text-[#B38F00] transition-colors">
+              OPEN SCANNER <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
         </div>
-      </main>
+
+      </div>
     </div>
   );
 }
