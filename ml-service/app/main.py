@@ -13,7 +13,14 @@ from .schemas import (
     SiteInput,
     TelemetryInput,
     UtilizationResponse,
+    ChatInput,
+    ChatResponse
 )
+
+from langchain_openai import ChatOpenAI
+from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+import dotenv
+dotenv.load_dotenv()
 
 models = {}
 
@@ -94,3 +101,27 @@ def predict_demand(data: SiteInput):
         raise HTTPException(status_code=503, detail="Model not loaded")
     frame = pd.DataFrame([data.model_dump()])[["active_equip_count", "prev_week_demand"]]
     return DemandResponse(predicted_next_week_demand=int(round(float(models["demand"].predict(frame)[0]))))
+
+@app.post("/chat", response_model=ChatResponse)
+def data_chat(data: ChatInput):
+    # Dynamically find the data directory
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "raw", "v3_cat")
+    try:
+        df_eq = pd.read_csv(os.path.join(data_dir, "equipment.csv"))
+        df_maint = pd.read_csv(os.path.join(data_dir, "maintenance.csv"))
+        df_sites = pd.read_csv(os.path.join(data_dir, "sites.csv"))
+        
+        # We use a fast, lightweight Pandas Agent
+        llm = ChatOpenAI(temperature=0, model="gpt-4o")
+        agent = create_pandas_dataframe_agent(
+            llm, 
+            [df_eq, df_maint, df_sites], 
+            verbose=False, 
+            allow_dangerous_code=True,
+            agent_type="openai-tools"
+        )
+        
+        result = agent.invoke({"input": data.query})
+        return ChatResponse(answer=result["output"])
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
