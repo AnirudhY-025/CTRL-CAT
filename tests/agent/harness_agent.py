@@ -1,70 +1,74 @@
+"""A small Browser Use Cloud integration showcase.
+
+The default command is intentionally a dry run so the showcase can be shown
+without credentials, a live deployment, or an external browser session.
+Pass ``--execute`` only when those resources are available.
+"""
+
+from __future__ import annotations
+
+import argparse
+import asyncio
 import os
-from dotenv import load_dotenv
-from playwright.sync_api import sync_playwright
-from openai import OpenAI
+from dataclasses import dataclass
 
-# Load environment variables from the .env file securely
-load_dotenv()
 
-def run_agent_test():
-    print("[AGENT] Waking up Harness Agent...")
-    
-    # 1. Start the Browser
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        
-        # 2. Navigate to your Next.js Frontend
-        target_url = "http://localhost:3000"
-        print(f"[NETWORK] Navigating to {target_url}...")
-        
-        try:
-            page.goto(target_url, timeout=10000)
-            page.wait_for_load_state("networkidle")
-            
-            # 3. Extract what the Agent "Sees"
-            visible_text = page.locator("body").inner_text()
-            
-            print("[SCAN] Agent has scanned the page. Analyzing with LLM...")
-            
-            # 4. Ask the LLM to evaluate the page state
-            # The client automatically picks up os.environ.get("OPENAI_API_KEY")
-            client = OpenAI()
-            prompt = f"""
-            You are an automated QA Agent testing a Heavy Equipment Rental Dashboard.
-            Your goal is to verify that the site is running correctly and displaying data.
-            
-            Here is the visible text extracted from the homepage:
-            ---
-            {visible_text}
-            ---
-            
-            Analyze the text and answer the following:
-            1. Did the page load successfully (no 404, 500, or blank screen)?
-            2. Does it look like the equipment or machine learning data is rendering properly?
-            3. Are there any visible error messages?
-            
-            Respond with a clear PASS or FAIL, followed by your reasoning.
-            """
-            
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.0
-            )
-            
-            # 5. Output the Result
-            result = response.choices[0].message.content
-            print("\n==================================")
-            print("[RESULT] TEST RESULT:")
-            print("==================================")
-            print(result)
-            
-        except Exception as e:
-            print(f"[ERROR] Agent encountered a critical error trying to load the site: {e}")
-            
-        finally:
-            browser.close()
+@dataclass(frozen=True)
+class ShowcaseConfig:
+    base_url: str
+    model: str
+
+
+def build_agent(config: ShowcaseConfig):
+    """Build the Browser Use Cloud agent used by the proposed harness."""
+
+    from browser_use import Agent, Browser, ChatBrowserUse
+
+    browser = Browser(use_cloud=True)
+    return Agent(
+        task=(
+            f"Open {config.base_url} and explore the CTRL+CAT dashboard as a QA user. "
+            "Inspect equipment, sites, and the checkout/check-in workflow. "
+            "Report the important UI states you encounter."
+        ),
+        llm=ChatBrowserUse(model=config.model),
+        browser=browser,
+    )
+
+
+async def execute(config: ShowcaseConfig) -> None:
+    agent = build_agent(config)
+    history = await agent.run(max_steps=10)
+    print(history.final_result() or history)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Showcase the Browser Use Cloud harness")
+    parser.add_argument(
+        "--execute",
+        action="store_true",
+        help="Actually invoke Browser Use Cloud (requires credentials and a reachable URL)",
+    )
+    args = parser.parse_args()
+
+    config = ShowcaseConfig(
+        base_url=os.getenv("E2E_BASE_URL", "https://staging.example.com"),
+        model=os.getenv("BROWSER_USE_MODEL", "bu-latest"),
+    )
+
+    if not args.execute:
+        print("[SHOWCASE] Browser Use Cloud agent scaffold is present.")
+        print(f"[SHOWCASE] Target: {config.base_url}")
+        print(f"[SHOWCASE] Model: {config.model}")
+        print("[SHOWCASE] Use --execute only to invoke a live cloud browser.")
+        return 0
+
+    if not os.getenv("BROWSER_USE_API_KEY"):
+        parser.error("--execute requires BROWSER_USE_API_KEY")
+
+    asyncio.run(execute(config))
+    return 0
+
 
 if __name__ == "__main__":
-    run_agent_test()
+    raise SystemExit(main())
