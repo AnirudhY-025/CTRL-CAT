@@ -1612,11 +1612,17 @@ function WorkflowDrawer({
   });
   const [lookup, setLookup] = React.useState("");
   const [error, setError] = React.useState("");
+  const [newOperatorMode, setNewOperatorMode] = React.useState(false);
+  const [newOperatorName, setNewOperatorName] = React.useState("");
+  const [newOperatorPhone, setNewOperatorPhone] = React.useState("");
 
   React.useEffect(() => {
     setError("");
-    setLookup("");
+    setNewOperatorMode(false);
+    setNewOperatorName("");
+    setNewOperatorPhone("");
     if (selectedAssetId) {
+      setLookup(selectedAssetId);
       const selected = assets.find((asset) => asset.id === selectedAssetId);
       if (selected)
         setForm((current) => ({
@@ -1627,6 +1633,7 @@ function WorkflowDrawer({
           condition: selected.condition,
         }));
     } else {
+      setLookup("");
       setForm((current) => ({
         ...current,
         operator: operators[0]?.name ?? "",
@@ -1699,11 +1706,9 @@ function WorkflowDrawer({
       );
       return;
     }
-    if (
-      action === "checkout" &&
-      (!form.operator || !form.site || !form.location)
-    ) {
-      setError("Operator, site, and location are required.");
+    const effectiveOperatorName = newOperatorMode ? newOperatorName.trim() : form.operator;
+    if (action === "checkout" && (!effectiveOperatorName || !form.site || !form.location)) {
+      setError(newOperatorMode ? "Operator name, site, and location are required." : "Operator, site, and location are required.");
       return;
     }
     try {
@@ -1711,7 +1716,7 @@ function WorkflowDrawer({
         action === "checkout"
           ? await checkoutEquipment({
               equipmentId: selected.id,
-              operatorId: operators.find((item) => item.name === form.operator)?.id ?? null,
+              operatorId: newOperatorMode ? null : (operators.find((item) => item.name === form.operator)?.id ?? null),
               siteId: sites.find((item) => item.name === form.site)?.id ?? "",
               location: form.location,
             })
@@ -1809,20 +1814,63 @@ function WorkflowDrawer({
                 )}
               </section>
               {action === "checkout" && (
-                <section className="grid gap-4 sm:grid-cols-2">
+                <section className="space-y-4">
                   <Field
                     label="Site"
                     value={form.site}
                     onChange={(value) => updateForm("site", value)}
                     options={sites.map((site) => site.name)}
                   />
-                  <Field
-                    label="Operator"
-                    value={form.operator}
-                    onChange={(value) => updateForm("operator", value)}
-                    options={operators.map((operator) => operator.name)}
-                  />
-                  <label className="sm:col-span-2">
+
+                  {/* ─── Operator section with toggle ─── */}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-foreground">Operator</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setNewOperatorMode((v) => !v);
+                          setNewOperatorName("");
+                          setNewOperatorPhone("");
+                        }}
+                        className="text-[11px] font-semibold text-primary hover:underline"
+                      >
+                        {newOperatorMode ? "← Use existing operator" : "+ New operator"}
+                      </button>
+                    </div>
+
+                    {newOperatorMode ? (
+                      <div className="space-y-2 rounded-xl border border-primary/30 bg-accent/30 p-3">
+                        <p className="text-[11px] font-bold text-[#8a5a00] mb-2">New Operator Details</p>
+                        <input
+                          type="text"
+                          placeholder="Full name *"
+                          value={newOperatorName}
+                          onChange={(e) => setNewOperatorName(e.target.value)}
+                          className="w-full rounded-xl border border-input bg-card px-4 py-2.5 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-primary/70 focus-visible:ring-2 focus-visible:ring-ring/30"
+                        />
+                        <input
+                          type="tel"
+                          placeholder="Phone number (optional)"
+                          value={newOperatorPhone}
+                          onChange={(e) => setNewOperatorPhone(e.target.value)}
+                          className="w-full rounded-xl border border-input bg-card px-4 py-2.5 text-sm text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-primary/70 focus-visible:ring-2 focus-visible:ring-ring/30"
+                        />
+                        <p className="text-[11px] text-muted-foreground">
+                          This operator will be logged against the checkout record.
+                        </p>
+                      </div>
+                    ) : (
+                      <Field
+                        label=""
+                        value={form.operator}
+                        onChange={(value) => updateForm("operator", value)}
+                        options={operators.map((operator) => operator.name)}
+                      />
+                    )}
+                  </div>
+
+                  <label className="block">
                     <FieldLabel>Location</FieldLabel>
                     <div className="relative mt-2">
                       <MapPin className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
