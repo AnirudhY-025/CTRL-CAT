@@ -89,6 +89,7 @@ import type {
 import type { Operator, Site } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { QrScannerDialog } from "@/components/qr-scanner-dialog";
+import { AssetQrDialog } from "@/components/asset-qr-dialog";
 
 type FilterStatus = AssetStatus | "all" | "attention";
 
@@ -1162,6 +1163,7 @@ function AssetDetailDrawer({
   const [insightsLoading, setInsightsLoading] = React.useState(false);
   const [alertStatus, setAlertStatus] = React.useState<string | null>(null);
   const [composeOpen, setComposeOpen] = React.useState(false);
+  const [qrOpen, setQrOpen] = React.useState(false);
 
   const siteObj = asset ? sites.find((s) => s.name === asset.site || s.code === asset.site) : null;
   const customerName = siteObj?.customerName || asset?.site || "Customer";
@@ -1501,9 +1503,23 @@ function AssetDetailDrawer({
               </section>
             </div>
             <div className="flex items-center justify-between border-t border-border bg-muted/40 px-6 py-4">
-              <Button type="button" variant="ghost" onClick={onClose}>
-                Close
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button type="button" variant="ghost" onClick={onClose}>
+                  Close
+                </Button>
+                {asset && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="gap-1.5 text-xs"
+                    onClick={() => setQrOpen(true)}
+                  >
+                    <QrCode className="h-3.5 w-3.5" />
+                    Print QR Tag
+                  </Button>
+                )}
+              </div>
               {nextAction && (
                 <Button
                   type="button"
@@ -1533,6 +1549,16 @@ function AssetDetailDrawer({
         defaultBody={`Hi ${customerContact.name},\n\nThis is regarding the ${asset?.name ?? "equipment"} deployed at ${asset?.site ?? "your site"}.\n\n`}
         onSuccess={(msg) => setAlertStatus(`✓ ${msg}`)}
       />
+
+      {asset && (
+        <AssetQrDialog
+          open={qrOpen}
+          onOpenChange={setQrOpen}
+          assetId={asset.id}
+          assetName={asset.name}
+          serialNumber={asset.serialNumber}
+        />
+      )}
     </Dialog>
   );
 }
