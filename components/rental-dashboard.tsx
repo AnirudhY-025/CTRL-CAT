@@ -264,9 +264,9 @@ export function RentalDashboard() {
 
   const globalActivity = activity.slice(0, GLOBAL_ACTIVITY_LIMIT);
 
-  const loadDashboard = React.useCallback(async () => {
-    setLoading(true);
-    setLoadError(null);
+  const loadDashboard = React.useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
+    if (!silent) setLoadError(null);
     try {
       const [nextAssets, nextActivity, nextOperators, nextSites, nextDemand] =
         await Promise.all([
@@ -282,16 +282,21 @@ export function RentalDashboard() {
       setSites(nextSites);
       setDemand(nextDemand);
     } catch (error) {
-      setLoadError(
-        error instanceof Error ? error.message : "Unable to load dashboard",
-      );
+      if (!silent) {
+        setLoadError(
+          error instanceof Error ? error.message : "Unable to load dashboard",
+        );
+      }
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }, []);
 
   React.useEffect(() => {
     void loadDashboard();
+    // Silent auto-poll every 5 seconds for real-time demo updates
+    const interval = setInterval(() => void loadDashboard(true), 5000);
+    return () => clearInterval(interval);
   }, [loadDashboard]);
 
   const counts = {
