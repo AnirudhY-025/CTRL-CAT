@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 
     await sql`
       UPDATE equipment
-      SET site_id = ${validSiteId}, operator_id = ${validOperatorId}, location = ${location}, legacy_status = 'Active', check_out_date = current_date, updated_at = now()
+      SET site_id = ${validSiteId}, operator_id = ${validOperatorId}, location = ${location}, legacy_status = 'Active'
       WHERE equipment_id = ${equipmentId}
     `;
 

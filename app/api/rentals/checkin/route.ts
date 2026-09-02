@@ -61,8 +61,7 @@ export async function POST(request: Request) {
     await sql`
       UPDATE equipment
       SET site_id = ${yardId}, operator_id = NULL, location = 'Return inspection', condition = ${condition},
-          legacy_status = CASE WHEN ${condition} = 'Service due' THEN 'Maintenance' ELSE 'Available' END,
-          check_in_date = ${returnTime.toISOString()}::date, updated_at = now()
+          legacy_status = CASE WHEN ${condition} = 'Service due' THEN 'Maintenance' ELSE 'Available' END
       WHERE equipment_id = ${equipmentId}
     `;
 
