@@ -1,16 +1,35 @@
 "use client";
 
 import React, { useEffect, useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Navigation, Clock, Truck, MapPin, Flag, CheckCircle2, ShieldCheck, Phone, X } from "lucide-react";
+import {
+  Navigation,
+  Clock,
+  Truck,
+  MapPin,
+  Flag,
+  CheckCircle2,
+  ShieldCheck,
+  Phone,
+  X,
+} from "lucide-react";
+import type { Asset } from "@/lib/types";
 
 // Safe leaflet icon setup
 if (typeof window !== "undefined") {
-  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
   L.Icon.Default.mergeOptions({
-    iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+    iconRetinaUrl:
+      "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
     shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
   });
@@ -58,11 +77,16 @@ interface MapCanvasProps {
   selectedTransit: TransitItem | null;
   onSelectSite: (site: Site | null) => void;
   onSelectTransit: (transit: TransitItem | null) => void;
-  assets: any[];
-  onSelectAsset: (asset: any) => void;
+  assets: Asset[];
+  onSelectAsset: (asset: Asset) => void;
 }
 
-const createPinIcon = (label: string, color: string, bg: string, iconHtml: string) => {
+const createPinIcon = (
+  label: string,
+  color: string,
+  bg: string,
+  iconHtml: string,
+) => {
   const htmlString = `
     <div class="group relative flex flex-col items-center cursor-pointer -translate-x-1/2 -translate-y-full">
       <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white text-[11px] font-black shadow-xl border border-white/30 whitespace-nowrap ${bg} transition-transform group-hover:scale-110">
@@ -101,7 +125,7 @@ const createVehicleIcon = (item: TransitItem, isSelected: boolean) => {
           <circle cx="17.5" cy="17.5" r="2.5"/>
         </svg>
       </div>
-      <div class="absolute -bottom-5 bg-slate-900/90 text-amber-300 font-mono text-[9px] px-1.5 py-0.5 rounded shadow border border-amber-400/30 whitespace-nowrap">
+      <div class="absolute -bottom-5 bg-slate-900/90 text-amber-300 font-semibold tracking-tight text-[9px] px-1.5 py-0.5 rounded shadow border border-amber-400/30 whitespace-nowrap">
         ${item.speedKmh} km/h
       </div>
     </div>
@@ -136,7 +160,12 @@ function MapViewBoundsController({
         points.push(...selectedTransit.waypoints);
       }
       const bounds = L.latLngBounds(points);
-      map.fitBounds(bounds, { padding: [60, 60], maxZoom: 14, animate: true, duration: 1 });
+      map.fitBounds(bounds, {
+        padding: [60, 60],
+        maxZoom: 14,
+        animate: true,
+        duration: 1,
+      });
     } else if (selectedSite) {
       map.flyTo([selectedSite.lat, selectedSite.lng], 14, { duration: 1 });
     }
@@ -155,7 +184,7 @@ export default function MapCanvas({
   assets,
   onSelectAsset,
 }: MapCanvasProps) {
-  const defaultCenter: [number, number] = [12.9850, 77.6100];
+  const defaultCenter: [number, number] = [12.985, 77.61];
 
   // Helper to split polyline into completed vs remaining
   const activeRouteSegments = useMemo(() => {
@@ -168,16 +197,27 @@ export default function MapCanvas({
     ];
 
     return {
-      startPoint: [selectedTransit.startLat, selectedTransit.startLng] as [number, number],
-      currentPoint: [selectedTransit.lat, selectedTransit.lng] as [number, number],
-      destinationPoint: [selectedTransit.targetLat, selectedTransit.targetLng] as [number, number],
+      startPoint: [selectedTransit.startLat, selectedTransit.startLng] as [
+        number,
+        number,
+      ],
+      currentPoint: [selectedTransit.lat, selectedTransit.lng] as [
+        number,
+        number,
+      ],
+      destinationPoint: [
+        selectedTransit.targetLat,
+        selectedTransit.targetLng,
+      ] as [number, number],
       fullPath: allPoints,
     };
   }, [selectedTransit]);
 
   return (
     <div className="w-full h-full relative z-0 isolate overflow-hidden rounded-xl">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .leaflet-container {
           width: 100%;
           height: 100%;
@@ -198,7 +238,9 @@ export default function MapCanvas({
           margin: 0;
           line-height: 1.4;
         }
-      `}} />
+      `,
+        }}
+      />
 
       <MapContainer center={defaultCenter} zoom={11} scrollWheelZoom={true}>
         <TileLayer
@@ -276,14 +318,20 @@ export default function MapCanvas({
                 `ORIGIN: ${selectedTransit.origin.split(" ")[0]}`,
                 "#059669",
                 "bg-emerald-600",
-                `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>`
+                `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>`,
               )}
             >
               <Popup>
                 <div className="p-3 text-xs">
-                  <span className="font-extrabold text-emerald-700 uppercase tracking-wide text-[10px]">Route Origin</span>
-                  <p className="font-bold text-slate-900 mt-0.5">{selectedTransit.origin}</p>
-                  <p className="text-slate-500 mt-1">Dispatched from CAT Logistics Depot</p>
+                  <span className="font-extrabold text-emerald-700 uppercase tracking-wide text-[10px]">
+                    Route Origin
+                  </span>
+                  <p className="font-bold text-slate-900 mt-0.5">
+                    {selectedTransit.origin}
+                  </p>
+                  <p className="text-slate-500 mt-1">
+                    Dispatched from CAT Logistics Depot
+                  </p>
                 </div>
               </Popup>
             </Marker>
@@ -295,15 +343,23 @@ export default function MapCanvas({
                 `DESTINATION: ${selectedTransit.destination.split(" ")[0]}`,
                 "#dc2626",
                 "bg-rose-600",
-                `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`
+                `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
               )}
             >
               <Popup>
                 <div className="p-3 text-xs">
-                  <span className="font-extrabold text-rose-700 uppercase tracking-wide text-[10px]">Destination Site</span>
-                  <p className="font-bold text-slate-900 mt-0.5">{selectedTransit.destination}</p>
-                  <p className="text-slate-500 mt-1">Client: <strong>{selectedTransit.customerName}</strong></p>
-                  <p className="text-amber-700 font-semibold mt-1">ETA: {selectedTransit.etaMinutes} mins remaining</p>
+                  <span className="font-extrabold text-rose-700 uppercase tracking-wide text-[10px]">
+                    Destination Site
+                  </span>
+                  <p className="font-bold text-slate-900 mt-0.5">
+                    {selectedTransit.destination}
+                  </p>
+                  <p className="text-slate-500 mt-1">
+                    Client: <strong>{selectedTransit.customerName}</strong>
+                  </p>
+                  <p className="text-amber-700 font-semibold mt-1">
+                    ETA: {selectedTransit.etaMinutes} mins remaining
+                  </p>
                 </div>
               </Popup>
             </Marker>
@@ -325,7 +381,7 @@ export default function MapCanvas({
                 isYard ? "bg-slate-900" : "bg-blue-600",
                 isYard
                   ? `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><path d="M9 22v-4h6v4"/></svg>`
-                  : `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`
+                  : `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`,
               )}
               eventHandlers={{
                 click: () => onSelectSite(site),
@@ -333,14 +389,20 @@ export default function MapCanvas({
             >
               <Popup>
                 <div className="p-3 text-xs">
-                  <span className={`font-black text-[10px] uppercase tracking-wider ${isYard ? "text-amber-600" : "text-blue-600"}`}>
+                  <span
+                    className={`font-black text-[10px] uppercase tracking-wider ${isYard ? "text-amber-600" : "text-blue-600"}`}
+                  >
                     {isYard ? "Central Operations Depot" : "Customer Job Site"}
                   </span>
-                  <h3 className="font-extrabold text-sm text-slate-900 mt-0.5">{site.name}</h3>
+                  <h3 className="font-extrabold text-sm text-slate-900 mt-0.5">
+                    {site.name}
+                  </h3>
                   <p className="text-slate-500">{site.customer}</p>
                   <div className="mt-2.5 pt-2 border-t flex items-center justify-between text-[11px]">
                     <span className="text-slate-500">Site ID:</span>
-                    <strong className="font-mono text-slate-800">{site.code}</strong>
+                    <strong className="font-semibold tracking-tight text-slate-800">
+                      {site.code}
+                    </strong>
                   </div>
                 </div>
               </Popup>
@@ -371,32 +433,45 @@ export default function MapCanvas({
                     <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[10px] font-black text-slate-950">
                       {item.id}
                     </span>
-                    <span className="font-extrabold text-slate-900">{item.speedKmh} km/h</span>
+                    <span className="font-extrabold text-slate-900">
+                      {item.speedKmh} km/h
+                    </span>
                   </div>
 
-                  <h3 className="font-bold text-sm text-slate-900 mt-2">{item.assetName}</h3>
-                  <p className="text-slate-500 text-[11px] font-medium mt-0.5">{item.haulerId}</p>
+                  <h3 className="font-bold text-sm text-slate-900 mt-2">
+                    {item.assetName}
+                  </h3>
+                  <p className="text-slate-500 text-[11px] font-medium mt-0.5">
+                    {item.haulerId}
+                  </p>
 
                   <div className="mt-3 space-y-1.5 border-t pt-2 text-[11px]">
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 flex items-center gap-1">
                         <Flag className="h-3 w-3 text-emerald-600" /> Start:
                       </span>
-                      <strong className="text-slate-800 truncate max-w-[130px]">{item.origin.split(" ")[0]}</strong>
+                      <strong className="text-slate-800 truncate max-w-[130px]">
+                        {item.origin.split(" ")[0]}
+                      </strong>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 flex items-center gap-1">
-                        <MapPin className="h-3 w-3 text-rose-600" /> Destination:
+                        <MapPin className="h-3 w-3 text-rose-600" />{" "}
+                        Destination:
                       </span>
-                      <strong className="text-slate-800 truncate max-w-[130px]">{item.destination.split(" ")[0]}</strong>
+                      <strong className="text-slate-800 truncate max-w-[130px]">
+                        {item.destination.split(" ")[0]}
+                      </strong>
                     </div>
 
                     <div className="flex items-center justify-between font-semibold">
                       <span className="text-slate-500 flex items-center gap-1">
                         <Clock className="h-3 w-3 text-amber-600" /> Live ETA:
                       </span>
-                      <span className="text-amber-700 font-bold">{item.etaMinutes} mins remaining</span>
+                      <span className="text-amber-700 font-bold">
+                        {item.etaMinutes} mins remaining
+                      </span>
                     </div>
                   </div>
 
@@ -428,9 +503,13 @@ export default function MapCanvas({
                 <span className="px-2 py-0.5 rounded-md bg-amber-400 text-slate-950 font-black text-[10px]">
                   LIVE ROUTE
                 </span>
-                <span className="text-xs font-bold text-amber-300 font-mono">{selectedTransit.id}</span>
+                <span className="text-xs font-bold tracking-tight text-amber-300">
+                  {selectedTransit.id}
+                </span>
               </div>
-              <h4 className="font-extrabold text-sm text-white mt-1">{selectedTransit.assetName}</h4>
+              <h4 className="font-extrabold text-sm text-white mt-1">
+                {selectedTransit.assetName}
+              </h4>
             </div>
 
             <button
@@ -449,7 +528,7 @@ export default function MapCanvas({
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 {selectedTransit.origin.split(" ")[0]}
               </span>
-              <span className="text-[11px] text-slate-400 font-mono">
+              <span className="text-[11px] font-semibold tracking-tight text-slate-400">
                 {selectedTransit.progress}% completed
               </span>
               <span className="flex items-center gap-1 text-rose-400">
@@ -466,8 +545,18 @@ export default function MapCanvas({
             </div>
 
             <div className="flex items-center justify-between text-[11px] text-slate-300 font-medium pt-1">
-              <span>Speed: <strong className="text-amber-400 font-bold">{selectedTransit.speedKmh} km/h</strong></span>
-              <span>ETA: <strong className="text-white font-bold">{selectedTransit.etaMinutes} mins</strong></span>
+              <span>
+                Speed:{" "}
+                <strong className="text-amber-400 font-bold">
+                  {selectedTransit.speedKmh} km/h
+                </strong>
+              </span>
+              <span>
+                ETA:{" "}
+                <strong className="text-white font-bold">
+                  {selectedTransit.etaMinutes} mins
+                </strong>
+              </span>
             </div>
           </div>
         </div>

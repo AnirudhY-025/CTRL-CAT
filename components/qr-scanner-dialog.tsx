@@ -23,6 +23,22 @@ const extractAssetId = (raw: string): string => {
   return trimmed;
 };
 
+const describeScannerError = (error: unknown) => {
+  if (error instanceof Error) {
+    return { name: error.name, message: error.message };
+  }
+
+  if (typeof error === "object" && error !== null) {
+    const details = error as { name?: unknown; message?: unknown };
+    return {
+      name: typeof details.name === "string" ? details.name : "",
+      message: typeof details.message === "string" ? details.message : "",
+    };
+  }
+
+  return { name: "", message: String(error ?? "") };
+};
+
 function InnerCameraStream({
   onSuccess,
   setError,
@@ -34,19 +50,20 @@ function InnerCameraStream({
     constraints: {
       video: { facingMode: "environment" },
     },
-    onDecodeResult(result: any) {
-      const text = typeof result?.getText === "function" ? result.getText() : result?.rawValue || String(result || "");
+    onDecodeResult(result) {
+      const text = result.rawValue?.trim() ?? "";
       if (text) {
         onSuccess(text);
       }
     },
-    onError(err: any) {
+    onError(err) {
       console.warn("QR Scanner notice/error:", err);
-      if (err?.name === "NotAllowedError" || err?.message?.includes("Permission denied")) {
+      const { name, message } = describeScannerError(err);
+      if (name === "NotAllowedError" || message.includes("Permission denied")) {
         setError("Camera permission denied. Please allow camera access in browser settings.");
-      } else if (err?.name === "NotFoundError" || err?.message?.includes("DevicesNotFoundError")) {
+      } else if (name === "NotFoundError" || message.includes("DevicesNotFoundError")) {
         setError("No camera device found on this device.");
-      } else if (err?.name === "NotReadableError") {
+      } else if (name === "NotReadableError") {
         setError("Camera is currently in use by another app.");
       }
     },

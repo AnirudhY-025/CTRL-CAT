@@ -170,13 +170,26 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🧪 Running QA & Agent Tests
+## 🧪 Browser Use Agent Showcase
 
-The repository includes an automated Playwright + OpenAI QA agent to verify dashboard rendering and data integrity:
+The repository includes a small, judge-visible Browser Use Cloud agent scaffold.
+Its default command is a credential-free dry run; it demonstrates the intended
+agent integration without opening a browser or contacting external services:
 
 ```bash
-python tests/agent/harness_agent.py
+pnpm agent:showcase
 ```
+
+The optional live path uses `BROWSER_USE_API_KEY`, `BROWSER_USE_MODEL`, and a
+reachable `E2E_BASE_URL`:
+
+```bash
+uv sync
+BROWSER_USE_API_KEY=... E2E_BASE_URL=https://staging.example.com \
+  python tests/agent/harness_agent.py --execute
+```
+
+This showcase is intentionally not part of the pull-request test suite.
 
 ---
 
