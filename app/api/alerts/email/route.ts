@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-import type { AlertResponse } from "@/lib/types";
+import type { AlertResponse, EmailTemplateKey } from "@/lib/types";
 
 // Uses Resend (https://resend.com)
 const RESEND_API_KEY = process.env.RESEND_API_KEY ?? "";
 const FROM_EMAIL = process.env.ALERT_FROM_EMAIL ?? "CTRL+CAT Operations <onboarding@resend.dev>";
-const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 export type DealerAlertType =
   | "temp_surge"
@@ -14,7 +13,9 @@ export type DealerAlertType =
   | "low_fuel"
   | "idle_overrun"
   | "anomaly"
-  | "maintenance";
+  | "maintenance"
+  | "rental_overdue"
+  | "rental_extension";
 
 interface AlertRequestBody {
   toEmail: string;
@@ -27,6 +28,21 @@ interface AlertRequestBody {
   detail?: string;
   customSubject?: string;
   customBody?: string;
+  templateKey?: EmailTemplateKey;
+}
+
+function escapeHtml(value: string) {
+  return value.replace(
+    /[&<>\"']/g,
+    (character) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '\"': "&quot;",
+        "'": "&#39;",
+      })[character] ?? character,
+  );
 }
 
 function buildDealerEmailHtml(data: AlertRequestBody): { subject: string; html: string } {
@@ -35,10 +51,27 @@ function buildDealerEmailHtml(data: AlertRequestBody): { subject: string; html: 
   const asset = data.assetName ?? "Rented Equipment";
   const assetId = data.assetId ?? "CAT-UNKNOWN";
   const site = data.siteName ?? "Job Site";
-  const type = data.alertType ?? "anomaly";
+  const templateAlertTypes: Partial<Record<EmailTemplateKey, DealerAlertType>> = {
+    "telemetry-alert": "anomaly",
+    maintenance: "maintenance",
+    "low-fuel": "low_fuel",
+    "rental-overdue": "rental_overdue",
+    "rental-extension": "rental_extension",
+    general: "anomaly",
+  };
+  const type =
+    data.alertType ?? templateAlertTypes[data.templateKey ?? "general"] ?? "anomaly";
+  const customerHtml = escapeHtml(customer);
+  const managerHtml = escapeHtml(manager);
+  const assetHtml = escapeHtml(asset);
+  const assetIdHtml = escapeHtml(assetId);
+  const siteHtml = escapeHtml(site);
+  const toEmailHtml = escapeHtml(data.toEmail);
 
   if (data.customBody) {
     const subject = data.customSubject ?? `[Rental Notice] Message Regarding Rented Equipment (${assetId})`;
+    const safeSubject = escapeHtml(data.customSubject ?? "Equipment Notification");
+    const safeBody = escapeHtml(data.customBody);
     return {
       subject,
       html: `
@@ -54,13 +87,13 @@ function buildDealerEmailHtml(data: AlertRequestBody): { subject: string; html: 
       </div>
     </div>
     <div style="padding:28px 24px;">
-      <p style="margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#8a5a00;text-transform:uppercase;">Rental Communications · ${customer}</p>
-      <h2 style="margin:0 0 16px;font-size:20px;font-weight:800;color:#181818;">${data.customSubject ?? "Equipment Notification"}</h2>
+      <p style="margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.06em;color:#8a5a00;text-transform:uppercase;">Rental Communications · ${customerHtml}</p>
+      <h2 style="margin:0 0 16px;font-size:20px;font-weight:800;color:#181818;">${safeSubject}</h2>
       <div style="font-size:14px;color:#333333;line-height:1.7;white-space:pre-wrap;background:#f9f9f6;padding:18px;border-radius:8px;border:1px solid #e8e8e2;">
-${data.customBody}
+${safeBody}
       </div>
       <p style="margin-top:20px;font-size:12px;color:#777777;">
-        Sent to: <strong>${data.toEmail}</strong> (${manager}) · Site: <strong>${site}</strong>
+        Sent to: <strong>${toEmailHtml}</strong> (${managerHtml}) · Site: <strong>${siteHtml}</strong>
       </p>
     </div>
     <div style="padding:14px 24px;border-top:1px solid #eeeeea;background:#fafaf8;font-size:11px;color:#888888;display:flex;justify-content:space-between;">
@@ -90,14 +123,14 @@ ${data.customBody}
     </div>
     <div style="padding:24px;">
       <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
-        Dear <strong>${manager}</strong> (${customer}),<br/>
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
         Our dealership live telemetry sensors have detected a <strong>critical temperature spike</strong> in the engine / hydraulic system of your rented machine.
       </p>
       <div style="background:#fef2f2;border-left:4px solid #b91c1c;padding:14px;border-radius:6px;margin:16px 0;">
         <table style="width:100%;font-size:13px;">
-          <tr><td style="color:#666;padding:4px 0;width:120px;"><strong>Machine:</strong></td><td style="color:#111;">${asset} (${assetId})</td></tr>
-          <tr><td style="color:#666;padding:4px 0;"><strong>Job Site:</strong></td><td style="color:#111;">${site}</td></tr>
-          <tr><td style="color:#666;padding:4px 0;"><strong>Telemetry Alert:</strong></td><td style="color:#b91c1c;font-weight:700;">${data.detail ?? "Engine coolant / hydraulic oil temperature exceeded 108°C safe threshold."}</td></tr>
+          <tr><td style="color:#666;padding:4px 0;width:120px;"><strong>Machine:</strong></td><td style="color:#111;">${assetHtml} (${assetIdHtml})</td></tr>
+          <tr><td style="color:#666;padding:4px 0;"><strong>Job Site:</strong></td><td style="color:#111;">${siteHtml}</td></tr>
+          <tr><td style="color:#666;padding:4px 0;"><strong>Telemetry Alert:</strong></td><td style="color:#b91c1c;font-weight:700;">${escapeHtml(data.detail ?? "Engine coolant / hydraulic oil temperature exceeded 108°C safe threshold.")}</td></tr>
         </table>
       </div>
       <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px;margin-bottom:20px;">
@@ -136,14 +169,14 @@ ${data.customBody}
     </div>
     <div style="padding:24px;">
       <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
-        Dear <strong>${manager}</strong> (${customer}),<br/>
-        An abnormal physical impact or diagnostic trouble code (DTC warning) has been registered on your rented machine at <strong>${site}</strong>.
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
+        An abnormal physical impact or diagnostic trouble code (DTC warning) has been registered on your rented machine at <strong>${siteHtml}</strong>.
       </p>
       <div style="background:#fff7ed;border-left:4px solid #ea580c;padding:14px;border-radius:6px;margin:16px 0;">
         <table style="width:100%;font-size:13px;">
-          <tr><td style="color:#666;padding:4px 0;width:120px;"><strong>Machine:</strong></td><td style="color:#111;">${asset} (${assetId})</td></tr>
-          <tr><td style="color:#666;padding:4px 0;"><strong>Location:</strong></td><td style="color:#111;">${site}</td></tr>
-          <tr><td style="color:#666;padding:4px 0;"><strong>Incident Detail:</strong></td><td style="color:#c2410c;font-weight:700;">${data.detail ?? "Excessive G-force impact / tilt anomaly registered on chassis telemetry."}</td></tr>
+          <tr><td style="color:#666;padding:4px 0;width:120px;"><strong>Machine:</strong></td><td style="color:#111;">${assetHtml} (${assetIdHtml})</td></tr>
+          <tr><td style="color:#666;padding:4px 0;"><strong>Location:</strong></td><td style="color:#111;">${siteHtml}</td></tr>
+          <tr><td style="color:#666;padding:4px 0;"><strong>Incident Detail:</strong></td><td style="color:#c2410c;font-weight:700;">${escapeHtml(data.detail ?? "Excessive G-force impact / tilt anomaly registered on chassis telemetry.")}</td></tr>
         </table>
       </div>
       <div style="background:#f4f4f0;border-radius:8px;padding:14px;margin-bottom:20px;">
@@ -179,12 +212,12 @@ ${data.customBody}
     </div>
     <div style="padding:24px;">
       <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
-        Dear <strong>${manager}</strong> (${customer}),<br/>
-        Telemetry indicates that <strong>${asset} (${assetId})</strong> at <strong>${site}</strong> is operating with fuel levels below 15%.
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
+        Telemetry indicates that <strong>${assetHtml} (${assetIdHtml})</strong> at <strong>${siteHtml}</strong> is operating with fuel levels below 15%.
       </p>
       <div style="background:#fffbeb;border-left:4px solid #d97706;padding:14px;border-radius:6px;margin:16px 0;">
         <p style="margin:0;font-size:13px;color:#92400e;font-weight:600;">
-          ${data.detail ?? "Current tank capacity estimated under 2 operating hours remaining."}
+          ${escapeHtml(data.detail ?? "Current tank capacity estimated under 2 operating hours remaining.")}
         </p>
       </div>
       <p style="font-size:13px;color:#555;line-height:1.6;">
@@ -194,6 +227,66 @@ ${data.customBody}
     <div style="padding:14px 24px;border-top:1px solid #eeeeea;background:#fafaf8;font-size:11px;color:#888;">
       CTRL+CAT Equipment Fleet Management · Dealer Telemetry Dispatch
     </div>
+  </div>
+</body>
+</html>
+`,
+      };
+
+    case "rental_overdue":
+      return {
+        subject: `📅 [RENTAL FOLLOW-UP] Return Confirmation Requested — ${asset} (${assetId})`,
+        html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f5f4ef;padding:24px;margin:0;">
+  <div style="max-width:600px;margin:auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e2e2dc;">
+    <div style="background:#7c3aed;padding:18px 24px;">
+      <span style="background:#ffffff;color:#6d28d9;font-weight:900;padding:4px 8px;border-radius:4px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">RENTAL FOLLOW-UP</span>
+      <h1 style="color:#ffffff;font-size:20px;margin:8px 0 0;font-weight:800;">Return Confirmation Requested</h1>
+    </div>
+    <div style="padding:24px;">
+      <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
+        Our records suggest that the expected return window for <strong>${assetHtml} (${assetIdHtml})</strong> at <strong>${siteHtml}</strong> may have passed.
+      </p>
+      <div style="background:#f5f3ff;border-left:4px solid #7c3aed;padding:14px;border-radius:6px;margin:16px 0;">
+        <p style="margin:0;font-size:13px;color:#5b21b6;font-weight:600;">${escapeHtml(data.detail ?? "Please confirm the machine's current status and updated return date.")}</p>
+      </div>
+      <p style="font-size:13px;color:#555;line-height:1.6;">If you need to continue the rental, reply to this email so our operations team can coordinate an extension.</p>
+    </div>
+    <div style="padding:14px 24px;border-top:1px solid #eeeeea;background:#fafaf8;font-size:11px;color:#888;">CTRL+CAT Equipment Rental Dealership · Operations Desk</div>
+  </div>
+</body>
+</html>
+`,
+      };
+
+    case "rental_extension":
+      return {
+        subject: `📆 [RENTAL REQUEST] Extension Confirmation — ${asset} (${assetId})`,
+        html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /></head>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f5f4ef;padding:24px;margin:0;">
+  <div style="max-width:600px;margin:auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e2e2dc;">
+    <div style="background:#0f766e;padding:18px 24px;">
+      <span style="background:#ffffff;color:#0f766e;font-weight:900;padding:4px 8px;border-radius:4px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">RENTAL EXTENSION</span>
+      <h1 style="color:#ffffff;font-size:20px;margin:8px 0 0;font-weight:800;">Rental Extension Confirmation</h1>
+    </div>
+    <div style="padding:24px;">
+      <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
+        We are following up on the rental for <strong>${assetHtml} (${assetIdHtml})</strong> at <strong>${siteHtml}</strong>.
+      </p>
+      <div style="background:#f0fdfa;border-left:4px solid #0f766e;padding:14px;border-radius:6px;margin:16px 0;">
+        <p style="margin:0;font-size:13px;color:#115e59;font-weight:600;">${escapeHtml(data.detail ?? "Please confirm whether you need an extension and share the expected end date.")}</p>
+      </div>
+      <p style="font-size:13px;color:#555;line-height:1.6;">Reply to this email and our operations team will confirm availability and next steps.</p>
+    </div>
+    <div style="padding:14px 24px;border-top:1px solid #eeeeea;background:#fafaf8;font-size:11px;color:#888;">CTRL+CAT Equipment Rental Dealership · Operations Desk</div>
   </div>
 </body>
 </html>
@@ -217,15 +310,15 @@ ${data.customBody}
     </div>
     <div style="padding:24px;">
       <p style="font-size:14px;color:#333;line-height:1.6;margin-top:0;">
-        Dear <strong>${manager}</strong> (${customer}),<br/>
-        Our dealer monitoring system has flagged an operational anomaly for your rented asset at <strong>${site}</strong>.
+        Dear <strong>${managerHtml}</strong> (${customerHtml}),<br/>
+        Our dealer monitoring system has flagged an operational anomaly for your rented asset at <strong>${siteHtml}</strong>.
       </p>
       <div style="background:#f9f9f6;border:1px solid #e5e5dc;border-radius:8px;padding:16px;margin:16px 0;">
         <table style="width:100%;font-size:13px;">
-          <tr><td style="color:#777;padding:4px 0;width:120px;"><strong>Asset:</strong></td><td style="color:#181818;font-weight:600;">${asset}</td></tr>
-          <tr><td style="color:#777;padding:4px 0;"><strong>Serial / ID:</strong></td><td style="color:#181818;">${assetId}</td></tr>
-          <tr><td style="color:#777;padding:4px 0;"><strong>Site Location:</strong></td><td style="color:#181818;">${site}</td></tr>
-          <tr><td style="color:#777;padding:4px 0;"><strong>Observation:</strong></td><td style="color:#8a5a00;font-weight:700;">${data.detail ?? "Abnormal fuel burn vs. engine load pattern detected in rolling 3-day telemetry."}</td></tr>
+          <tr><td style="color:#777;padding:4px 0;width:120px;"><strong>Asset:</strong></td><td style="color:#181818;font-weight:600;">${assetHtml}</td></tr>
+          <tr><td style="color:#777;padding:4px 0;"><strong>Serial / ID:</strong></td><td style="color:#181818;">${assetIdHtml}</td></tr>
+          <tr><td style="color:#777;padding:4px 0;"><strong>Site Location:</strong></td><td style="color:#181818;">${siteHtml}</td></tr>
+          <tr><td style="color:#777;padding:4px 0;"><strong>Observation:</strong></td><td style="color:#8a5a00;font-weight:700;">${escapeHtml(data.detail ?? "Abnormal fuel burn vs. engine load pattern detected in rolling 3-day telemetry.")}</td></tr>
         </table>
       </div>
       <p style="font-size:13px;color:#555;line-height:1.6;">
@@ -257,7 +350,7 @@ export async function POST(request: Request) {
 
   try {
     const resend = new Resend(RESEND_API_KEY);
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [body.toEmail],
       subject,
@@ -276,10 +369,16 @@ export async function POST(request: Request) {
       success: true,
       message: `Dealer alert dispatched to ${body.toEmail}`,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Resend error:", err);
     return NextResponse.json<AlertResponse>(
-      { success: false, message: err?.message || "Failed to send email via dealer gateway" },
+      {
+        success: false,
+        message:
+          err instanceof Error
+            ? err.message
+            : "Failed to send email via dealer gateway",
+      },
       { status: 502 },
     );
   }

@@ -1,4 +1,14 @@
-import type { Activity, Asset, Operator, Site, Condition, AssetInsights, DemandForecast, AlertResponse } from "./types";
+import type {
+  Activity,
+  AlertResponse,
+  Asset,
+  AssetInsights,
+  Condition,
+  DashboardMetrics,
+  DemandForecast,
+  Operator,
+  Site,
+} from "./types";
 
 type ApiEnvelope<T> = { data: T };
 
@@ -97,6 +107,13 @@ export async function fetchDemand(): Promise<DemandForecast> {
   return response.data;
 }
 
+export async function fetchDashboardMetrics(): Promise<DashboardMetrics> {
+  const response = await request<ApiEnvelope<DashboardMetrics>>(
+    "/api/dashboard/metrics",
+  );
+  return response.data;
+}
+
 export async function triggerVoiceAlert(input: {
   phoneNumber: string;
   assetId?: string;
@@ -128,10 +145,13 @@ export async function triggerEmailAlert(input: {
     | "utilization"
     | "temp_surge"
     | "sudden_damage"
-    | "maintenance";
+    | "maintenance"
+    | "rental_overdue"
+    | "rental_extension";
   detail?: string;
   customSubject?: string;
   customBody?: string;
+  templateKey?: import("./types").EmailTemplateKey;
 }): Promise<AlertResponse> {
   return request<AlertResponse>("/api/alerts/email", {
     method: "POST",

@@ -90,7 +90,7 @@ Instructions:
 4. Confirm acknowledgment, thank them for prioritizing jobsite safety, and conclude the call.`;
   }
 
-  const vapiPayload: any = {
+  const vapiPayload: Record<string, unknown> = {
     phoneNumberId: VAPI_PHONE_NUMBER_ID,
     customer: {
       number: body.phoneNumber,

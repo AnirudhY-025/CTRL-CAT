@@ -22,10 +22,11 @@ import {
   Phone,
   X,
 } from "lucide-react";
+import type { Asset } from "@/lib/types";
 
 // Safe leaflet icon setup
 if (typeof window !== "undefined") {
-  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
   L.Icon.Default.mergeOptions({
     iconRetinaUrl:
       "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -76,8 +77,8 @@ interface MapCanvasProps {
   selectedTransit: TransitItem | null;
   onSelectSite: (site: Site | null) => void;
   onSelectTransit: (transit: TransitItem | null) => void;
-  assets: any[];
-  onSelectAsset: (asset: any) => void;
+  assets: Asset[];
+  onSelectAsset: (asset: Asset) => void;
 }
 
 const createPinIcon = (

@@ -34,6 +34,24 @@ export type AlertResponse = {
   success: boolean;
   message: string;
 };
+
+export type EmailTemplateKey =
+  | "telemetry-alert"
+  | "maintenance"
+  | "low-fuel"
+  | "rental-overdue"
+  | "rental-extension"
+  | "general";
+
+export type DashboardMetrics = {
+  fleetUtilizationPct: number | null;
+  fleetUtilizationChangePct: number | null;
+  maintenanceBacklog: number | null;
+  telemetryCoveragePct: number | null;
+  telemetryStaleCount: number | null;
+  telemetryAsOf: string | null;
+};
+
 export type Condition = "Good" | "Monitor" | "Service due";
 export type WorkflowAction = "checkout" | "checkin";
 

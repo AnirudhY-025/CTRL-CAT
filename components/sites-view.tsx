@@ -462,10 +462,10 @@ export function SitesView({
         <Card className="relative min-w-0 overflow-hidden rounded-2xl border-2 border-border bg-card shadow-xl">
           <div className="h-[520px] w-full">
             <MapCanvas
-              sites={MAP_SITES as any}
-              transitItems={transitList as any}
-              selectedSite={selectedSite as any}
-              selectedTransit={selectedTransit as any}
+              sites={MAP_SITES}
+              transitItems={transitList}
+              selectedSite={selectedSite}
+              selectedTransit={selectedTransit}
               onSelectSite={setSelectedSite}
               onSelectTransit={(t) => setSelectedTransitId(t ? t.id : null)}
               assets={assets}
