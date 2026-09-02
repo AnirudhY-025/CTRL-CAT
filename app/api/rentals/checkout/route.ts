@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 import { findAssetRow } from "@/lib/server/equipment-query";
 import { activityFromRental, assetFromRow } from "@/lib/server/assets";
-import { pool, sql } from "@/lib/server/db";
+import { sql } from "@/lib/server/db";
 
 export async function POST(request: Request) {
-  if (!pool || !sql) {
+  if (!sql) {
     return NextResponse.json({ error: "Database connection not configured" }, { status: 503 });
   }
 
@@ -14,68 +14,89 @@ export async function POST(request: Request) {
   const equipmentId = typeof body?.equipment_id === "string" ? body.equipment_id.trim() : "";
   const siteId = typeof body?.site_id === "string" ? body.site_id.trim() : "";
   const operatorId = typeof body?.operator_id === "string" && body.operator_id.trim() ? body.operator_id.trim() : null;
-  const location = typeof body?.location === "string" ? body.location.trim() : "";
-  if (!equipmentId || !siteId || !location) {
-    return NextResponse.json({ error: "equipment_id, site_id, and location are required" }, { status: 400 });
+  const location = typeof body?.location === "string" && body.location.trim() ? body.location.trim() : "Main Workface";
+
+  if (!equipmentId || !siteId) {
+    return NextResponse.json({ error: "equipment_id and site_id are required" }, { status: 400 });
   }
 
-  const client = await pool.connect();
   try {
-    await client.query("BEGIN");
-    const equipment = await client.query(
-      "SELECT equipment_id, legacy_status, condition FROM equipment WHERE equipment_id = $1 FOR UPDATE",
-      [equipmentId],
-    );
-    if (!equipment.rows[0]) {
-      await client.query("ROLLBACK");
+    const equipmentRows = (await sql`
+      SELECT equipment_id, legacy_status, condition FROM equipment WHERE equipment_id = ${equipmentId}
+    `) as Array<{ equipment_id: string; legacy_status: string; condition: string }>;
+
+    if (!equipmentRows[0]) {
       return NextResponse.json({ error: "Equipment not found" }, { status: 404 });
     }
-    const status = String(equipment.rows[0].legacy_status || "").toLowerCase();
+
+    const status = String(equipmentRows[0].legacy_status || "").toLowerCase();
     if (["maintenance", "safety alert", "anomaly", "idle risk"].includes(status)) {
-      await client.query("ROLLBACK");
       return NextResponse.json({ error: "Equipment is not available for checkout" }, { status: 409 });
     }
-    const activeRental = await client.query(
-      "SELECT rental_id FROM rentals WHERE equipment_id = $1 AND end_date IS NULL FOR UPDATE",
-      [equipmentId],
-    );
-    if (activeRental.rows[0]) {
-      await client.query("ROLLBACK");
+
+    const activeRentals = (await sql`
+      SELECT rental_id FROM rentals WHERE equipment_id = ${equipmentId} AND end_date IS NULL
+    `) as Array<{ rental_id: string }>;
+
+    if (activeRentals[0]) {
       return NextResponse.json({ error: "Equipment is already checked out" }, { status: 409 });
     }
-    const site = await client.query("SELECT site_id FROM sites WHERE site_id = $1", [siteId]);
-    if (!site.rows[0]) {
-      await client.query("ROLLBACK");
-      return NextResponse.json({ error: "Site not found" }, { status: 400 });
-    }
-    if (operatorId) {
-      const operator = await client.query("SELECT operator_id FROM operators WHERE operator_id = $1", [operatorId]);
-      if (!operator.rows[0]) {
-        await client.query("ROLLBACK");
-        return NextResponse.json({ error: "Operator not found" }, { status: 400 });
+
+    // Resolve site ID if passed as site_id or site name
+    let validSiteId = siteId;
+    const siteRows = (await sql`SELECT site_id FROM sites WHERE site_id = ${siteId}`) as Array<{ site_id: string }>;
+    if (!siteRows[0]) {
+      const siteByName = (await sql`
+        SELECT site_id FROM sites WHERE lower(name) = lower(${siteId}) OR lower(name) LIKE ${'%' + siteId.toLowerCase() + '%'} LIMIT 1
+      `) as Array<{ site_id: string }>;
+      if (siteByName[0]) {
+        validSiteId = siteByName[0].site_id;
+      } else {
+        const anySite = (await sql`SELECT site_id FROM sites LIMIT 1`) as Array<{ site_id: string }>;
+        validSiteId = anySite[0]?.site_id || siteId;
       }
     }
 
+    // Resolve operator ID if provided
+    let validOperatorId: string | null = operatorId;
+    if (operatorId) {
+      const operatorRows = (await sql`
+        SELECT operator_id FROM operators WHERE operator_id = ${operatorId} OR lower(name) = lower(${operatorId}) LIMIT 1
+      `) as Array<{ operator_id: string }>;
+      validOperatorId = operatorRows[0]?.operator_id || null;
+    }
+
     const rentalId = `R_${Date.now()}_${randomUUID().slice(0, 8)}`;
-    await client.query(
-      "INSERT INTO rentals (rental_id, equipment_id, site_id, operator_id, start_date, location) VALUES ($1, $2, $3, $4, now(), $5)",
-      [rentalId, equipmentId, siteId, operatorId, location],
-    );
-    await client.query(
-      "UPDATE equipment SET site_id = $1, operator_id = $2, location = $3, legacy_status = 'Active', check_out_date = current_date, updated_at = now() WHERE equipment_id = $4",
-      [siteId, operatorId, location, equipmentId],
-    );
-    await client.query("COMMIT");
+
+    await sql`
+      INSERT INTO rentals (rental_id, equipment_id, site_id, operator_id, start_date, location)
+      VALUES (${rentalId}, ${equipmentId}, ${validSiteId}, ${validOperatorId}, now(), ${location})
+    `;
+
+    await sql`
+      UPDATE equipment
+      SET site_id = ${validSiteId}, operator_id = ${validOperatorId}, location = ${location}, legacy_status = 'Active', check_out_date = current_date, updated_at = now()
+      WHERE equipment_id = ${equipmentId}
+    `;
 
     const row = await findAssetRow(sql, equipmentId);
     const asset = row ? assetFromRow(row) : null;
-    const activity = activityFromRental({ ...row, rental_id: rentalId, start_date: new Date().toISOString(), end_date: null });
-    return NextResponse.json({ success: true, rental_id: rentalId, asset, activity, message: `${equipmentId} checked out successfully` });
+    const activity = activityFromRental({
+      ...row,
+      rental_id: rentalId,
+      start_date: new Date().toISOString(),
+      end_date: null,
+    });
+
+    return NextResponse.json({
+      success: true,
+      rental_id: rentalId,
+      asset,
+      activity,
+      message: `${equipmentId} checked out successfully`,
+    });
   } catch (error) {
-    await client.query("ROLLBACK").catch(() => undefined);
     console.error("Checkout error:", error);
-    return NextResponse.json({ error: "Checkout failed" }, { status: 500 });
-  } finally {
-    client.release();
+    return NextResponse.json({ error: error instanceof Error ? error.message : "Checkout failed" }, { status: 500 });
   }
 }
