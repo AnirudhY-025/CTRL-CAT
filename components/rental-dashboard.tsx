@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   ArrowDownToLine,
   ArrowUpFromLine,
+  BarChart3,
   BrainCircuit,
   Boxes,
   Check,
@@ -21,6 +22,8 @@ import {
   MapPin,
   Menu,
   Phone,
+  Plus,
+  Printer,
   QrCode,
   Search,
   Send,
@@ -89,6 +92,9 @@ import type {
 import type { Operator, Site } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { QrScannerDialog } from "@/components/qr-scanner-dialog";
+import { AddAssetDialog } from "@/components/add-asset-dialog";
+import { AssetQrDialog } from "@/components/asset-qr-dialog";
+import { ActivityDashboard } from "@/components/activity-dashboard";
 
 type FilterStatus = AssetStatus | "all" | "attention";
 
@@ -109,6 +115,7 @@ const navItems = [
   { label: "Equipment", icon: Boxes },
   { label: "Customers", icon: UsersRound },
   { label: "Sites & locations", icon: MapPin },
+  { label: "Activity", icon: BarChart3 },
 ] as const;
 
 type DashboardTab = (typeof navItems)[number]["label"];
@@ -214,6 +221,8 @@ export function RentalDashboard() {
   >(null);
   const [hotlineOpen, setHotlineOpen] = React.useState(false);
   const [qrScannerOpen, setQrScannerOpen] = React.useState(false);
+  const [addAssetOpen, setAddAssetOpen] = React.useState(false);
+  const [qrDialogAsset, setQrDialogAsset] = React.useState<Asset | null>(null);
 
   function simulateSobhaIncident() {
     const sobhaAsset = assets.find((a) => a.id === "EQX1001") || assets[0];
@@ -687,6 +696,8 @@ export function RentalDashboard() {
             />
           ) : activeTab === "Sites & locations" ? (
             <SitesView sites={sites} assets={assets} />
+          ) : activeTab === "Activity" ? (
+            <ActivityDashboard assets={assets} demand={demand} />
           ) : (
             <>
               <div className="mb-7">
@@ -714,15 +725,27 @@ export function RentalDashboard() {
                         {filteredAssets.length} matching assets
                       </p>
                     </div>
-                    <div className="relative w-full sm:w-[280px]">
-                      <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                      <Input
-                        value={equipmentQuery}
-                        onChange={(event) => setEquipmentQuery(event.target.value)}
-                        placeholder="Search ID, machine, site, operator"
-                        className="h-10 pl-11"
-                        aria-label="Search equipment table"
-                      />
+                    <div className="flex items-center gap-2.5">
+                      <div className="relative w-full sm:w-[240px]">
+                        <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                        <Input
+                          value={equipmentQuery}
+                          onChange={(event) => setEquipmentQuery(event.target.value)}
+                          placeholder="Search ID, machine..."
+                          className="h-10 pl-11"
+                          aria-label="Search equipment table"
+                        />
+                      </div>
+                      <Button
+                        type="button"
+                        variant="default"
+                        size="sm"
+                        onClick={() => setAddAssetOpen(true)}
+                        className="h-10 gap-1.5 font-bold shadow-sm shrink-0"
+                      >
+                        <Plus className="h-4 w-4" />
+                        <span>Add Equipment</span>
+                      </Button>
                     </div>
                   </CardHeader>
                   <div className="overflow-x-auto">
@@ -734,6 +757,7 @@ export function RentalDashboard() {
                           <th className="px-3 py-3.5 font-bold">
                             Site / location
                           </th>
+                          <th className="px-3 py-3.5 font-bold text-right">QR Tag</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -742,6 +766,7 @@ export function RentalDashboard() {
                             key={asset.id}
                             asset={asset}
                             onOpen={openAsset}
+                            onOpenQr={(a) => setQrDialogAsset(a)}
                           />
                         ))}
                       </tbody>
@@ -925,6 +950,22 @@ export function RentalDashboard() {
         onClose={closeAsset}
         onAction={openAction}
         onOpenCustomer={openCustomerFromAsset}
+        onOpenQr={(a) => setQrDialogAsset(a)}
+      />
+      <AssetQrDialog
+        open={Boolean(qrDialogAsset)}
+        onOpenChange={(open) => !open && setQrDialogAsset(null)}
+        assetId={qrDialogAsset?.id ?? ""}
+        assetName={qrDialogAsset?.name ?? ""}
+        serialNumber={qrDialogAsset?.serialNumber}
+      />
+      <AddAssetDialog
+        open={addAssetOpen}
+        onOpenChange={setAddAssetOpen}
+        onAssetAdded={(newAsset) => {
+          setAssets((prev) => [newAsset, ...prev]);
+          showToast(`✓ Added ${newAsset.id} (${newAsset.name}) to inventory`);
+        }}
       />
       <QrScannerDialog
         open={qrScannerOpen}
@@ -1177,9 +1218,11 @@ function StatusFilterStrip({
 function AssetRow({
   asset,
   onOpen,
+  onOpenQr,
 }: {
   asset: Asset;
   onOpen: (assetId: string) => void;
+  onOpenQr?: (asset: Asset) => void;
 }) {
   return (
     <tr className="group border-b border-border/60 transition-colors last:border-0 hover:bg-accent/40">
@@ -1224,6 +1267,24 @@ function AssetRow({
             </p>
           </div>
         </div>
+      </td>
+      <td className="px-3 py-4 text-right">
+        {onOpenQr && (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenQr(asset);
+            }}
+            className="h-8 gap-1.5 px-2.5 text-xs font-bold border-border/80 hover:bg-primary/10 hover:border-primary/50"
+            title={`View/Print QR tag for ${asset.id}`}
+          >
+            <QrCode className="h-3.5 w-3.5 text-primary" />
+            <span className="hidden sm:inline">QR Tag</span>
+          </Button>
+        )}
       </td>
     </tr>
   );
@@ -1322,6 +1383,7 @@ function AssetDetailDrawer({
   onClose,
   onAction,
   onOpenCustomer,
+  onOpenQr,
 }: {
   asset?: Asset;
   sites: Site[];
@@ -1330,6 +1392,7 @@ function AssetDetailDrawer({
   onClose: () => void;
   onAction: (action: WorkflowAction, assetId?: string) => void;
   onOpenCustomer: (request: CustomerContactRequest) => void;
+  onOpenQr?: (asset: Asset) => void;
 }) {
   const [insights, setInsights] = React.useState<AssetInsights | null>(null);
   const [insightsLoading, setInsightsLoading] = React.useState(false);
@@ -1739,9 +1802,22 @@ function AssetDetailDrawer({
               </section>
             </div>
             <div className="sticky bottom-0 flex items-center justify-between border-t border-border bg-card px-6 py-4">
-              <Button type="button" variant="ghost" onClick={onClose}>
-                Close
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button type="button" variant="ghost" onClick={onClose}>
+                  Close
+                </Button>
+                {onOpenQr && asset && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => onOpenQr(asset)}
+                    className="gap-2 font-bold border-primary/50 text-foreground hover:bg-primary/10"
+                  >
+                    <QrCode className="h-4 w-4 text-primary" />
+                    Print QR Tag
+                  </Button>
+                )}
+              </div>
               {nextAction && (
                 <Button
                   type="button"

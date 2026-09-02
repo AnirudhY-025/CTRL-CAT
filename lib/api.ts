@@ -31,6 +31,24 @@ export async function fetchEquipment() {
   return response.data;
 }
 
+export async function createEquipment(input: {
+  equipment_id: string;
+  equipment_type: string;
+  display_name?: string;
+  serial_number?: string;
+  location?: string;
+  condition?: Condition;
+  age_years?: number;
+  engine_hours?: number;
+  idle_hours?: number;
+  fuel_level?: number;
+}) {
+  return request<{ asset: Asset; message: string }>("/api/equipment", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}
+
 export async function fetchEquipmentDetail(id: string) {
   return request<{
     equipment: Asset;
